@@ -32,7 +32,7 @@
 - [ ] ESLint + Prettier configurati
 - [ ] .env.example con variabili placeholder
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Crea un nuovo progetto Next.js 14 con App Router per il sito NeuraLabs.
 
@@ -79,7 +79,7 @@ Font da configurare in Tailwind:
 - [ ] Client Supabase in src/lib
 - [ ] Types TypeScript generati
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Configura Supabase per il progetto NeuraLabs.
 
@@ -124,7 +124,7 @@ Configura Supabase per il progetto NeuraLabs.
 - [ ] Client Sanity in src/lib
 - [ ] GROQ queries base
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Configura Sanity CMS per NeuraLabs.
 
@@ -172,7 +172,7 @@ Configura Sanity CMS per NeuraLabs.
 - [ ] Deploy automatico su push
 - [ ] Preview deployments su PR
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Prepara il progetto per il deploy su Vercel.
 
@@ -226,7 +226,7 @@ Il deploy effettivo su Vercel sarà fatto manualmente dall'utente tramite dashbo
 - [ ] ThemeProvider con next-themes
 - [ ] Utility classes custom
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Implementa il sistema di design tokens per NeuraLabs con supporto dark/light mode.
 
@@ -283,7 +283,7 @@ LIGHT MODE:
 - [ ] Badge/Tag
 - [ ] Container, Section
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Crea i componenti UI base per NeuraLabs in src/components/ui/.
 
@@ -348,7 +348,7 @@ Tutti i componenti devono essere fully typed con TypeScript.
 - [ ] Theme toggle animato (sole/luna)
 - [ ] CTA "Contattaci" evidenziato
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Crea la Navbar per NeuraLabs in src/components/layout/Navbar.tsx.
 
@@ -400,7 +400,7 @@ Requisiti:
 - [ ] Copyright e legal links
 - [ ] Easter egg hint nascosto
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Crea il Footer per NeuraLabs in src/components/layout/Footer.tsx.
 
@@ -452,7 +452,7 @@ Stile: sfondo leggermente più scuro della pagina, padding generoso.
 - [ ] Navigazione funzionante
 - [ ] Meta tags base
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Assembla il layout completo e crea le pagine placeholder per NeuraLabs.
 
@@ -516,7 +516,7 @@ Assembla il layout completo e crea le pagine placeholder per NeuraLabs.
 - [ ] Performance ottimizzata (requestAnimationFrame, instancing)
 - [ ] Fallback per mobile (particelle ridotte)
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Crea il componente ParticleField per l'hero di NeuraLabs usando Three.js + React Three Fiber.
 
@@ -574,7 +574,7 @@ Crea anche un wrapper src/components/three/ParticleHero.tsx che gestisce il lazy
 - [ ] Nascondi su mobile/touch
 - [ ] Performance smooth
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Crea il cursore custom per NeuraLabs.
 
@@ -627,7 +627,7 @@ Crea anche un hook src/hooks/useCursorState.ts per gestire lo stato (hover type)
 - [ ] Varianti: subtle, medium, intense
 - [ ] Attivazione su hover o automatica
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Crea il componente GlitchText per NeuraLabs.
 
@@ -679,7 +679,7 @@ Esempio uso:
 - [ ] Stagger animations per liste
 - [ ] Parallax leggero per backgrounds
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Crea il sistema di scroll animations per NeuraLabs usando Framer Motion.
 
@@ -740,7 +740,7 @@ Crea anche un barrel export in src/components/animations/index.ts
 - [ ] Effetto speciale quando attivato
 - [ ] Persistenza in sessionStorage
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Crea l'Easter Egg Konami Code per NeuraLabs.
 
@@ -790,7 +790,7 @@ Bonus: nel footer, il piccolo 🎮 se cliccato mostra un tooltip "Try the Konami
 - [ ] Due CTA buttons
 - [ ] Scroll indicator animato
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Crea la Hero Section per la homepage di NeuraLabs.
 
@@ -837,7 +837,7 @@ Il componente deve essere full viewport height (min-h-screen).
 - [ ] Scroll animations
 - [ ] CTA "Tutti i servizi"
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Crea la Services Section per la homepage di NeuraLabs.
 
@@ -887,7 +887,7 @@ I servizi per ora possono essere hardcoded, poi verranno da Sanity.
 - [ ] Hover effect su immagine
 - [ ] CTA "Vedi tutti i progetti"
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Crea la Projects Section per la homepage di NeuraLabs.
 
@@ -943,7 +943,7 @@ Crea anche interfaccia Project in src/types/index.ts
 - [ ] Carousel testimonials
 - [ ] Loghi clienti (placeholder)
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Crea le sezioni Approach e Testimonials per la homepage.
 
@@ -998,7 +998,7 @@ Dati placeholder testimonials:
 - [ ] Spacing e ritmo verificati
 - [ ] Test responsive
 
-**Prompt per Claude Code:**
+**Prompt per Gemini Code:**
 ```
 Completa la homepage di NeuraLabs con la CTA section finale e assembla tutto.
 

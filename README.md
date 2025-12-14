@@ -2,6 +2,8 @@
 
 > Il laboratorio dove nascono le idee intelligenti.
 
+Questo è il repository ufficiale per il sito web di NeuraLabs, una startup innovativa specializzata in sviluppo web, AI Agents, sistemi RAG e automazioni. Questo progetto non è solo la nostra vetrina, ma anche un esempio pratico delle nostre competenze, integrando tecnologie all'avanguardia come Next.js 14, Three.js per la grafica 3D e l'API di Claude per l'assistenza AI.
+
 Sito web corporate per **NeuraLabs**, startup specializzata in sviluppo web, AI Agents, sistemi RAG e automazioni.
 
 ## ✨ Caratteristiche
