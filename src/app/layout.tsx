@@ -1,13 +1,9 @@
-import { ThemeProvider } from '@/components/providers/ThemeProvider'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 import localFont from 'next/font/local'
-import { Suspense } from 'react'
 import './globals.css'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
-import { CustomCursor } from '@/components/ui/CustomCursor'
-import { EasterEgg } from '@/components/ui/EasterEgg'
+import { ClientProviders } from '@/components/providers/ClientProviders'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -15,6 +11,14 @@ const inter = Inter({
   display: 'swap',
   preload: true,
   weight: ['400', '500', '600', '700'],
+})
+
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+  preload: true,
+  weight: ['400', '500', '600', '700', '800', '900'],
 })
 
 const jetBrainsMono = localFont({
@@ -83,24 +87,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${jetBrainsMono.variable} cursor-none`}
+        className={`${inter.variable} ${playfairDisplay.variable} ${jetBrainsMono.variable} cursor-none`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Suspense fallback={null}>
-            <CustomCursor />
-            <EasterEgg />
-          </Suspense>
-          <div className="flex flex-col min-h-screen">
-            <Navigation />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </div>
-        </ThemeProvider>
+          <ClientProviders>
+            <div className="flex flex-col min-h-screen">
+              <Navigation />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </div>
+          </ClientProviders>
       </body>
     </html>
   )

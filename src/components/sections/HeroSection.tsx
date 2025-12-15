@@ -2,51 +2,100 @@
 
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
-import { GlitchText } from '@/components/ui/GlitchText'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { FadeIn } from '@/components/animations'
+import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 const ParticleHero = dynamic(
   () => import('@/components/three/ParticleHero').then((mod) => mod.ParticleHero),
   { ssr: false, loading: () => null }
 )
 
-export function HeroSection() {
+const words = ["an Intelligence Engine", "an Autonomous System", "a Digital Leader"]
+
+function Typewriter({ text, speed = 50, delay = 1000 }: { text: string, speed?: number, delay?: number }) {
+  const [displayText, setDisplayText] = useState('')
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    setDisplayText('')
+    setIndex(0)
+  }, [text])
+
+  useEffect(() => {
+    if (index < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText(prev => prev + text.charAt(index))
+        setIndex(prev => prev + 1)
+      }, speed)
+      return () => clearTimeout(timeout)
+    }
+  }, [index, text, speed])
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
+    <span>
+      {displayText}
+      <span className="animate-pulse ml-1 inline-block w-3 h-12 bg-primary align-middle" />
+    </span>
+  )
+}
+
+export function HeroSection() {
+  const [wordIndex, setWordIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % words.length)
+    }, 4000) // Change word every 4 seconds
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <section className="relative min-h-screen flex items-center overflow-hidden">
       <ParticleHero />
-      {/* Atmosphere Overlay */}
-      <div className="absolute inset-0 pointer-events-none bg-radial-gradient from-transparent via-background/20 to-background/80" />
+      
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-background/80 via-background/40 to-transparent" />
       
       <Container className="z-10 relative">
-        <FadeIn delay={0.2}>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6">
-            <GlitchText trigger="hover" className="inline-block">We build</GlitchText>
-            <span className="block text-primary text-glow mt-2">intelligent</span>
-            <span className="block mt-2">digital experiences</span>
+        <div className="max-w-4xl">
+          <FadeIn delay={0.2}>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface/50 backdrop-blur-md border border-white/10 text-sm font-medium text-primary mb-8">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              NeuraLabs Intelligence v1.0
+            </div>
+          </FadeIn>
+
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight leading-tight min-h-[300px] md:min-h-[350px]">
+            <FadeIn delay={0.4}>
+              <span className="block text-text-primary">Transform your</span>
+              <span className="block text-text-primary mb-2">business into</span>
+            </FadeIn>
+            <span className="block text-primary font-mono mt-4">
+              <Typewriter text={words[wordIndex]} key={wordIndex} />
+            </span>
           </h1>
-        </FadeIn>
-        <FadeIn delay={0.4}>
-          <p className="mt-8 text-xl md:text-2xl text-text-primary/90 max-w-3xl mx-auto font-medium leading-relaxed drop-shadow-md">
-            Siti web · AI Agents · Sistemi RAG · App · Automazioni
-          </p>
-        </FadeIn>
-        <FadeIn delay={0.6} className="mt-12 flex flex-col sm:flex-row justify-center gap-6">
-          <Button asChild size="lg" className="text-lg px-8 py-6">
-            <Link href="/progetti">Scopri cosa possiamo creare</Link>
-          </Button>
-          <Button asChild variant="secondary" size="lg" className="text-lg px-8 py-6">
-            <Link href="/contatti">Configura Progetto →</Link>
-          </Button>
-        </FadeIn>
+
+          <FadeIn delay={0.6} className="mt-12 flex flex-col sm:flex-row gap-5">
+            <Button asChild size="lg" className="text-lg px-8 h-14 rounded-full">
+              <Link href="/progetti">Start Evolution</Link>
+            </Button>
+            <Button asChild variant="ghost" size="lg" className="text-lg px-8 h-14 rounded-full border border-white/10 hover:bg-white/5">
+              <Link href="/contatti">Chat with AI →</Link>
+            </Button>
+          </FadeIn>
+        </div>
       </Container>
       
-      {/* Scroll Indicator */}
-      <FadeIn delay={1} className="absolute bottom-10 left-1/2 -translate-x-1/2">
-        <div className="flex flex-col items-center gap-4 text-text-secondary/80">
-          <span className="text-sm uppercase tracking-widest font-medium">Scroll</span>
-          <div className="w-[1px] h-12 bg-gradient-to-b from-primary/80 to-transparent" />
+      {/* Scroll Indicator - Left aligned */}
+      <FadeIn delay={1.5} className="absolute bottom-10 left-8 md:left-12 hidden md:block">
+        <div className="flex items-center gap-4 text-text-muted/60 text-xs font-mono tracking-widest">
+          <div className="h-[1px] w-12 bg-primary/50" />
+          SCROLL TO EXPLORE
         </div>
       </FadeIn>
     </section>

@@ -18,37 +18,38 @@ const vertexShader = `
   void main() {
     vec3 pos = initialPosition;
     
-    // Neural "Breathing" Motion
-    float t = uTime * 0.2;
-    pos.x += sin(t + pos.y * 0.5) * 0.1;
-    pos.y += cos(t * 0.8 + pos.x * 0.5) * 0.1;
-    pos.z += sin(t * 0.5 + pos.z * 0.5) * 0.1;
+    // Neural "Breathing" Motion - Slowed down for elegance
+    float t = uTime * 0.1; // Reduced speed
+    pos.x += sin(t + pos.y * 0.5) * 0.05;
+    pos.y += cos(t * 0.8 + pos.x * 0.5) * 0.05;
+    pos.z += sin(t * 0.5 + pos.z * 0.5) * 0.05;
     
     // Interaction: Magnetic Attraction & Excitation
     float d = distance(pos, uMouse);
-    float radius = 2.5;
+    float radius = 2.0; // Reduced radius
     float influence = smoothstep(radius, 0.0, d);
     
     if (d < radius) {
       vec3 dir = normalize(uMouse - pos);
-      float pullStrength = pow(influence, 2.0) * 0.5; 
+      float pullStrength = pow(influence, 2.0) * 0.3; // Gentle pull
       pos += dir * pullStrength;
     }
 
-    float pulse = sin(uTime * 2.0 + randomPhase * 6.28);
+    float pulse = sin(uTime * 1.5 + randomPhase * 6.28);
     float activity = smoothstep(0.8, 1.0, pulse); 
     float totalActivity = max(activity, influence);
 
     vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
     
-    // Smaller base size, with dynamic growth when active
-    float size = (2.0 * randomSize + 1.0); // Reduced base size
-    size *= (1.0 + totalActivity * 1.5); // Grow up to 2.5x when active
+    // Finer particles for "Ethereal" look
+    float size = (1.5 * randomSize + 0.5); 
+    size *= (1.0 + totalActivity * 1.2); 
     
-    gl_PointSize = size * (10.0 / -mvPosition.z);
+    // Much smaller perspective multiplier (was 10.0)
+    gl_PointSize = size * (3.0 / -mvPosition.z);
     gl_Position = projectionMatrix * mvPosition;
     
-    vAlpha = uBaseOpacity + totalActivity * 0.7;
+    vAlpha = uBaseOpacity + totalActivity * 0.5;
     vDistance = influence;
   }
 `
@@ -64,11 +65,11 @@ const fragmentShader = `
     float r = distance(gl_PointCoord, vec2(0.5));
     if (r > 0.5) discard;
     
+    // Soft glow edge
     float glow = 1.0 - smoothstep(0.0, 0.5, r);
-    glow = pow(glow, 2.0);
+    glow = pow(glow, 1.5);
     
-    // Mix base white with a slightly yellowish-white when active
-    vec3 finalColor = mix(uColor, uColorHot, vDistance * 0.8);
+    vec3 finalColor = mix(uColor, uColorHot, vDistance * 0.6);
     
     gl_FragColor = vec4(finalColor, vAlpha * glow);
   }
@@ -99,8 +100,8 @@ export function ParticleBrain({ isDark = true }: { isDark?: boolean }) {
       y += (Math.random() - 0.5) * 2.0
       z += (Math.random() - 0.5) * 2.0
 
-      x *= 1.8 
-      y *= 1.2
+      x *= 2.0 // Spread out slightly more
+      y *= 1.4
       
       positions.set([x, y, z], i * 3)
       initialPositions.set([x, y, z], i * 3)
@@ -114,8 +115,8 @@ export function ParticleBrain({ isDark = true }: { isDark?: boolean }) {
   const uniforms = useMemo(() => ({
     uTime: { value: 0 },
     uMouse: { value: new THREE.Vector3(9999, 9999, 9999) },
-    uColor: { value: new THREE.Color('#FFFDF9') }, // Base Warm White
-    uColorHot: { value: new THREE.Color('#FFFFE0') }, // Light Yellow for hot spots
+    uColor: { value: new THREE.Color('#FFFDF9') }, 
+    uColorHot: { value: new THREE.Color('#FFFFE0') }, 
     uBaseOpacity: { value: 0.3 }
   }), [])
 
@@ -125,10 +126,10 @@ export function ParticleBrain({ isDark = true }: { isDark?: boolean }) {
       uniforms.uColorHot.value.set('#FFFFE0')
       uniforms.uBaseOpacity.value = 0.3
     } else {
-      // Light Mode: Dark Grey base -> Coral Hot
-      uniforms.uColor.value.set('#A0A0A0') 
+      // Light Mode: Softer Grey, much lower opacity
+      uniforms.uColor.value.set('#1A1A1A') 
       uniforms.uColorHot.value.set('#FF6B35')
-      uniforms.uBaseOpacity.value = 0.8 // Higher opacity for light mode
+      uniforms.uBaseOpacity.value = 1.0 // Maximum opacity
     }
   }, [isDark, uniforms])
 
@@ -136,7 +137,6 @@ export function ParticleBrain({ isDark = true }: { isDark?: boolean }) {
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      // Normalize mouse position to -1 to 1 range
       mouseRef.current.x = (event.clientX / window.innerWidth) * 2 - 1
       mouseRef.current.y = -(event.clientY / window.innerHeight) * 2 + 1
     }
@@ -150,18 +150,17 @@ export function ParticleBrain({ isDark = true }: { isDark?: boolean }) {
     
     uniforms.uTime.value = clock.getElapsedTime()
     
-    // Use global mouse ref instead of R3F pointer
     const x = (mouseRef.current.x * viewport.width) / 2
     const y = (mouseRef.current.y * viewport.height) / 2
     
     if (pointsRef.current) {
-      pointsRef.current.rotation.y = clock.getElapsedTime() * 0.03
+      pointsRef.current.rotation.y = clock.getElapsedTime() * 0.02 // Slower rotation
       
       const vector = new THREE.Vector3(x, y, 0)
       vector.applyMatrix4(pointsRef.current.matrixWorld.clone().invert())
       
       const currentMouse = uniforms.uMouse.value
-      currentMouse.lerp(vector, 0.1)
+      currentMouse.lerp(vector, 0.05) // Smoother mouse follow
     }
   })
 
@@ -199,7 +198,7 @@ export function ParticleBrain({ isDark = true }: { isDark?: boolean }) {
         uniforms={uniforms}
         transparent
         depthWrite={false}
-        blending={isDark ? THREE.AdditiveBlending : THREE.NormalBlending}
+        blending={THREE.AdditiveBlending}
       />
     </points>
   )

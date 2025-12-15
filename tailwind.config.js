@@ -24,8 +24,8 @@ module.exports = {
         muted: 'hsl(var(--color-text-muted))',
       },
       fontFamily: {
-        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
-        body: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'serif'],
+        body: ['var(--font-body)', 'sans-serif'],
         mono: ['var(--font-mono)', 'monospace'],
       },
       backgroundImage: {
