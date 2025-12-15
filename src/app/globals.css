@@ -15,6 +15,7 @@
     --color-text-secondary: 0 0% 40%;
     --color-text-muted: 0 0% 53%;
     --color-border: 34 25% 88%;
+    --color-surface-glass: rgba(255, 253, 249, 0.7);
 
     --glow-primary: 0 0 20px hsla(var(--color-primary), 0.4);
     --glow-primary-strong: 0 0 30px hsla(var(--color-primary), 0.6);
@@ -32,6 +33,7 @@
     --color-text-secondary: 0 0% 63%;
     --color-text-muted: 0 0% 40%;
     --color-border: 0 0% 20%;
+    --color-surface-glass: rgba(26, 26, 26, 0.7);
   }
 
   body {

@@ -10,13 +10,19 @@ interface NavbarLinkProps {
   label: string
   isActive: boolean
   setCursorType: (type: string) => void
+  isScrolled: boolean // Add new prop
 }
 
-export function NavbarLink({ href, label, isActive, setCursorType }: NavbarLinkProps) {
+export function NavbarLink({ href, label, isActive, setCursorType, isScrolled }: NavbarLinkProps) {
   return (
     <Link
       href={href}
-      className={`relative px-3 py-2 transition-colors hover:text-primary ${isActive ? 'text-primary' : 'text-text-secondary'}`}
+      className={cn(
+        "relative px-3 py-2 transition-all duration-300 ease-out",
+        "hover:text-primary",
+        isActive ? 'text-primary' : 'text-text-secondary',
+        !isScrolled && "text-lg font-bold", // Larger and bold when not scrolled
+      )}
       onMouseEnter={() => setCursorType('hover')}
       onMouseLeave={() => setCursorType('default')}
     >

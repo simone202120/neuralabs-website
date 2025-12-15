@@ -325,6 +325,7 @@
 - [x] Hero CTA copy update
 - [x] Footer branding
 - [x] Cursor visibility & new hover effect
+- [x] Fix particle visibility in light mode
 
 **Stato:** ✅ Completato | **Ore stimate:** 1h
 
