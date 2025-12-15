@@ -2,11 +2,12 @@
 
 import * as THREE from 'three'
 import { useFrame, useThree } from '@react-three/fiber'
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, useEffect } from 'react'
 
 const vertexShader = `
   uniform float uTime;
   uniform vec3 uMouse;
+  uniform float uBaseOpacity;
   attribute vec3 initialPosition;
   attribute float randomSize;
   attribute float randomPhase;
@@ -47,7 +48,7 @@ const vertexShader = `
     gl_PointSize = size * (10.0 / -mvPosition.z);
     gl_Position = projectionMatrix * mvPosition;
     
-    vAlpha = 0.3 + totalActivity * 0.7;
+    vAlpha = uBaseOpacity + totalActivity * 0.7;
     vDistance = influence;
   }
 `
@@ -73,7 +74,7 @@ const fragmentShader = `
   }
 `
 
-export function ParticleBrain() {
+export function ParticleBrain({ isDark = true }: { isDark?: boolean }) {
   const pointsRef = useRef<THREE.Points>(null!)
   const { viewport } = useThree()
   
@@ -114,8 +115,22 @@ export function ParticleBrain() {
     uTime: { value: 0 },
     uMouse: { value: new THREE.Vector3(9999, 9999, 9999) },
     uColor: { value: new THREE.Color('#FFFDF9') }, // Base Warm White
-    uColorHot: { value: new THREE.Color('#FFFFE0') } // Light Yellow for hot spots
+    uColorHot: { value: new THREE.Color('#FFFFE0') }, // Light Yellow for hot spots
+    uBaseOpacity: { value: 0.3 }
   }), [])
+
+  useEffect(() => {
+    if (isDark) {
+      uniforms.uColor.value.set('#FFFDF9')
+      uniforms.uColorHot.value.set('#FFFFE0')
+      uniforms.uBaseOpacity.value = 0.3
+    } else {
+      // Light Mode: Dark Grey base -> Coral Hot
+      uniforms.uColor.value.set('#A0A0A0') 
+      uniforms.uColorHot.value.set('#FF6B35')
+      uniforms.uBaseOpacity.value = 0.8 // Higher opacity for light mode
+    }
+  }, [isDark, uniforms])
 
   useFrame((state) => {
     const { clock, pointer } = state
@@ -170,7 +185,7 @@ export function ParticleBrain() {
         uniforms={uniforms}
         transparent
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        blending={isDark ? THREE.AdditiveBlending : THREE.NormalBlending}
       />
     </points>
   )
