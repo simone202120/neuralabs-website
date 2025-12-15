@@ -5,7 +5,6 @@ import { Container } from '@/components/ui/Container'
 import { GlitchText } from '@/components/ui/GlitchText'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { ChevronDown } from 'lucide-react'
 import { FadeIn } from '@/components/animations'
 
 const ParticleHero = dynamic(

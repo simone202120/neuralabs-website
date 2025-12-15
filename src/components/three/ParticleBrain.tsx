@@ -132,13 +132,27 @@ export function ParticleBrain({ isDark = true }: { isDark?: boolean }) {
     }
   }, [isDark, uniforms])
 
+  const mouseRef = useRef({ x: 0, y: 0 })
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      // Normalize mouse position to -1 to 1 range
+      mouseRef.current.x = (event.clientX / window.innerWidth) * 2 - 1
+      mouseRef.current.y = -(event.clientY / window.innerHeight) * 2 + 1
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
   useFrame((state) => {
-    const { clock, pointer } = state
+    const { clock } = state
     
     uniforms.uTime.value = clock.getElapsedTime()
     
-    const x = (pointer.x * viewport.width) / 2
-    const y = (pointer.y * viewport.height) / 2
+    // Use global mouse ref instead of R3F pointer
+    const x = (mouseRef.current.x * viewport.width) / 2
+    const y = (mouseRef.current.y * viewport.height) / 2
     
     if (pointsRef.current) {
       pointsRef.current.rotation.y = clock.getElapsedTime() * 0.03
