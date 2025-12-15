@@ -14,6 +14,12 @@ interface NavbarLinkProps {
 }
 
 export function NavbarLink({ href, label, isActive, setCursorType, isScrolled }: NavbarLinkProps) {
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <Link
       href={href}
@@ -26,7 +32,7 @@ export function NavbarLink({ href, label, isActive, setCursorType, isScrolled }:
       onMouseEnter={() => setCursorType('hover')}
       onMouseLeave={() => setCursorType('default')}
     >
-      {isActive && (
+      {mounted && isActive && (
         <motion.span
           layoutId="navbar-active"
           className="absolute inset-0 bg-primary/10 rounded-full -z-10"

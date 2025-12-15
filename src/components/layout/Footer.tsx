@@ -5,6 +5,7 @@ import { SocialLinks } from './SocialLinks'
 import { NewsletterForm } from './NewsletterForm'
 import Link from 'next/link'
 import { useCursorState } from '@/hooks/useCursorState'
+import { Logo } from '@/components/ui/Logo'
 
 const footerNav = [
   {
@@ -45,7 +46,7 @@ export function Footer() {
               onMouseEnter={() => setCursorType('hover')}
               onMouseLeave={() => setCursorType('default')}
             >
-              <span className="font-bold text-lg text-text-primary">🧠 NeuraLabs</span>
+              <Logo />
             </Link>
             <p className="mt-4 text-sm">
               Il laboratorio dove nascono le idee intelligenti.

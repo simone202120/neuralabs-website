@@ -12,80 +12,99 @@ import { NavbarLink } from './NavbarLink'
 import { useCursorState } from '@/hooks/useCursorState'
 import { cn } from '@/lib/utils'
 
+import { Logo } from '@/components/ui/Logo'
+
+
+
 // Navigation links configuration
+
 const navLinks = [
+
   { href: '/servizi', label: 'Servizi' },
+
   { href: '/progetti', label: 'Progetti' },
+
   { href: '/blog', label: 'Blog' },
+
   { href: '/chi-siamo', label: 'Chi Siamo' },
+
 ]
 
+
+
 export function Navigation() {
+
   const pathname = usePathname()
+
   const { scrollY } = useScroll()
+
   const [isScrolled, setIsScrolled] = React.useState(false)
+
   const { setCursorType } = useCursorState()
 
+
+
   useMotionValueEvent(scrollY, "change", (latest) => {
+
     const shouldBeScrolled = latest > 50
+
     if (isScrolled !== shouldBeScrolled) {
+
       setIsScrolled(shouldBeScrolled)
+
     }
+
   })
 
-    return (
 
-      <header
 
-        className={cn(
+  return (
 
-          "fixed z-50 transition-all duration-300 ease-spring",
+    <header
 
-          isScrolled 
+      className={cn(
 
-            ? "top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-[800px] rounded-full border border-white/10 shadow-lg backdrop-blur-md bg-surface/70"
+        "fixed z-50 transition-all duration-300 ease-spring",
 
-            : "top-0 left-0 right-0 w-full bg-transparent border-b border-transparent p-4 md:px-8"
+        isScrolled 
 
-        )}
+          ? "top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-[800px] rounded-full border border-white/10 shadow-lg backdrop-blur-md bg-surface/70"
 
-      >
+          : "top-0 left-0 right-0 w-full bg-transparent border-b border-transparent p-4 md:px-8"
 
-        <div className={cn(
+      )}
 
-          "flex items-center justify-between w-full relative",
+    >
 
-          isScrolled ? "px-5 py-2" : "h-16"
+      <div className={cn(
 
-        )}>
+        "flex items-center justify-between w-full relative",
 
-          {/* Logo */}
+        isScrolled ? "px-5 py-2" : "h-16"
 
-          <Link 
+      )}>
 
-            href="/" 
+        {/* Logo */}
 
-            className="flex items-center space-x-2 shrink-0 mr-4"
+        <Link 
 
-            onMouseEnter={() => setCursorType('hover')}
+          href="/" 
 
-            onMouseLeave={() => setCursorType('default')}
+          className="flex items-center space-x-2 shrink-0 mr-4"
 
-          >
+          onMouseEnter={() => setCursorType('hover')}
 
-            <motion.span 
+          onMouseLeave={() => setCursorType('default')}
 
-              animate={{ scale: isScrolled ? 0.9 : 1 }}
+        >
 
-              className="font-display font-bold text-xl tracking-tight origin-left"
+          <motion.div animate={{ scale: isScrolled ? 0.9 : 1 }} className="origin-left">
 
-            >
+            <Logo />
 
-              🧠 NeuraLabs
+          </motion.div>
 
-            </motion.span>
-
-          </Link>
+        </Link>
 
   
 
