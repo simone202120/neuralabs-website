@@ -1,19 +1,12 @@
 'use client'
 
 import { motion, MotionValue, useTransform } from 'framer-motion'
-import { useEffect, useState } from 'react'
 
 interface GearsAnimationProps {
   progress: MotionValue<number>
 }
 
 export function GearsAnimation({ progress }: GearsAnimationProps) {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
   const gearsOpacity = useTransform(progress, [0, 0.3], [0, 1])
   const rotation1 = useTransform(progress, [0.3, 1], [0, 360])
   const rotation2 = useTransform(progress, [0.3, 1], [0, -360])
@@ -48,8 +41,6 @@ export function GearsAnimation({ progress }: GearsAnimationProps) {
     points.push('Z')
     return points.join(' ')
   }
-
-  if (!mounted) return null
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 dark:opacity-30">

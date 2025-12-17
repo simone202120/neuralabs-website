@@ -331,6 +331,26 @@
 
 ---
 
+### Task 6.7: Services Section Redesign (NeuraGrid)
+- [x] Bento Grid layout implementation
+- [x] Hover-driven animations
+- [x] Tech stack integration in cards
+- [x] Responsive adaptation
+
+**Stato:** ✅ Completato | **Ore stimate:** 2h
+
+---
+
+### Task 6.8: Approach Section Redesign & Projects Cleanup
+- [x] Remove ProjectsPreview from Homepage
+- [x] Implement "Synaptic Pathway" design in Approach section
+- [x] Scroll-driven timeline animations
+- [x] Glassmorphism & Glow effects
+
+**Stato:** ✅ Completato | **Ore stimate:** 1.5h
+
+---
+
 ## Note & Blockers
 
 ### Note
@@ -354,6 +374,8 @@
 | - | - | - | Progetto inizializzato |
 | 2025-12-17 | 6 | Fix | Corretto crash in ServicesPreview (undefined node list access) |
 | 2025-12-17 | 6 | Fix | Corretto errore hooks in componenti animazione (BrowserMockup, Documents, NeuralNetwork) |
+| 2025-12-17 | 6 | Refactor | Ridisegnata sezione Servizi con layout Bento Grid "NeuraGrid" |
+| 2025-12-17 | 6 | Refactor | Rimossa sezione Progetti e redesign completo sezione Approccio ("Synaptic Pathway") |
 
 ---
 

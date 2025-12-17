@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, MotionValue, useTransform } from 'framer-motion'
-import { useEffect, useState, useMemo } from 'react'
+import { useMemo } from 'react'
 
 interface NeuralNetworkAnimationProps {
   progress: MotionValue<number>
@@ -15,12 +15,6 @@ interface Node {
 }
 
 export function NeuralNetworkAnimation({ progress }: NeuralNetworkAnimationProps) {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
   // Generate neural network nodes
   const nodes = useMemo<Node[]>(() => {
     const result: Node[] = []
@@ -65,8 +59,6 @@ export function NeuralNetworkAnimation({ progress }: NeuralNetworkAnimationProps
   const connectionsOpacity = useTransform(progress, [0.3, 0.6], [0, 1])
   const pulseOpacity = useTransform(progress, [0.6, 1], [0, 1])
   const dataFlowOpacity = useTransform(progress, [0.7, 1], [0, 1])
-
-  if (!mounted) return null
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 dark:opacity-30">

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { useInView, useMotionValue, useSpring } from 'framer-motion'
+import { cn } from '@/lib/utils'
 
 interface AnimatedCounterProps {
   value: number
@@ -49,7 +50,7 @@ export function AnimatedCounter({
   }, [springValue, prefix, suffix, decimals])
 
   return (
-    <span ref={ref} className={className}>
+    <span ref={ref} className={cn(className)}>
       {prefix}
       {Intl.NumberFormat('it-IT', {
         minimumFractionDigits: decimals,

@@ -1,19 +1,12 @@
 'use client'
 
 import { motion, MotionValue, useTransform } from 'framer-motion'
-import { useEffect, useState } from 'react'
 
 interface BrowserMockupAnimationProps {
   progress: MotionValue<number>
 }
 
 export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps) {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
   // Transform progress to different parts of the animation
   const browserOpacity = useTransform(progress, [0, 0.2], [0, 1])
   const urlProgress = useTransform(progress, [0.2, 0.5], [0, 1])
@@ -25,8 +18,6 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
   const cursorX = useTransform(progress, [0.6, 1], [100, 200])
   const cursorY = useTransform(progress, [0.6, 1], [150, 220])
   const cursorOpacity = useTransform(progress, [0.6, 1], [0, 1])
-
-  if (!mounted) return null
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 dark:opacity-30">

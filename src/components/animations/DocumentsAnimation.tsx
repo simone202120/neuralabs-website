@@ -1,19 +1,12 @@
 'use client'
 
 import { motion, MotionValue, useTransform } from 'framer-motion'
-import { useEffect, useState } from 'react'
 
 interface DocumentsAnimationProps {
   progress: MotionValue<number>
 }
 
 export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
   // Transform progress to different animation stages
   const documentsOpacity = useTransform(progress, [0, 0.2], [0, 1])
   const searchBeamOpacity = useTransform(progress, [0.4, 0.6], [0, 1])
@@ -23,8 +16,6 @@ export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
   // Lifting hooks out of JSX
   const searchIconY = useTransform(searchBeamY, (y) => y - 50)
   const knowledgeGraphOpacity = useTransform(progress, [0.8, 1], [0, 1])
-
-  if (!mounted) return null
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 dark:opacity-30">

@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Check } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 interface StaggerTextProps {
   items: string[]
@@ -65,7 +66,7 @@ export function StaggerText({
       variants={customContainer}
       initial="hidden"
       animate={isInView ? 'show' : 'hidden'}
-      className={`space-y-3 ${className}`}
+      className={cn('space-y-3', className)}
     >
       {items.map((text, index) => (
         <motion.li
