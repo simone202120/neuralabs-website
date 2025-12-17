@@ -1,0 +1,62 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
+import { useInView, useMotionValue, useSpring } from 'framer-motion'
+import { cn } from '@/lib/utils'
+
+interface AnimatedCounterProps {
+  value: number
+  className?: string
+  prefix?: string
+  suffix?: string
+  decimals?: number
+}
+
+export function AnimatedCounter({
+  value,
+  className = '',
+  prefix = '€',
+  suffix = '',
+  decimals = 0,
+}: AnimatedCounterProps) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const motionValue = useMotionValue(0)
+  const springValue = useSpring(motionValue, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  })
+  const isInView = useInView(ref, { once: true, amount: 0.5 })
+
+  useEffect(() => {
+    if (isInView) {
+      motionValue.set(value)
+    }
+  }, [isInView, motionValue, value])
+
+  useEffect(() => {
+    const unsubscribe = springValue.on('change', (latest) => {
+      if (ref.current) {
+        const formattedValue = Intl.NumberFormat('it-IT', {
+          minimumFractionDigits: decimals,
+          maximumFractionDigits: decimals,
+        }).format(latest)
+
+        ref.current.textContent = `${prefix}${formattedValue}${suffix}`
+      }
+    })
+
+    return () => unsubscribe()
+  }, [springValue, prefix, suffix, decimals])
+
+  return (
+    <span ref={ref} className={cn(className)}>
+      {prefix}
+      {Intl.NumberFormat('it-IT', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+      }).format(0)}
+      {suffix}
+    </span>
+  )
+}
