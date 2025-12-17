@@ -6,7 +6,7 @@ import { Section } from '@/components/ui/Section'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { FadeIn } from '@/components/animations'
-import { Globe, Bot, BrainCircuit, Zap, ArrowRight, ArrowUpRight } from 'lucide-react'
+import { Globe, Bot, BrainCircuit, Zap, ArrowRight, ArrowUpRight, Terminal } from 'lucide-react'
 import Link from 'next/link'
 import { useCursorState } from '@/hooks/useCursorState'
 import { motion, useMotionValue, animate, MotionValue } from 'framer-motion'
@@ -16,59 +16,87 @@ import { DocumentsAnimation } from '@/components/animations/DocumentsAnimation'
 import { GearsAnimation } from '@/components/animations/GearsAnimation'
 import { cn } from '@/lib/utils'
 
-// Data with integrated technologies
+// Data with integrated technologies and new color palettes
 const services = [
   {
     id: 'web',
+    code: 'SYS.WEB_01',
     icon: Globe,
     title: 'Siti Web & WebApp',
     description: "Esperienze digitali su misura che raccontano la tua storia e convertono i visitatori.",
     price: '2.5k',
     technologies: ['Next.js', 'React', 'Tailwind', 'Sanity'],
     animationType: 'browser' as const,
-    gradient: 'from-blue-500/20 via-blue-500/5 to-transparent',
     colSpan: 'md:col-span-2',
     rowSpan: 'md:row-span-1',
-    href: '/servizi#websites'
+    href: '/servizi#websites',
+    colors: {
+      primary: 'text-cyan-400',
+      border: 'border-cyan-500/30',
+      glow: 'shadow-cyan-500/20',
+      bg: 'bg-cyan-950/10',
+      marker: 'bg-cyan-500',
+    }
   },
   {
     id: 'ai',
+    code: 'SYS.AI_CORE',
     icon: Bot,
     title: 'AI Agents',
     description: 'Assistenti intelligenti 24/7 che comprendono e agiscono.',
     price: '5k',
     technologies: ['OpenAI', 'Anthropic', 'LangChain', 'Python'],
     animationType: 'neural' as const,
-    gradient: 'from-primary/20 via-primary/5 to-transparent',
     colSpan: 'md:col-span-1',
     rowSpan: 'md:row-span-2',
-    href: '/servizi#ai-agents'
+    href: '/servizi#ai-agents',
+    colors: {
+      primary: 'text-violet-400',
+      border: 'border-violet-500/30',
+      glow: 'shadow-violet-500/20',
+      bg: 'bg-violet-950/10',
+      marker: 'bg-violet-500',
+    }
   },
   {
     id: 'rag',
+    code: 'SYS.DATA_RAG',
     icon: BrainCircuit,
     title: 'Sistemi RAG',
     description: 'La tua documentazione diventa una knowledge base interattiva.',
     price: '4k',
     technologies: ['Pinecone', 'LlamaIndex', 'Supabase'],
     animationType: 'documents' as const,
-    gradient: 'from-green-500/20 via-green-500/5 to-transparent',
     colSpan: 'md:col-span-1',
     rowSpan: 'md:row-span-1',
-    href: '/servizi#rag'
+    href: '/servizi#rag',
+    colors: {
+      primary: 'text-emerald-400',
+      border: 'border-emerald-500/30',
+      glow: 'shadow-emerald-500/20',
+      bg: 'bg-emerald-950/10',
+      marker: 'bg-emerald-500',
+    }
   },
   {
     id: 'auto',
+    code: 'SYS.AUTO_BOT',
     icon: Zap,
     title: 'Automazioni',
     description: 'Workflow che eliminano il lavoro ripetitivo.',
     price: '1k',
     technologies: ['n8n', 'Zapier', 'Node.js'],
     animationType: 'gears' as const,
-    gradient: 'from-yellow-500/20 via-yellow-500/5 to-transparent',
     colSpan: 'md:col-span-1',
     rowSpan: 'md:row-span-1',
-    href: '/servizi#automations'
+    href: '/servizi#automations',
+    colors: {
+      primary: 'text-amber-400',
+      border: 'border-amber-500/30',
+      glow: 'shadow-amber-500/20',
+      bg: 'bg-amber-950/10',
+      marker: 'bg-amber-500',
+    }
   },
 ]
 
@@ -92,7 +120,7 @@ function ServiceAnimation({
   }
 }
 
-// Bento Card Component
+// Tech HUD Card Component
 function BentoCard({ service }: { service: (typeof services)[0] }) {
   const { setCursorType } = useCursorState()
   const progress = useMotionValue(0)
@@ -111,56 +139,95 @@ function BentoCard({ service }: { service: (typeof services)[0] }) {
   return (
     <motion.div
       className={cn(
-        'group relative overflow-hidden rounded-3xl border border-border bg-surface/50 p-6 md:p-8 hover:border-primary/50 transition-all duration-500',
+        'group relative h-full overflow-hidden transition-all duration-500',
         service.colSpan,
         service.rowSpan
       )}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      whileHover={{ y: -5 }}
     >
-      {/* Background Gradient & Animation */}
-      <div className={cn('absolute inset-0 bg-gradient-to-br opacity-50', service.gradient)} />
+      {/* Invisible Container Base */}
+      <div className={cn(
+        "absolute inset-0 bg-surface/5 backdrop-blur-[2px] transition-colors duration-500",
+        `group-hover:${service.colors.bg}`
+      )} />
+
+      {/* Tech HUD Corners (The "Brackets") */}
+      <>
+        {/* Top Left */}
+        <div className={cn("absolute top-0 left-0 w-8 h-8 border-t border-l transition-colors duration-300 border-border/20", `group-hover:${service.colors.border}`)} />
+        {/* Top Right */}
+        <div className={cn("absolute top-0 right-0 w-8 h-8 border-t border-r transition-colors duration-300 border-border/20", `group-hover:${service.colors.border}`)} />
+        {/* Bottom Left */}
+        <div className={cn("absolute bottom-0 left-0 w-8 h-8 border-b border-l transition-colors duration-300 border-border/20", `group-hover:${service.colors.border}`)} />
+        {/* Bottom Right */}
+        <div className={cn("absolute bottom-0 right-0 w-8 h-8 border-b border-r transition-colors duration-300 border-border/20", `group-hover:${service.colors.border}`)} />
+      </>
+
+      {/* Tech Status Line (Top) */}
+      <div className="absolute top-4 left-6 right-6 flex justify-between items-center opacity-40 group-hover:opacity-100 transition-opacity duration-500">
+        <span className={cn("text-[10px] font-mono tracking-widest", service.colors.primary)}>
+          {service.code}
+        </span>
+        <div className="flex gap-1">
+          <div className={cn("w-1 h-1 rounded-full", service.colors.marker)} />
+          <div className={cn("w-1 h-1 rounded-full opacity-30", service.colors.marker)} />
+          <div className={cn("w-1 h-1 rounded-full opacity-30", service.colors.marker)} />
+        </div>
+      </div>
       
       {/* Animation Layer */}
-      <div className="absolute inset-0 opacity-50 group-hover:opacity-100 transition-opacity duration-500">
+      <div className="absolute inset-0 opacity-40 group-hover:opacity-80 transition-opacity duration-500">
         <ServiceAnimation type={service.animationType} progress={progress} />
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 h-full flex flex-col justify-between pointer-events-none">
-        {/* Header */}
-        <div className="flex justify-between items-start">
-          <div className="p-3 rounded-2xl bg-surface-light/80 backdrop-blur-sm border border-border/50 text-primary">
-            <Icon className="w-8 h-8" />
-          </div>
-          
-          <Badge variant="outline" className="bg-surface/50 backdrop-blur-sm border-primary/20 text-primary">
-            Da €{service.price}
-          </Badge>
-        </div>
+      <div className="relative z-10 h-full flex flex-col justify-between p-6 md:p-8 pointer-events-none">
+        {/* Empty top space for animation visibility */}
+        <div className="h-12" />
 
         {/* Text Content */}
-        <div className="mt-8 space-y-4">
-          <div>
-            <h3 className="text-2xl font-display font-bold mb-2 group-hover:text-primary transition-colors">
-              {service.title}
-            </h3>
-            <p className="text-text-secondary text-sm md:text-base leading-relaxed line-clamp-3">
+        <div className="space-y-6 mt-auto">
+          <div className="space-y-3">
+            <div className="flex items-center gap-3">
+              <div className={cn(
+                "p-2 rounded-lg bg-surface/50 backdrop-blur-md border border-white/5",
+                service.colors.primary
+              )}>
+                <Icon className="w-6 h-6" />
+              </div>
+              <h3 className={cn(
+                "text-2xl font-display font-bold transition-colors",
+                "text-text-primary group-hover:text-white"
+              )}>
+                {service.title}
+              </h3>
+            </div>
+            
+            <p className="text-text-secondary text-sm md:text-base leading-relaxed line-clamp-3 group-hover:text-text-primary/80 transition-colors">
               {service.description}
             </p>
           </div>
 
-          {/* Technologies */}
-          <div className="flex flex-wrap gap-2 pt-4 border-t border-border/50">
-            {service.technologies.map((tech) => (
-              <span
-                key={tech}
-                className="px-2 py-1 text-xs rounded-md bg-surface-light/50 text-text-muted font-mono border border-transparent group-hover:border-primary/10 transition-colors"
-              >
-                {tech}
-              </span>
-            ))}
+          {/* Footer: Tech & Price */}
+          <div className="flex items-end justify-between pt-4 border-t border-white/5">
+             <div className="flex flex-wrap gap-2">
+                {service.technologies.slice(0, 3).map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-surface/30 text-text-muted border border-white/5"
+                  >
+                    {tech}
+                  </span>
+                ))}
+             </div>
+             
+             <div className={cn(
+               "text-sm font-mono font-bold opacity-60 group-hover:opacity-100 transition-opacity",
+               service.colors.primary
+             )}>
+               {'>'} {service.price}
+             </div>
           </div>
         </div>
 
@@ -170,8 +237,12 @@ function BentoCard({ service }: { service: (typeof services)[0] }) {
           className="absolute inset-0 z-20 pointer-events-auto"
           aria-label={`Scopri di più su ${service.title}`}
         >
-          <div className="absolute bottom-6 right-6 p-2 rounded-full bg-primary text-white opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-lg shadow-primary/30">
-            <ArrowUpRight className="w-5 h-5" />
+          {/* Corner Action Button */}
+          <div className={cn(
+            "absolute bottom-0 right-0 p-3 bg-surface/80 backdrop-blur-sm border-t border-l border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300",
+            `hover:${service.colors.primary}`
+          )}>
+            <ArrowUpRight className={cn("w-5 h-5", service.colors.primary)} />
           </div>
         </Link>
       </div>
@@ -189,6 +260,10 @@ export function ServicesPreview() {
         {/* Section Header */}
         <FadeIn className="mb-16 md:mb-24 flex flex-col md:flex-row items-end justify-between gap-8">
           <div className="max-w-2xl">
+            <div className="flex items-center gap-2 mb-4 text-primary font-mono text-xs tracking-widest uppercase">
+              <Terminal className="w-4 h-4" />
+              <span>System Modules</span>
+            </div>
             <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">
               Cosa Facciamo
             </h2>
@@ -202,7 +277,7 @@ export function ServicesPreview() {
           <Button 
             asChild 
             variant="ghost" 
-            className="hidden md:inline-flex group"
+            className="hidden md:inline-flex group border border-border/50 hover:bg-surface/50"
             onMouseEnter={() => setCursorType('hover')}
             onMouseLeave={() => setCursorType('default')}
           >
@@ -213,8 +288,8 @@ export function ServicesPreview() {
           </Button>
         </FadeIn>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[minmax(300px,auto)]">
+        {/* Tech HUD Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[minmax(320px,auto)]">
           {services.map((service, index) => (
             <FadeIn key={service.id} delay={index * 0.1} className={cn(service.colSpan, service.rowSpan, "h-full")}>
               <BentoCard service={service} />
