@@ -10,7 +10,7 @@ import { FadeIn } from '@/components/animations'
 import { Globe, Bot, BrainCircuit, Zap, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { useCursorState } from '@/hooks/useCursorState'
-import { motion, useScroll, useTransform, useInView } from 'framer-motion'
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion'
 import { ScrollProgressIndicator } from '@/components/ui/ScrollProgressIndicator'
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter'
 import { StaggerText } from '@/components/animations/StaggerText'
@@ -171,7 +171,7 @@ function ServiceAnimation({
   progress,
 }: {
   type: 'browser' | 'neural' | 'documents' | 'gears'
-  progress: any
+  progress: MotionValue<number>
 }) {
   switch (type) {
     case 'browser':
@@ -271,7 +271,6 @@ export function ServicesPreview() {
                 <ServiceCard
                   key={index}
                   service={service}
-                  index={index}
                   progress={progress}
                   Icon={Icon}
                 />
@@ -354,18 +353,15 @@ export function ServicesPreview() {
 // Service Card Component (extracted for better performance)
 function ServiceCard({
   service,
-  index,
   progress,
   Icon,
 }: {
   service: (typeof services)[0]
-  index: number
-  progress: any
-  Icon: any
+  progress: MotionValue<number>
+  Icon: React.ElementType
 }) {
   const cardRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(cardRef, { once: false, amount: 0.5 })
-
+  
   // Transform values for scroll animations
   const opacity = useTransform(progress, [0, 0.3, 0.8, 1], [0, 1, 1, 0.3])
   const scale = useTransform(progress, [0, 0.3, 0.8, 1], [0.9, 1, 1, 0.95])

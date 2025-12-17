@@ -5,7 +5,6 @@ import { useInView, useMotionValue, useSpring } from 'framer-motion'
 
 interface AnimatedCounterProps {
   value: number
-  duration?: number
   className?: string
   prefix?: string
   suffix?: string
@@ -14,7 +13,6 @@ interface AnimatedCounterProps {
 
 export function AnimatedCounter({
   value,
-  duration = 2,
   className = '',
   prefix = '€',
   suffix = '',
