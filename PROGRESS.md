@@ -352,6 +352,8 @@
 | Data | Sprint | Task | Note |
 |------|--------|------|------|
 | - | - | - | Progetto inizializzato |
+| 2025-12-17 | 6 | Fix | Corretto crash in ServicesPreview (undefined node list access) |
+| 2025-12-17 | 6 | Fix | Corretto errore hooks in componenti animazione (BrowserMockup, Documents, NeuralNetwork) |
 
 ---
 
