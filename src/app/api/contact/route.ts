@@ -1,14 +1,30 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
-import { createSupabaseServerClient } from '@/lib/supabase'
-import { cookies } from 'next/headers'
+/**
+ * TEMPORARILY DISABLED FOR DEPLOYMENT
+ * This API route requires Supabase and Resend integration.
+ * See INTEGRATION.md for instructions on how to enable this.
+ */
 
-let resend: Resend | null = null;
-if (process.env.RESEND_API_KEY) {
-  resend = new Resend(process.env.RESEND_API_KEY);
-}
+import { NextRequest, NextResponse } from 'next/server'
+// import { Resend } from 'resend'
+// import { createSupabaseServerClient } from '@/lib/supabase'
+// import { cookies } from 'next/headers'
+
+// let resend: Resend | null = null;
+// if (process.env.RESEND_API_KEY) {
+//   resend = new Resend(process.env.RESEND_API_KEY);
+// }
 
 export async function POST(req: NextRequest) {
+  // Temporary response while services are not integrated
+  return NextResponse.json(
+    {
+      error: 'Contact form is temporarily disabled. Services integration pending.',
+      status: 'not_implemented'
+    },
+    { status: 501 }
+  )
+
+  /* ORIGINAL CODE - TO BE RESTORED AFTER INTEGRATION
   const supabase = createSupabaseServerClient(cookies())
   const { name, email, message, ...rest } = await req.json()
 
@@ -52,4 +68,5 @@ export async function POST(req: NextRequest) {
     console.error('API error:', error)
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
   }
+  */
 }
