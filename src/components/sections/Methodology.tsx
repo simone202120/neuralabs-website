@@ -3,7 +3,9 @@
 import { useRef } from 'react'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
+import { Button } from '@/components/ui/Button'
 import { FadeIn } from '@/components/animations'
+import Link from 'next/link'
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { AudioWaveform, CircuitBoard, Infinity as InfinityIcon } from 'lucide-react'
@@ -157,7 +159,7 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
   )
 }
 
-export function Approach() {
+export function Methodology() {
   const containerRef = useRef<HTMLDivElement>(null)
   
   const { scrollYProgress } = useScroll({
@@ -209,6 +211,22 @@ export function Approach() {
              <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(255,107,53,0.5)]" />
           </div>
         </div>
+
+        {/* CTA to deep dive page */}
+        <FadeIn className="mt-20 md:mt-32 text-center">
+          <Button asChild size="lg" variant="secondary" className="rounded-full group">
+            <Link href="/metodo">
+              Scopri il Metodo Completo 
+              <motion.span 
+                className="inline-block ml-2"
+                animate={{ x: [0, 4, 0] }}
+                transition={{ repeat: Infinity, duration: 1.5 }}
+              >
+                →
+              </motion.span>
+            </Link>
+          </Button>
+        </FadeIn>
       </Container>
     </Section>
   )

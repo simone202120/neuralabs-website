@@ -1,11 +1,11 @@
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Plus_Jakarta_Sans, Outfit } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
 import { ClientProviders } from '@/components/providers/ClientProviders'
 
-const inter = Inter({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
@@ -13,12 +13,12 @@ const inter = Inter({
   weight: ['400', '500', '600', '700'],
 })
 
-const playfairDisplay = Playfair_Display({
+const outfit = Outfit({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
   preload: true,
-  weight: ['400', '500', '600', '700', '800', '900'],
+  weight: ['300', '400', '500', '600', '700', '800'],
 })
 
 const jetBrainsMono = localFont({
@@ -87,7 +87,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${playfairDisplay.variable} ${jetBrainsMono.variable} cursor-none`}
+        className={`${plusJakartaSans.variable} ${outfit.variable} ${jetBrainsMono.variable} cursor-none`}
       >
           <ClientProviders>
             <div className="flex flex-col min-h-screen">

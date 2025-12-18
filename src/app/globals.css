@@ -42,11 +42,17 @@
     transition-property: background-color, color;
     transition-duration: 300ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: none;
   }
 
-  a, button, [role="button"], input, select, textarea, label {
-    cursor: none;
+  body.custom-cursor-active,
+  body.custom-cursor-active a,
+  body.custom-cursor-active button,
+  body.custom-cursor-active [role="button"],
+  body.custom-cursor-active input,
+  body.custom-cursor-active select,
+  body.custom-cursor-active textarea,
+  body.custom-cursor-active label {
+    cursor: none !important;
   }
 }
 

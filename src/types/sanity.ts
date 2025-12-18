@@ -23,30 +23,6 @@ export interface SanityBlock {
   style: string;
 }
 
-export interface Project {
-  _id: string;
-  _type: 'project';
-  _createdAt: string;
-  _updatedAt: string;
-  title?: string;
-  slug?: SanitySlug;
-  description?: string;
-  content?: SanityBlock[];
-  coverImage?: SanityImage;
-  imageUrl?: string; // Add this
-  gallery?: SanityImage[];
-  category?: 'website' | 'webapp' | 'ai_agent' | 'rag' | 'automation';
-  technologies?: string[];
-  hoursSpent?: number;
-  hours?: number; // Add this
-  clientName?: string;
-  clientLogo?: SanityImage;
-  testimonial?: string;
-  liveUrl?: string;
-  featured?: boolean;
-  publishedAt?: string;
-}
-
 export interface TeamMember {
   _id: string;
   _type: 'teamMember';
@@ -64,22 +40,6 @@ export interface TeamMember {
     twitter?: string;
     github?: string;
   };
-}
-
-export interface BlogPost {
-  _id: string;
-  _type: 'blogPost';
-  _createdAt: string;
-  _updatedAt: string;
-  title?: string;
-  slug?: SanitySlug;
-  excerpt?: string;
-  content?: SanityBlock[];
-  coverImage?: SanityImage;
-  categories?: string[];
-  author?: { _ref: string; _type: 'reference'; imageUrl?: string; name?: string }; // Update this
-  publishedAt?: string;
-  readingTime?: number;
 }
 
 export interface Service {
@@ -111,4 +71,4 @@ export interface Testimonial {
   projectRef?: { _ref: string; _type: 'reference' }; // Reference to Project
 }
 
-export type Documents = Project | BlogPost | Service | TeamMember | Testimonial;
+export type Documents = Service | TeamMember | Testimonial;

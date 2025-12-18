@@ -97,9 +97,8 @@ export function Footer() {
               <h4 className="text-xs font-mono font-bold text-text-primary uppercase tracking-widest">Esplora</h4>
               <ul className="space-y-3">
                 <FooterLink href="/servizi">Servizi</FooterLink>
-                <FooterLink href="/progetti">Progetti</FooterLink>
-                <FooterLink href="/approccio">Metodo</FooterLink>
-                <FooterLink href="/blog">Blog</FooterLink>
+                <FooterLink href="/metodo">Il Metodo</FooterLink>
+                <FooterLink href="/chi-siamo">Chi Siamo</FooterLink>
               </ul>
             </div>
             <div className="p-8 space-y-6">
