@@ -15,8 +15,15 @@ export function CustomCursor() {
   const cursorXSpring = useSpring(cursorX, springConfig)
   const cursorYSpring = useSpring(cursorY, springConfig)
 
-  // Track mouse movement
+  // Track mouse movement and manage body cursor state
   React.useEffect(() => {
+    // Check if device supports hover (desktop)
+    const isHoverDevice = window.matchMedia('(hover: hover)').matches
+    
+    if (isHoverDevice) {
+      document.body.classList.add('custom-cursor-active')
+    }
+
     let rafId: number | null = null
 
     const moveCursor = (e: MouseEvent) => {
@@ -32,6 +39,7 @@ export function CustomCursor() {
     window.addEventListener('mousemove', moveCursor, { passive: true })
     return () => {
       window.removeEventListener('mousemove', moveCursor)
+      document.body.classList.remove('custom-cursor-active')
       if (rafId !== null) cancelAnimationFrame(rafId)
     }
   }, [cursorX, cursorY])

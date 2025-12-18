@@ -79,7 +79,7 @@ export function ParticleBrain({ isDark = true }: { isDark?: boolean }) {
   const pointsRef = useRef<THREE.Points>(null!)
   const { viewport } = useThree()
   
-  const count = 4000
+  const count = 2000 // Optimized count for better performance
   
   const [positions, initialPositions, randomSizes, randomPhases] = useMemo(() => {
     const positions = new Float32Array(count * 3)
