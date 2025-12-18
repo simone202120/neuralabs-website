@@ -398,6 +398,7 @@
 | 2025-12-17 | 6 | Refactor | Rimossa sezione Progetti e redesign completo sezione Approccio ("Synaptic Pathway") |
 | 2025-12-17 | 6 | Feat | Nuova sezione "IdeaTalk" con chat olografica animata |
 | 2025-12-17 | 6 | Refactor | Redesign Footer in stile "Dashboard" tecnico |
+| 2025-12-18 | 6 | Refactor | Redesign completo pagina Chi Siamo (Hero, Values Bento Grid, Timeline Storia, Team Grid) |
 
 ---
 

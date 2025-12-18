@@ -1,30 +1,15 @@
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
-import { FadeIn, StaggerContainer } from '@/components/animations'
-import { client, urlFor } from '@/lib/sanity'
+import { FadeIn } from '@/components/animations'
+import { client } from '@/lib/sanity'
 import { TeamMember } from '@/types/sanity'
-import Image from 'next/image'
-import { Card, CardContent } from '@/components/ui/Card'
-import { Github, Linkedin, Twitter } from 'lucide-react'
-
-const values = [
-  {
-    title: 'Innovazione Pratica',
-    description: 'Applichiamo l&apos;AI per risolvere problemi reali e creare valore tangibile.',
-  },
-  {
-    title: 'Partnership',
-    description: 'Lavoriamo con i nostri clienti, non per loro, in un clima di fiducia e collaborazione.',
-  },
-  {
-    title: 'Velocità',
-    description: 'Crediamo nello sviluppo agile e nel rilasciare MVP in settimane, non mesi.',
-  },
-  {
-    title: 'Trasparenza',
-    description: 'Comunicazione chiara, prezzi onesti e un processo di sviluppo aperto.',
-  },
-]
+import { TeamGrid } from '@/components/sections/TeamGrid'
+import { CompanyHistory } from '@/components/sections/CompanyHistory'
+import { CompanyValues } from '@/components/sections/CompanyValues'
+import { GlitchText } from '@/components/ui/GlitchText'
+import { Button } from '@/components/ui/Button'
+import Link from 'next/link'
+import { ArrowRight, Code } from 'lucide-react'
 
 async function getTeamMembers() {
   const query = `*[_type == "teamMember"] | order(order asc) {
@@ -38,99 +23,98 @@ async function getTeamMembers() {
   return data
 }
 
+export const metadata = {
+  title: 'Chi Siamo | NeuraLabs',
+  description: 'Il team dietro NeuraLabs. Sviluppatori, designer e pionieri dell\'AI uniti per costruire il futuro del web.',
+}
+
 export default async function ChiSiamoPage() {
   const teamMembers: TeamMember[] = await getTeamMembers()
 
   return (
     <>
-      <Section>
-        <Container>
-          <FadeIn>
-            <h1 className="text-4xl font-bold text-center">Chi Siamo</h1>
-            <p className="mt-4 text-lg text-text-secondary text-center max-w-3xl mx-auto">
-              Siamo un laboratorio creativo dove l&apos;intelligenza artificiale incontra lo sviluppo web per creare soluzioni innovative e su misura.
-            </p>
-          </FadeIn>
+      {/* HERO SECTION */}
+      <Section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+          <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[128px] opacity-40 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[128px] opacity-40 pointer-events-none" />
+        </div>
 
-          <FadeIn className="mt-16">
-            <h2 className="text-3xl font-bold text-center">La Nostra Missione</h2>
-            <p className="mt-6 text-lg text-text-secondary max-w-3xl mx-auto text-center">
-              La nostra missione è aiutare le aziende a sfruttare il potenziale dell&apos;intelligenza artificiale per automatizzare processi, migliorare l&apos;efficienza e creare esperienze digitali uniche. Crediamo in un futuro in cui l&apos;AI è un partner creativo e strategico per ogni business.
-            </p>
-          </FadeIn>
+        <Container>
+          <div className="max-w-4xl mx-auto text-center">
+            <FadeIn>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface/50 border border-border backdrop-blur-md text-xs font-mono text-primary mb-8 animate-pulse">
+                <Code className="w-4 h-4" />
+                <span>HUMANS IN THE LOOP</span>
+              </div>
+              
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-[0.9] tracking-tight mb-8">
+                Gli Architetti <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-orange-400 to-primary bg-300% animate-gradient">
+                  del Futuro
+                </span>
+              </h1>
+              
+              <div className="text-xl md:text-2xl text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto">
+                <GlitchText variant="subtle" trigger="hover" className="text-text-primary font-medium">
+                  NeuraLabs
+                </GlitchText> non è solo un&apos;agenzia. È un laboratorio dove l&apos;ingegno umano incontra la potenza computazionale per ridefinire ciò che è possibile sul web.
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button asChild size="lg" className="rounded-full px-8">
+                  <Link href="#team">
+                    Conosci il Team
+                  </Link>
+                </Button>
+                <Button asChild variant="ghost" size="lg" className="rounded-full group">
+                  <Link href="/contatti">
+                    Lavora con Noi <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+              </div>
+            </FadeIn>
+          </div>
         </Container>
       </Section>
 
-      <Section className="bg-surface">
-        <Container>
-          <FadeIn>
-            <h2 className="text-3xl font-bold text-center">I Nostri Valori</h2>
-            <div className="w-24 h-1 bg-primary mx-auto mt-4" />
-          </FadeIn>
-          <StaggerContainer
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12"
-            staggerDelay={0.2}
-          >
-            {values.map((value, index) => (
-              <FadeIn key={index}>
-                <Card className="text-center h-full p-6">
-                  <h3 className="text-xl font-semibold">{value.title}</h3>
-                  <p className="mt-2 text-text-secondary">{value.description}</p>
-                </Card>
-              </FadeIn>
-            ))}
-          </StaggerContainer>
-        </Container>
-      </Section>
+      {/* VALUES SECTION (Bento Grid) */}
+      <CompanyValues />
 
-      <Section>
+      {/* HISTORY SECTION (Timeline) */}
+      <CompanyHistory />
+
+      {/* TEAM SECTION (Grid) */}
+      <div id="team">
+        <TeamGrid members={teamMembers} />
+      </div>
+
+      {/* CTA FINAL */}
+      <Section className="py-24">
         <Container>
-          <FadeIn>
-            <h2 className="text-3xl font-bold text-center">Il Nostro Team</h2>
-            <div className="w-24 h-1 bg-primary mx-auto mt-4" />
-          </FadeIn>
-          <StaggerContainer
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"
-            staggerDelay={0.2}
-          >
-            {teamMembers.map((member) => (
-              <FadeIn key={member.name}>
-                <Card className="text-center">
-                  <div className="relative h-48 w-48 mx-auto mt-6 rounded-full overflow-hidden border-2 border-primary">
-                    <Image
-                      src={urlFor(member.image).url()}
-                      alt={member.name || 'Team Member'}
-                      fill
-                      sizes="192px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold">{member.name}</h3>
-                    <p className="text-primary">{member.role}</p>
-                    <p className="mt-4 text-sm text-text-secondary">{member.bio}</p>
-                    <div className="flex justify-center gap-4 mt-6">
-                      {member.socialLinks?.linkedin && (
-                        <a href={member.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-primary transition-colors">
-                          <Linkedin />
-                        </a>
-                      )}
-                      {member.socialLinks?.twitter && (
-                        <a href={member.socialLinks.twitter} target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-primary transition-colors">
-                          <Twitter />
-                        </a>
-                      )}
-                      {member.socialLinks?.github && (
-                        <a href={member.socialLinks.github} target="_blank" rel="noopener noreferrer" className="text-text-secondary hover:text-primary transition-colors">
-                          <Github />
-                        </a>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              </FadeIn>
-            ))}
-          </StaggerContainer>
+           <FadeIn>
+            <div className="relative rounded-3xl overflow-hidden bg-surface border border-white/5 p-8 md:p-16 text-center">
+              {/* Background Glow */}
+              <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
+              
+              <div className="relative z-10 max-w-2xl mx-auto">
+                <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">
+                  Pronto a costruire il domani?
+                </h2>
+                <p className="text-lg text-text-secondary mb-8">
+                  Siamo sempre alla ricerca di sfide impossibili e partner visionari. 
+                  Se hai un&apos;idea che gli altri chiamano &quot;follia&quot;, noi la chiamiamo &quot;progetto&quot;.
+                </p>
+                <Button asChild size="lg" className="rounded-full px-10 py-6 text-lg shadow-[0_0_30px_-5px_rgba(255,107,53,0.4)] hover:shadow-[0_0_50px_-5px_rgba(255,107,53,0.6)] transition-shadow">
+                  <Link href="/contatti">
+                    Inizia il Viaggio
+                  </Link>
+                </Button>
+              </div>
+            </div>
+           </FadeIn>
         </Container>
       </Section>
     </>
