@@ -1,17 +1,14 @@
 /**
  * TEMPORARILY DISABLED FOR DEPLOYMENT
- * Supabase client creation functions.
- * See INTEGRATION.md for instructions on how to enable this.
- *
- * ORIGINAL CODE - TO BE RESTORED AFTER INTEGRATION:
- * Replace this entire file with the code in INTEGRATION.md
+ * Supabase client will be configured after initial deployment.
+ * These are stub functions to prevent build errors.
  */
 
-// Temporary stub functions to prevent build errors
+// Stub functions that return null instead of throwing errors
 export const createSupabaseBrowserClient = () => {
-  throw new Error('Supabase is not configured. Please set up environment variables.');
+  return null;
 };
 
-export const createSupabaseServerClient = (cookies: any) => {
-  throw new Error('Supabase is not configured. Please set up environment variables.');
+export const createSupabaseServerClient = (_cookies: any) => {
+  return null;
 };
