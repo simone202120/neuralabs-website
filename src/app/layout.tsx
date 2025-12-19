@@ -1,4 +1,5 @@
 import { Plus_Jakarta_Sans, Outfit, JetBrains_Mono } from 'next/font/google'
+import type { Metadata } from 'next'
 import './globals.css'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
