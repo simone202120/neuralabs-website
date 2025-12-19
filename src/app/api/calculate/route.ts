@@ -1,60 +1,52 @@
-/**
- * TEMPORARILY DISABLED FOR DEPLOYMENT
- * This API route requires Supabase integration.
- * See INTEGRATION.md for instructions on how to enable this.
- *
- * ORIGINAL CODE TO RESTORE (uncomment the lines below):
- *
- * *import { createSupabaseServerClient } from '@/lib/supabase'
- * *import { cookies } from 'next/headers'
- *
- * Then inside the POST function, add this code after calculateEstimate:
- *
- * *const supabase = createSupabaseServerClient(cookies())
- * *
- * *const { data: estimateData, error } = await supabase
- * *  .from('estimates')
- * *  .insert([
- * *    {
- * *      project_type: formData.projectType,
- * *      complexity: formData.complexity,
- * *      features: formData.features,
- * *      timeline: formData.timeline,
- * *      hours_estimate_min: hoursMin,
- * *      hours_estimate_max: hoursMax,
- * *      price_estimate_min: priceMin,
- * *      price_estimate_max: priceMax,
- * *    },
- * *  ])
- * *  .select()
- * *
- * *if (error) {
- * *  throw error
- * *}
- * *
- * And change the return to include estimateId:
- * *estimateId: estimateData?.[0]?.id,
- */
-
 import { NextRequest, NextResponse } from 'next/server'
-import { calculateEstimate } from '@/lib/calculator'
 
+/**
+ * Calculator API Route
+ * Currently disabled - will be enabled after Supabase integration
+ */
 export async function POST(req: NextRequest) {
-  const formData = await req.json()
-
   try {
-    // Calculate estimate without saving to database (temporary solution)
-    const { hoursMin, hoursMax, priceMin, priceMax } = calculateEstimate(formData)
-
+    const formData = await req.json()
+    
+    // Basic calculation without database storage
+    const { projectType, complexity, features = [], timeline } = formData
+    
+    // Simple calculation logic
+    const baseHours: Record<string, number> = {
+      'Sito Web': 40,
+      'WebApp': 80,
+      'AI Agent': 100,
+      'Sistema RAG': 80,
+      'Automazione': 30,
+      'Altro': 60
+    }
+    
+    const complexityMultiplier: Record<string, number> = {
+      'Semplice': 1,
+      'Media': 1.5,
+      'Complessa': 2.5
+    }
+    
+    let hours = (baseHours[projectType] || 60) * (complexityMultiplier[complexity] || 1)
+    hours += features.length * 15
+    
+    const hoursMin = Math.round(hours * 0.8)
+    const hoursMax = Math.round(hours * 1.2)
+    const priceMin = hoursMin * 60
+    const priceMax = hoursMax * 60
+    
     return NextResponse.json({
       hoursMin,
       hoursMax,
       priceMin,
       priceMax,
-      warning: 'Estimate not saved to database. Supabase integration pending.',
+      warning: 'Estimate calculated but not saved. Database integration pending.'
     })
   } catch (error) {
-    console.error('Error calculating estimate:', error)
-    return NextResponse.json({ error: 'Failed to calculate estimate' }, { status: 500 })
+    console.error('Calculate error:', error)
+    return NextResponse.json(
+      { error: 'Failed to calculate estimate' },
+      { status: 500 }
+    )
   }
 }
