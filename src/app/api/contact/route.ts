@@ -1,18 +1,30 @@
-/**
- * TEMPORARILY DISABLED FOR DEPLOYMENT
- * This API route requires Supabase and Resend integration.
- * See INTEGRATION.md for complete code to restore.
- */
-
 import { NextRequest, NextResponse } from 'next/server'
 
+/**
+ * Contact Form API Route
+ * Currently disabled - will be enabled after Supabase and Resend integration
+ */
 export async function POST(req: NextRequest) {
-  // Temporary response while services are not integrated
-  return NextResponse.json(
-    {
-      error: 'Contact form is temporarily disabled. Services integration pending.',
-      status: 'not_implemented'
-    },
-    { status: 501 }
-  )
+  try {
+    const formData = await req.json()
+    
+    // Log to console (temporary - will be saved to DB later)
+    console.log('Contact form submission:', {
+      name: formData.name,
+      email: formData.email,
+      timestamp: new Date().toISOString()
+    })
+    
+    return NextResponse.json({
+      success: true,
+      message: 'Message received. Database integration pending.',
+      warning: 'Your message was logged but not saved to database yet.'
+    })
+  } catch (error) {
+    console.error('Contact form error:', error)
+    return NextResponse.json(
+      { error: 'Failed to process contact form' },
+      { status: 500 }
+    )
+  }
 }
