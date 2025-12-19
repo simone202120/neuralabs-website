@@ -78,18 +78,16 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
           style={{ opacity: browserOpacity }}
         />
 
-        {/* Typing URL Effect */}
+       {/* Typing URL Effect */}
         <motion.line
           x1="130"
           y1="50"
-          x2="130"
-          y2="50"
           className="stroke-blue-500 dark:stroke-blue-400"
           strokeWidth="2"
           strokeLinecap="round"
-          style={{
-            x2: typingX2,
-            opacity: urlProgress,
+          animate={{
+            x2: useTransform(urlProgress, [0, 1], [130, 280]),
+            opacity: useTransform(urlProgress, [0, 1], [0, 1]),
           }}
         />
 
@@ -138,12 +136,12 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
           />
         </motion.g>
 
-        {/* Cursor */}
+       {/* Cursor */}
         <motion.g
-          style={{
-            x: cursorX,
-            y: cursorY,
-            opacity: cursorOpacity,
+          animate={{
+            x: useTransform(progress, [0.6, 1], [100, 200]),
+            y: useTransform(progress, [0.6, 1], [150, 220]),
+            opacity: useTransform(progress, [0.6, 1], [0, 1]),
           }}
         >
           <path
