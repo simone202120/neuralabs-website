@@ -7,17 +7,8 @@ interface BrowserMockupAnimationProps {
 }
 
 export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps) {
-  // Transform progress to different parts of the animation
   const browserOpacity = useTransform(progress, [0, 0.2], [0, 1])
-  const urlProgress = useTransform(progress, [0.2, 0.5], [0, 1])
   const contentOpacity = useTransform(progress, [0.5, 0.8], [0, 1])
-  const contentY = useTransform(progress, [0.5, 1], [20, 0])
-
-  // Lifting transforms out of JSX
-  const typingX2 = useTransform(urlProgress, [0, 1], [130, 280])
-  const cursorX = useTransform(progress, [0.6, 1], [100, 200])
-  const cursorY = useTransform(progress, [0.6, 1], [150, 220])
-  const cursorOpacity = useTransform(progress, [0.6, 1], [0, 1])
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 dark:opacity-30">
@@ -27,7 +18,7 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
         style={{ opacity: browserOpacity }}
       >
         {/* Browser Window */}
-        <motion.rect
+        <rect
           x="40"
           y="30"
           width="320"
@@ -35,20 +26,15 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
           rx="8"
           className="fill-none stroke-blue-500 dark:stroke-blue-400"
           strokeWidth="2"
-          initial={{ pathLength: 0 }}
-          style={{
-            pathLength: progress,
-          }}
         />
 
         {/* Browser Header */}
-        <motion.rect
+        <rect
           x="40"
           y="30"
           width="320"
           height="40"
           className="fill-blue-500/10 dark:fill-blue-400/10"
-          style={{ opacity: browserOpacity }}
         />
 
         {/* Browser Dots */}
@@ -61,13 +47,12 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
             className="fill-blue-500 dark:fill-blue-400"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ delay: i * 0.1 + 0.2, type: 'spring' }}
-            style={{ opacity: browserOpacity }}
+            transition={{ delay: i * 0.1 + 0.2 }}
           />
         ))}
 
         {/* URL Bar */}
-        <motion.rect
+        <rect
           x="120"
           y="42"
           width="220"
@@ -75,25 +60,10 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
           rx="8"
           className="fill-none stroke-blue-500/50 dark:stroke-blue-400/50"
           strokeWidth="1"
-          style={{ opacity: browserOpacity }}
-        />
-
-       {/* Typing URL Effect */}
-        <motion.line
-          x1="130"
-          y1="50"
-          className="stroke-blue-500 dark:stroke-blue-400"
-          strokeWidth="2"
-          strokeLinecap="round"
-          animate={{
-            x2: useTransform(urlProgress, [0, 1], [130, 280]),
-            opacity: useTransform(urlProgress, [0, 1], [0, 1]),
-          }}
         />
 
         {/* Content Blocks */}
-        <motion.g style={{ opacity: contentOpacity, y: contentY }}>
-          {/* Header Block */}
+        <motion.g style={{ opacity: contentOpacity }}>
           <rect
             x="60"
             y="90"
@@ -103,7 +73,6 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
             className="fill-blue-500/20 dark:fill-blue-400/20"
           />
 
-          {/* Content Rows */}
           {[120, 150, 180].map((y, i) => (
             <g key={i}>
               <rect
@@ -125,7 +94,6 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
             </g>
           ))}
 
-          {/* Image Placeholder */}
           <rect
             x="60"
             y="210"
@@ -133,20 +101,6 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
             height="40"
             rx="4"
             className="fill-blue-500/15 dark:fill-blue-400/15"
-          />
-        </motion.g>
-
-       {/* Cursor */}
-        <motion.g
-          animate={{
-            x: useTransform(progress, [0.6, 1], [100, 200]),
-            y: useTransform(progress, [0.6, 1], [150, 220]),
-            opacity: useTransform(progress, [0.6, 1], [0, 1]),
-          }}
-        >
-          <path
-            d="M0,0 L0,16 L4,12 L7,18 L9,17 L6,11 L12,11 Z"
-            className="fill-blue-500 dark:fill-blue-400"
           />
         </motion.g>
       </motion.svg>
