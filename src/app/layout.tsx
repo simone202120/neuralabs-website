@@ -1,5 +1,4 @@
-import { Plus_Jakarta_Sans, Outfit } from 'next/font/google'
-import localFont from 'next/font/local'
+import { Plus_Jakarta_Sans, Outfit, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
@@ -21,17 +20,12 @@ const outfit = Outfit({
   weight: ['300', '400', '500', '600', '700', '800'],
 })
 
-const jetBrainsMono = localFont({
-  src: [
-    {
-      path: '../../public/fonts/fonts/variable/JetBrainsMono[wght].ttf',
-      weight: '100 900',
-      style: 'normal',
-    },
-  ],
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
   variable: '--font-mono',
   display: 'swap',
-  preload: false,
+  preload: true,
+  weight: ['400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = {
