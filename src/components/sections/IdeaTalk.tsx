@@ -109,7 +109,7 @@ export function IdeaTalk() {
                   </Link>
                 </Button>
                 
-                <Button asChild variant="outline" size="lg" className="h-14 px-8 text-base border-border/50 hover:bg-surface-light">
+               <Button asChild variant="secondary" size="lg" className="h-14 px-8 text-base">
                   <Link href="/chat">
                     <MessageSquare className="mr-2 w-5 h-5" />
                     Chatta con Neura
