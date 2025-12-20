@@ -6,7 +6,8 @@ import { useCursorState } from '@/hooks/useCursorState'
 import { cn } from '@/lib/utils'
 
 export function CustomCursor() {
-  const { cursorType } = useCursorState()
+  // Ottimizzato: usa selector invece di destructuring per evitare re-render non necessari
+  const cursorType = useCursorState((state) => state.cursorType)
   const cursorX = useMotionValue(-100)
   const cursorY = useMotionValue(-100)
 
@@ -19,7 +20,7 @@ export function CustomCursor() {
   React.useEffect(() => {
     // Check if device supports hover (desktop)
     const isHoverDevice = window.matchMedia('(hover: hover)').matches
-    
+
     if (isHoverDevice) {
       document.body.classList.add('custom-cursor-active')
     }
@@ -42,7 +43,7 @@ export function CustomCursor() {
       document.body.classList.remove('custom-cursor-active')
       if (rafId !== null) cancelAnimationFrame(rafId)
     }
-  }, [cursorX, cursorY])
+  }, []) // MotionValues non cambiano reference - dependencies vuote
 
   // Variants for the Ring (Outer)
   const ringVariants = {

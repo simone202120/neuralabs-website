@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const konamiCode = [
   'ArrowUp',
@@ -15,16 +15,28 @@ const konamiCode = [
   'a',
 ]
 
+// Helper per comparare array senza JSON.stringify
+function arraysEqual(a: string[], b: string[]): boolean {
+  if (a.length !== b.length) return false
+  return a.every((val, index) => val === b[index])
+}
+
 export function useKonamiCode(callback: () => void) {
   const [keys, setKeys] = useState<string[]>([])
+  const callbackRef = useRef(callback)
+
+  // Mantieni il callback aggiornato senza ricrearne l'event listener
+  useEffect(() => {
+    callbackRef.current = callback
+  }, [callback])
 
   useEffect(() => {
     const handler = (event: KeyboardEvent) => {
       setKeys((prevKeys) => {
         const newKeys = [...prevKeys, event.key].slice(-konamiCode.length)
 
-        if (JSON.stringify(newKeys) === JSON.stringify(konamiCode)) {
-          callback()
+        if (arraysEqual(newKeys, konamiCode)) {
+          callbackRef.current()
           return []
         }
 
@@ -36,5 +48,5 @@ export function useKonamiCode(callback: () => void) {
     return () => {
       window.removeEventListener('keydown', handler)
     }
-  }, [callback])
+  }, []) // Empty deps - event listener non viene mai ricreato
 }

@@ -43,9 +43,6 @@ const nextConfig = {
     ],
   },
 
-  // Production optimizations
-  swcMinify: true,
-
   async headers() {
     return [
       {
@@ -71,6 +68,12 @@ const nextConfig = {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()',
           },
+        ],
+      },
+      // Cache solo per risorse statiche Next.js
+      {
+        source: '/_next/static/:path*',
+        headers: [
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
@@ -83,6 +86,16 @@ const nextConfig = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      // Cache ottimizzata per immagini
+      {
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=31536000',
           },
         ],
       },

@@ -7,7 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "clean": "rimraf .next",
+    "clean:all": "rimraf .next node_modules/.cache",
+    "kill:ports": "FOR /F \"tokens=5\" %P IN ('netstat -ano ^| findstr :3000 :3001 :3002') DO taskkill /F /PID %P 2>nul || echo No processes on ports 3000-3002",
+    "fresh": "npm run kill:ports && npm run clean && npm run dev",
+    "fresh:install": "npm run kill:ports && npm run clean:all && npm install && npm run dev"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -49,6 +54,7 @@
     "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.15",
     "postcss": "^8.4.49",
+    "rimraf": "^6.1.2",
     "tailwindcss": "^3.4.15",
     "typescript": "^5.6.3"
   }

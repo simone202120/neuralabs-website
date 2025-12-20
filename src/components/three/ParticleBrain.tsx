@@ -145,22 +145,28 @@ export function ParticleBrain({ isDark = true }: { isDark?: boolean }) {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
+  // Riusa oggetti invece di allocarne di nuovi ogni frame
+  const tempVector = useMemo(() => new THREE.Vector3(), [])
+  const tempMatrix = useMemo(() => new THREE.Matrix4(), [])
+
   useFrame((state) => {
     const { clock } = state
-    
+
     uniforms.uTime.value = clock.getElapsedTime()
-    
+
     const x = (mouseRef.current.x * viewport.width) / 2
     const y = (mouseRef.current.y * viewport.height) / 2
-    
+
     if (pointsRef.current) {
       pointsRef.current.rotation.y = clock.getElapsedTime() * 0.02 // Slower rotation
-      
-      const vector = new THREE.Vector3(x, y, 0)
-      vector.applyMatrix4(pointsRef.current.matrixWorld.clone().invert())
-      
+
+      // Riusa tempVector e tempMatrix invece di crearne di nuovi
+      tempVector.set(x, y, 0)
+      tempMatrix.copy(pointsRef.current.matrixWorld).invert()
+      tempVector.applyMatrix4(tempMatrix)
+
       const currentMouse = uniforms.uMouse.value
-      currentMouse.lerp(vector, 0.05) // Smoother mouse follow
+      currentMouse.lerp(tempVector, 0.05) // Smoother mouse follow
     }
   })
 

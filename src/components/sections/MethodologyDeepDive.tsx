@@ -92,29 +92,8 @@ const phases = [
 
 function PhaseCard({ phase, index }: { phase: (typeof phases)[0]; index: number }) {
   const isLast = index === phases.length - 1
-  
+
   // Safe accessor with proper typing
-  const theme = (phase.color === 'violet' ? {
-      bg: 'bg-violet-500/5', 
-      border: 'border-violet-500/20', 
-      text: 'text-violet-400', 
-      glow: 'shadow-violet-500/10', 
-      marker: 'bg-violet-500'
-    } : phase.color === 'orange' ? {
-      bg: 'bg-primary/5', 
-      border: 'border-primary/20', 
-      text: 'text-primary', 
-      glow: 'shadow-primary/10', 
-      marker: 'bg-primary'
-    } : {
-      bg: 'bg-cyan-500/5', 
-      border: 'border-cyan-500/20', 
-      text: 'text-cyan-400', 
-      glow: 'shadow-cyan-500/10', 
-      marker: 'bg-cyan-500'
-    })// Fallback logic is actually wrong in TS without type assertion but works in JS logic. Fixed below.
-  
-  // Safe accessor
   const theme = (phase.color === 'violet' ? {
       bg: 'bg-violet-500/5', border: 'border-violet-500/20', text: 'text-violet-400', glow: 'shadow-violet-500/10', marker: 'bg-violet-500'
     } : phase.color === 'orange' ? {
