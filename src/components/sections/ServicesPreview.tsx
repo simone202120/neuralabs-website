@@ -1,277 +1,331 @@
 'use client'
 
-import { useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
 import { FadeIn } from '@/components/animations'
-import { Globe, Bot, BrainCircuit, Zap, ArrowRight, ArrowUpRight, Terminal } from 'lucide-react'
+import { Globe, Bot, Rocket, Cpu, ArrowRight, ArrowUpRight, Sparkles, CheckCircle2, Terminal, Layers, Code2, Zap, Activity, ShieldCheck } from 'lucide-react'
 import Link from 'next/link'
 import { useCursorState } from '@/hooks/useCursorState'
-import { motion, useMotionValue, animate, MotionValue } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValue, animate } from 'framer-motion'
 import { BrowserMockupAnimation } from '@/components/animations/BrowserMockupAnimation'
 import { NeuralNetworkAnimation } from '@/components/animations/NeuralNetworkAnimation'
 import { DocumentsAnimation } from '@/components/animations/DocumentsAnimation'
 import { GearsAnimation } from '@/components/animations/GearsAnimation'
 import { cn } from '@/lib/utils'
 
-// Data normalized for a scalable grid with Light/Dark mode support
+// --- Data Configuration ---
 const services = [
   {
-    id: 'web',
-    code: 'SYS.WEB_01',
-    icon: Globe,
-    title: 'Siti Web & WebApp',
-    description: "Esperienze digitali su misura che raccontano la tua storia e convertono i visitatori.",
-    price: '2.5k',
-    technologies: ['Next.js', 'React', 'Tailwind', 'Sanity'],
-    animationType: 'browser' as const,
-    href: '/servizi#websites',
-    colors: {
-      primary: 'text-cyan-600 dark:text-cyan-400',
-      border: 'border-cyan-200 dark:border-cyan-500/30',
-      bg: 'group-hover:bg-cyan-50/80 dark:group-hover:bg-cyan-950/30',
-      marker: 'bg-cyan-600 dark:bg-cyan-500',
-      iconBg: 'bg-cyan-50 dark:bg-cyan-950/20',
-    }
-  },
-  {
-    id: 'ai',
-    code: 'SYS.AI_CORE',
+    id: 'ai-automation',
+    number: '01',
+    title: 'AI Agents & Automations',
+    tagline: 'Efficienza Autonoma.',
+    description: "Trasformiamo i processi manuali in flussi di lavoro intelligenti che scalano senza errori.",
     icon: Bot,
-    title: 'AI Agents',
-    description: 'Assistenti intelligenti 24/7 che comprendono e agiscono autonomamente.',
-    price: '5k',
-    technologies: ['OpenAI', 'Anthropic', 'LangChain', 'Python'],
+    technologies: ['n8n', 'OpenAI', 'Python', 'LangChain'],
+    capabilities: [
+      { title: "Customer Service AI", desc: "Risoluzione ticket complessi 24/7." },
+      { title: "Analisi Documentale", desc: "Data-entry automatico da PDF e immagini." },
+      { title: "Lead Generation", desc: "Qualifica automatica dei prospect." },
+      { title: "Workflow Custom", desc: "Integrazione API tra sistemi legacy." }
+    ],
     animationType: 'neural' as const,
     href: '/servizi#ai-agents',
-    colors: {
-      primary: 'text-violet-600 dark:text-violet-400',
-      border: 'border-violet-200 dark:border-violet-500/30',
-      bg: 'group-hover:bg-violet-50/80 dark:group-hover:bg-violet-950/30',
-      marker: 'bg-violet-600 dark:bg-violet-500',
-      iconBg: 'bg-violet-50 dark:bg-violet-950/20',
-    }
+    color: 'from-violet-500 to-fuchsia-500',
+    iconColor: 'text-violet-500'
   },
   {
-    id: 'rag',
-    code: 'SYS.DATA_RAG',
-    icon: BrainCircuit,
-    title: 'Sistemi RAG',
-    description: 'La tua documentazione aziendale diventa una knowledge base interattiva.',
-    price: '4k',
-    technologies: ['Pinecone', 'LlamaIndex', 'Supabase'],
-    animationType: 'documents' as const,
-    href: '/servizi#rag',
-    colors: {
-      primary: 'text-emerald-600 dark:text-emerald-400',
-      border: 'border-emerald-200 dark:border-emerald-500/30',
-      bg: 'group-hover:bg-emerald-50/80 dark:group-hover:bg-emerald-950/30',
-      marker: 'bg-emerald-600 dark:bg-emerald-500',
-      iconBg: 'bg-emerald-50 dark:bg-emerald-950/20',
-    }
-  },
-  {
-    id: 'auto',
-    code: 'SYS.AUTO_BOT',
-    icon: Zap,
-    title: 'Automazioni',
-    description: 'Workflow intelligenti che eliminano il lavoro ripetitivo e manuale.',
-    price: '1k',
-    technologies: ['n8n', 'Zapier', 'Node.js'],
+    id: 'custom-software',
+    number: '02',
+    title: 'Custom Software & AI',
+    tagline: 'Enterprise Solutions.',
+    description: "Sviluppiamo il cuore tecnologico del tuo business con architetture moderne e sicure.",
+    icon: Cpu,
+    technologies: ['React', 'Node.js', 'Supabase', 'Docker'],
+    capabilities: [
+      { title: "SaaS Multi-tenant", desc: "Piattaforme scalabili per migliaia di utenti." },
+      { title: "ERP & CRM Custom", desc: "Gestionali cuciti sui tuoi processi reali." },
+      { title: "Dashboard AI", desc: "Visualizzazione dati con insight predittivi." },
+      { title: "API Development", desc: "Back-end robusti e documentati." }
+    ],
     animationType: 'gears' as const,
-    href: '/servizi#automations',
-    colors: {
-      primary: 'text-amber-600 dark:text-amber-400',
-      border: 'border-amber-200 dark:border-amber-500/30',
-      bg: 'group-hover:bg-amber-50/80 dark:group-hover:bg-amber-950/30',
-      marker: 'bg-amber-600 dark:bg-amber-500',
-      iconBg: 'bg-amber-50 dark:bg-amber-950/20',
-    }
+    href: '/servizi#software',
+    color: 'from-blue-500 to-cyan-500',
+    iconColor: 'text-blue-500'
+  },
+  {
+    id: 'mvp-dev',
+    number: '03',
+    title: 'MVP Development',
+    tagline: 'Speed to Market.',
+    description: "Riduciamo il time-to-market portando la tua idea in produzione in tempi record.",
+    icon: Rocket,
+    technologies: ['Next.js', 'Vercel', 'Rapid Proto'],
+    capabilities: [
+      { title: "Prototipazione", desc: "Da idea a codice in 4 settimane." },
+      { title: "Product Validation", desc: "Test delle feature core con utenti reali." },
+      { title: "Scalable V1", desc: "Codice pulito pronto per la crescita." },
+      { title: "Investor Ready", desc: "Design e performance che convincono." }
+    ],
+    animationType: 'documents' as const,
+    href: '/servizi#mvp',
+    color: 'from-amber-500 to-orange-500',
+    iconColor: 'text-amber-500'
+  },
+  {
+    id: 'web-experience',
+    number: '04',
+    title: 'Web & Digital Experience',
+    tagline: 'High-Impact Design.',
+    description: "Creiamo esperienze web che catturano l'attenzione e guidano alla conversione.",
+    icon: Globe,
+    technologies: ['WebGL', 'Three.js', 'Framer Motion'],
+    capabilities: [
+      { title: "E-Commerce 3D", desc: "Esperienze d'acquisto immersive." },
+      { title: "Storytelling Web", desc: "Narrazione interattiva del brand." },
+      { title: "Performance SEO", desc: "Velocità estrema e ranking elevato." },
+      { title: "UI/UX Warm Tech", desc: "Design moderno ma umano e intuitivo." }
+    ],
+    animationType: 'browser' as const,
+    href: '/servizi#websites',
+    color: 'from-emerald-500 to-teal-500',
+    iconColor: 'text-emerald-500'
   },
 ]
 
-// Animation Selector
-function ServiceAnimation({
-  type,
-  progress,
-}: {
-  type: 'browser' | 'neural' | 'documents' | 'gears'
-  progress: MotionValue<number>
-}) {
-  switch (type) {
-    case 'browser':
-      return <BrowserMockupAnimation progress={progress} />
-    case 'neural':
-      return <NeuralNetworkAnimation progress={progress} />
-    case 'documents':
-      return <DocumentsAnimation progress={progress} />
-    case 'gears':
-      return <GearsAnimation progress={progress} />
-  }
-}
-
-// Cleaner Service Card Component
-function ServiceCard({ service }: { service: (typeof services)[0] }) {
-  const { setCursorType } = useCursorState()
+// --- Animation Components ---
+function AnimationWrapper({ type }: { type: 'browser' | 'neural' | 'documents' | 'gears' }) {
   const progress = useMotionValue(0)
-  const Icon = service.icon
+  
+  useEffect(() => {
+    const controls = animate(progress, 1, { 
+      duration: 2, 
+      repeat: Infinity, 
+      repeatType: "reverse",
+      ease: "easeInOut"
+    })
+    return () => controls.stop()
+  }, [progress])
 
-  const handleMouseEnter = () => {
-    setCursorType('hover')
-    animate(progress, 1, { duration: 0.5 })
+  switch (type) {
+    case 'browser': return <BrowserMockupAnimation progress={progress} />
+    case 'neural': return <NeuralNetworkAnimation progress={progress} />
+    case 'documents': return <DocumentsAnimation progress={progress} />
+    case 'gears': return <GearsAnimation progress={progress} />
+    default: return null
   }
-
-  const handleMouseLeave = () => {
-    setCursorType('default')
-    animate(progress, 0, { duration: 0.5 })
-  }
-
-  return (
-    <motion.div
-      className={cn(
-        'group relative flex flex-col h-full min-h-[320px] rounded-2xl overflow-hidden',
-        'bg-white dark:bg-surface/50 backdrop-blur-sm',
-        'border border-slate-200 dark:border-white/10',
-        'shadow-sm dark:shadow-none',
-        'hover:shadow-md dark:hover:shadow-none',
-        'hover:border-slate-300 dark:hover:border-white/20',
-        'transition-all duration-300 hover:-translate-y-1'
-      )}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {/* Background Hover Effect */}
-      <div className={cn(
-        "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500",
-        service.colors.bg
-      )} />
-
-      {/* Top Bar: Code & Status */}
-      <div className="relative z-10 flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-white/5">
-        <span className={cn("text-[10px] font-mono tracking-widest opacity-80", service.colors.primary)}>
-          {service.code}
-        </span>
-        <div className="flex gap-1.5">
-          <div className={cn("w-1.5 h-1.5 rounded-full", service.colors.marker)} />
-        </div>
-      </div>
-      
-      {/* Animation Area */}
-      <div className="relative h-32 w-full overflow-hidden border-b border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-black/20">
-        <div className="absolute inset-0 opacity-50 group-hover:opacity-100 transition-opacity duration-500">
-           <ServiceAnimation type={service.animationType} progress={progress} />
-        </div>
-      </div>
-
-      {/* Content Area */}
-      <div className="relative z-10 flex-1 flex flex-col p-6">
-        <div className="flex items-center gap-3 mb-4">
-          <div className={cn(
-            "p-2 rounded-lg border transition-colors",
-            "bg-white dark:bg-surface border-slate-200 dark:border-white/5",
-            "group-hover:border-slate-300 dark:group-hover:border-white/20",
-            service.colors.primary
-          )}>
-            <Icon className="w-5 h-5" />
-          </div>
-          <h3 className="text-xl font-display font-bold text-slate-900 dark:text-text-primary group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
-            {service.title}
-          </h3>
-        </div>
-        
-        <p className="text-slate-600 dark:text-text-secondary text-sm leading-relaxed mb-6 group-hover:text-slate-700 dark:group-hover:text-text-primary/80 transition-colors">
-          {service.description}
-        </p>
-
-        {/* Tech Stack Footer */}
-        <div className="mt-auto pt-4 border-t border-slate-100 dark:border-white/5 flex flex-wrap gap-2">
-           {service.technologies.slice(0, 3).map((tech) => (
-             <span
-               key={tech}
-               className="text-[10px] font-mono px-2 py-1 rounded bg-slate-100 dark:bg-surface/50 text-slate-500 dark:text-text-muted border border-slate-200 dark:border-white/5 group-hover:bg-white dark:group-hover:bg-surface/80 transition-colors"
-             >
-               {tech}
-             </span>
-           ))}
-        </div>
-      </div>
-
-      {/* Full Card Link */}
-      <Link 
-        href={service.href} 
-        className="absolute inset-0 z-20 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-2xl"
-        aria-label={`Scopri di più su ${service.title}`}
-      >
-        <span className="sr-only">Vedi dettagli</span>
-      </Link>
-      
-      {/* Corner Icon on Hover */}
-      <div className={cn(
-        "absolute bottom-4 right-4 pointer-events-none opacity-0 transform translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300",
-        service.colors.primary
-      )}>
-        <ArrowUpRight className="w-5 h-5" />
-      </div>
-    </motion.div>
-  )
 }
 
+// --- Main Component ---
 export function ServicesPreview() {
+  const [activeId, setActiveId] = useState<string>(services[0].id)
   const { setCursorType } = useCursorState()
-  const ref = useRef(null)
+  const sectionRef = useRef(null)
+
+  // Find active service data
+  const activeService = services.find(s => s.id === activeId) || services[0]
 
   return (
-    <Section ref={ref} id="servizi" className="py-24 md:py-32 relative">
+    <Section ref={sectionRef} id="servizi" className="py-24 md:py-32 bg-slate-50/50 dark:bg-background/50 relative overflow-hidden">
+      
+      {/* Background Decor */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none opacity-50" />
+      
       <Container>
-        {/* Section Header */}
-        <FadeIn className="mb-16 md:mb-20 flex flex-col md:flex-row items-end justify-between gap-8">
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-2 mb-4 text-primary font-mono text-xs tracking-widest uppercase">
-              <Terminal className="w-4 h-4" />
-              <span>System Modules</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-              Cosa Facciamo
-            </h2>
-            <p className="text-lg text-text-secondary leading-relaxed max-w-xl">
-              Uniamo il design &apos;Warm Tech&apos; con la potenza dell&apos;AI per costruire ecosistemi digitali che evolvono insieme al tuo business.
-            </p>
+        {/* Header */}
+        <FadeIn className="mb-12 md:mb-20">
+          <div className="flex items-center gap-2 mb-4 text-primary font-mono text-xs tracking-widest uppercase">
+            <Activity className="w-4 h-4" />
+            <span>Systems Architecture</span>
           </div>
-          
-          <Button 
-            asChild 
-            variant="ghost" 
-            className="hidden md:inline-flex group border border-border/50 hover:bg-surface/50"
-            onMouseEnter={() => setCursorType('hover')}
-            onMouseLeave={() => setCursorType('default')}
-          >
-            <Link href="/servizi">
-              Tutti i Servizi 
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </Button>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-slate-900 dark:text-white">
+            Soluzioni che <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">
+              fanno la differenza.
+            </span>
+          </h2>
         </FadeIn>
 
-        {/* Scalable Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <FadeIn key={service.id} delay={index * 0.1}>
-              <ServiceCard service={service} />
-            </FadeIn>
-          ))}
-        </div>
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+          
+          {/* LEFT COLUMN: Navigation (Ultra Compact) - 3/12 columns */}
+          <div className="lg:col-span-3 space-y-3">
+            {services.map((service) => (
+              <div 
+                key={service.id}
+                onMouseEnter={() => setActiveId(service.id)}
+                className="relative"
+              >
+                <motion.div
+                  layout
+                  className={cn(
+                    "group relative p-4 rounded-xl border transition-all duration-300 cursor-pointer overflow-hidden",
+                    activeId === service.id 
+                      ? "bg-white dark:bg-surface border-slate-200 dark:border-white/10 shadow-lg" 
+                      : "bg-transparent border-transparent hover:bg-slate-100 dark:hover:bg-white/5 opacity-70 hover:opacity-100"
+                  )}
+                  onClick={() => setActiveId(service.id)}
+                >
+                  <div className="flex items-center gap-4">
+                    <span className={cn(
+                      "font-mono text-[10px] tracking-widest transition-colors",
+                      activeId === service.id ? "text-primary" : "text-slate-400 dark:text-gray-500"
+                    )}>
+                      {service.number}
+                    </span>
+                    
+                    <h3 className={cn(
+                      "text-base md:text-lg font-display font-bold transition-colors flex-1",
+                      activeId === service.id ? "text-slate-900 dark:text-white" : "text-slate-600 dark:text-gray-400"
+                    )}>
+                      {service.title}
+                    </h3>
+                  </div>
 
-        {/* Mobile CTA */}
-        <div className="mt-12 text-center md:hidden">
-          <Button asChild>
-            <Link href="/servizi">
-              Esplora Tutti i Servizi
-            </Link>
-          </Button>
+                  {/* Mobile Accordion Content */}
+                  <div className="lg:hidden">
+                    <AnimatePresence>
+                      {activeId === service.id && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden"
+                        >
+                           <div className="pt-6 mt-4 border-t border-slate-100 dark:border-white/5">
+                              <p className="text-sm text-slate-600 dark:text-gray-400 mb-6">{service.description}</p>
+                              
+                              <div className="grid gap-4 mb-6">
+                                {service.capabilities.map((cap, i) => (
+                                  <div key={i} className="flex items-start gap-2">
+                                    <CheckCircle2 className={cn("w-4 h-4 mt-0.5 flex-shrink-0", service.iconColor)} />
+                                    <span className="text-sm font-bold text-slate-800 dark:text-white">{cap.title}</span>
+                                  </div>
+                                ))}
+                              </div>
+                              
+                              <Link href={service.href} className="text-xs font-bold uppercase tracking-wider text-primary flex items-center gap-1">
+                                Scopri di più <ArrowUpRight className="w-3 h-3" />
+                              </Link>
+                           </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </motion.div>
+              </div>
+            ))}
+          </div>
+
+          {/* RIGHT COLUMN: Rich Preview Card - 9/12 columns */}
+          <div className="lg:col-span-9 hidden lg:block h-[580px] sticky top-32">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeId}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="h-full w-full rounded-3xl bg-white dark:bg-surface border border-slate-200 dark:border-white/10 shadow-2xl overflow-hidden flex flex-row relative"
+              >
+                {/* Content Area (Left 65%) */}
+                <div className="w-[65%] p-10 flex flex-col relative z-10">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className={cn("p-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 shadow-sm", activeService.iconColor)}>
+                       <activeService.icon className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <span className={cn("text-xs font-mono uppercase tracking-widest", activeService.iconColor)}>
+                        {activeService.tagline}
+                      </span>
+                      <h3 className="text-3xl font-display font-bold text-slate-900 dark:text-white">
+                        {activeService.title}
+                      </h3>
+                    </div>
+                  </div>
+                  
+                  <p className="text-lg text-slate-600 dark:text-gray-300 leading-relaxed mb-10 max-w-xl">
+                    {activeService.description}
+                  </p>
+
+                  <div className="flex-1">
+                     <h4 className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-slate-400 dark:text-gray-500 mb-6">
+                        <Terminal className="w-3 h-3" />
+                        Specifiche Modulo:
+                     </h4>
+                     
+                     {/* 2-Column Grid for Capabilities */}
+                     <div className="grid grid-cols-2 gap-x-8 gap-y-6">
+                       {activeService.capabilities.map((cap, i) => (
+                         <div key={i} className="group/item">
+                           <div className="flex items-start gap-3">
+                             <div className={cn("mt-1 w-5 h-5 rounded-full flex items-center justify-center bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 flex-shrink-0 group-hover/item:border-primary/30 transition-colors")}>
+                                <CheckCircle2 className={cn("w-3 h-3", activeService.iconColor)} />
+                             </div>
+                             <div>
+                               <strong className="block text-sm text-slate-900 dark:text-white mb-0.5 group-hover/item:text-primary transition-colors">{cap.title}</strong>
+                               <span className="text-xs text-slate-500 dark:text-gray-400 leading-tight block">{cap.desc}</span>
+                             </div>
+                           </div>
+                         </div>
+                       ))}
+                     </div>
+                  </div>
+
+                  <div className="mt-auto pt-8 flex items-center justify-between border-t border-slate-100 dark:border-white/5">
+                     <div className="flex gap-3">
+                        {activeService.technologies.map(tech => (
+                          <span key={tech} className="px-2 py-1 bg-slate-50 dark:bg-white/5 text-slate-500 dark:text-gray-400 text-[10px] font-mono rounded border border-slate-200 dark:border-white/5 uppercase tracking-wider">
+                            {tech}
+                          </span>
+                        ))}
+                     </div>
+                     <Button asChild size="sm" className="rounded-full px-6">
+                        <Link href={activeService.href}>Scheda Tecnica</Link>
+                     </Button>
+                  </div>
+                </div>
+
+                {/* Visual Area (Right 35%) */}
+                <div className="w-[35%] relative bg-slate-50/50 dark:bg-black/10 border-l border-slate-100 dark:border-white/5 flex items-center justify-center p-8">
+                   {/* Background Glow */}
+                   <div className={cn(
+                     "absolute inset-0 opacity-10 blur-[60px] bg-gradient-to-br",
+                     activeService.color
+                   )} />
+                   
+                   {/* Floating Animation Window */}
+                   <div className="w-full relative z-10">
+                      <div className="relative aspect-square rounded-2xl bg-white/80 dark:bg-surface/80 backdrop-blur-xl border border-white dark:border-white/10 shadow-2xl p-6 overflow-hidden">
+                        <div className="absolute top-0 left-0 right-0 h-6 border-b border-slate-100 dark:border-white/5 flex items-center px-3 gap-1">
+                           <div className="w-1.5 h-1.5 rounded-full bg-slate-200 dark:bg-white/10" />
+                           <div className="w-1.5 h-1.5 rounded-full bg-slate-200 dark:bg-white/10" />
+                        </div>
+                        <div className="w-full h-full flex items-center justify-center pt-4">
+                           <div className="w-full h-full opacity-80 group-hover:opacity-100 transition-opacity">
+                              <AnimationWrapper type={activeService.animationType} />
+                           </div>
+                        </div>
+                      </div>
+                      
+                      {/* Secondary Decor Elements */}
+                      <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-white dark:bg-surface border border-slate-100 dark:border-white/10 shadow-lg flex items-center justify-center text-primary">
+                         <ShieldCheck className="w-6 h-6" />
+                      </div>
+                      <div className="absolute -bottom-4 -left-4 w-12 h-12 rounded-full bg-white dark:bg-surface border border-slate-100 dark:border-white/10 shadow-lg flex items-center justify-center text-primary">
+                         <Zap className="w-6 h-6" />
+                      </div>
+                   </div>
+                </div>
+
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
         </div>
       </Container>
     </Section>
   )
 }
-
