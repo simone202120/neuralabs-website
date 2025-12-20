@@ -399,6 +399,7 @@
 | 2025-12-17 | 6 | Feat | Nuova sezione "IdeaTalk" con chat olografica animata |
 | 2025-12-17 | 6 | Refactor | Redesign Footer in stile "Dashboard" tecnico |
 | 2025-12-18 | 6 | Refactor | Redesign completo pagina Chi Siamo (Hero, Values Bento Grid, Timeline Storia, Team Grid) |
+| 2025-12-20 | 6 | Refactor | Semplificata sezione Servizi (homepage) da Bento Grid a Grid scalabile per migliore leggibilità e UX |
 
 ---
 
