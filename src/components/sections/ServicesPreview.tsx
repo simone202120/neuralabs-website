@@ -3,7 +3,6 @@
 import { useRef } from 'react'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
-import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { FadeIn } from '@/components/animations'
 import { Globe, Bot, BrainCircuit, Zap, ArrowRight, ArrowUpRight, Terminal } from 'lucide-react'
@@ -16,7 +15,7 @@ import { DocumentsAnimation } from '@/components/animations/DocumentsAnimation'
 import { GearsAnimation } from '@/components/animations/GearsAnimation'
 import { cn } from '@/lib/utils'
 
-// Data with integrated technologies and new color palettes
+// Data normalized for a scalable grid with Light/Dark mode support
 const services = [
   {
     id: 'web',
@@ -27,15 +26,13 @@ const services = [
     price: '2.5k',
     technologies: ['Next.js', 'React', 'Tailwind', 'Sanity'],
     animationType: 'browser' as const,
-    colSpan: 'md:col-span-2',
-    rowSpan: 'md:row-span-1',
     href: '/servizi#websites',
     colors: {
-      primary: 'text-cyan-400',
-      border: 'border-cyan-500/30',
-      glow: 'shadow-cyan-500/20',
-      bg: 'bg-cyan-950/10',
-      marker: 'bg-cyan-500',
+      primary: 'text-cyan-600 dark:text-cyan-400',
+      border: 'border-cyan-200 dark:border-cyan-500/30',
+      bg: 'group-hover:bg-cyan-50/80 dark:group-hover:bg-cyan-950/30',
+      marker: 'bg-cyan-600 dark:bg-cyan-500',
+      iconBg: 'bg-cyan-50 dark:bg-cyan-950/20',
     }
   },
   {
@@ -43,19 +40,17 @@ const services = [
     code: 'SYS.AI_CORE',
     icon: Bot,
     title: 'AI Agents',
-    description: 'Assistenti intelligenti 24/7 che comprendono e agiscono.',
+    description: 'Assistenti intelligenti 24/7 che comprendono e agiscono autonomamente.',
     price: '5k',
     technologies: ['OpenAI', 'Anthropic', 'LangChain', 'Python'],
     animationType: 'neural' as const,
-    colSpan: 'md:col-span-1',
-    rowSpan: 'md:row-span-2',
     href: '/servizi#ai-agents',
     colors: {
-      primary: 'text-violet-400',
-      border: 'border-violet-500/30',
-      glow: 'shadow-violet-500/20',
-      bg: 'bg-violet-950/10',
-      marker: 'bg-violet-500',
+      primary: 'text-violet-600 dark:text-violet-400',
+      border: 'border-violet-200 dark:border-violet-500/30',
+      bg: 'group-hover:bg-violet-50/80 dark:group-hover:bg-violet-950/30',
+      marker: 'bg-violet-600 dark:bg-violet-500',
+      iconBg: 'bg-violet-50 dark:bg-violet-950/20',
     }
   },
   {
@@ -63,19 +58,17 @@ const services = [
     code: 'SYS.DATA_RAG',
     icon: BrainCircuit,
     title: 'Sistemi RAG',
-    description: 'La tua documentazione diventa una knowledge base interattiva.',
+    description: 'La tua documentazione aziendale diventa una knowledge base interattiva.',
     price: '4k',
     technologies: ['Pinecone', 'LlamaIndex', 'Supabase'],
     animationType: 'documents' as const,
-    colSpan: 'md:col-span-1',
-    rowSpan: 'md:row-span-1',
     href: '/servizi#rag',
     colors: {
-      primary: 'text-emerald-400',
-      border: 'border-emerald-500/30',
-      glow: 'shadow-emerald-500/20',
-      bg: 'bg-emerald-950/10',
-      marker: 'bg-emerald-500',
+      primary: 'text-emerald-600 dark:text-emerald-400',
+      border: 'border-emerald-200 dark:border-emerald-500/30',
+      bg: 'group-hover:bg-emerald-50/80 dark:group-hover:bg-emerald-950/30',
+      marker: 'bg-emerald-600 dark:bg-emerald-500',
+      iconBg: 'bg-emerald-50 dark:bg-emerald-950/20',
     }
   },
   {
@@ -83,19 +76,17 @@ const services = [
     code: 'SYS.AUTO_BOT',
     icon: Zap,
     title: 'Automazioni',
-    description: 'Workflow che eliminano il lavoro ripetitivo.',
+    description: 'Workflow intelligenti che eliminano il lavoro ripetitivo e manuale.',
     price: '1k',
     technologies: ['n8n', 'Zapier', 'Node.js'],
     animationType: 'gears' as const,
-    colSpan: 'md:col-span-1',
-    rowSpan: 'md:row-span-1',
     href: '/servizi#automations',
     colors: {
-      primary: 'text-amber-400',
-      border: 'border-amber-500/30',
-      glow: 'shadow-amber-500/20',
-      bg: 'bg-amber-950/10',
-      marker: 'bg-amber-500',
+      primary: 'text-amber-600 dark:text-amber-400',
+      border: 'border-amber-200 dark:border-amber-500/30',
+      bg: 'group-hover:bg-amber-50/80 dark:group-hover:bg-amber-950/30',
+      marker: 'bg-amber-600 dark:bg-amber-500',
+      iconBg: 'bg-amber-50 dark:bg-amber-950/20',
     }
   },
 ]
@@ -120,8 +111,8 @@ function ServiceAnimation({
   }
 }
 
-// Tech HUD Card Component
-function BentoCard({ service }: { service: (typeof services)[0] }) {
+// Cleaner Service Card Component
+function ServiceCard({ service }: { service: (typeof services)[0] }) {
   const { setCursorType } = useCursorState()
   const progress = useMotionValue(0)
   const Icon = service.icon
@@ -139,112 +130,88 @@ function BentoCard({ service }: { service: (typeof services)[0] }) {
   return (
     <motion.div
       className={cn(
-        'group relative h-full overflow-hidden transition-all duration-500',
-        service.colSpan,
-        service.rowSpan
+        'group relative flex flex-col h-full min-h-[320px] rounded-2xl overflow-hidden',
+        'bg-white dark:bg-surface/50 backdrop-blur-sm',
+        'border border-slate-200 dark:border-white/10',
+        'shadow-sm dark:shadow-none',
+        'hover:shadow-md dark:hover:shadow-none',
+        'hover:border-slate-300 dark:hover:border-white/20',
+        'transition-all duration-300 hover:-translate-y-1'
       )}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Invisible Container Base */}
+      {/* Background Hover Effect */}
       <div className={cn(
-        "absolute inset-0 bg-surface/5 backdrop-blur-[2px] transition-colors duration-500",
-        `group-hover:${service.colors.bg}`
+        "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+        service.colors.bg
       )} />
 
-      {/* Tech HUD Corners (The "Brackets") */}
-      <>
-        {/* Top Left */}
-        <div className={cn("absolute top-0 left-0 w-8 h-8 border-t border-l transition-colors duration-300 border-border/20", `group-hover:${service.colors.border}`)} />
-        {/* Top Right */}
-        <div className={cn("absolute top-0 right-0 w-8 h-8 border-t border-r transition-colors duration-300 border-border/20", `group-hover:${service.colors.border}`)} />
-        {/* Bottom Left */}
-        <div className={cn("absolute bottom-0 left-0 w-8 h-8 border-b border-l transition-colors duration-300 border-border/20", `group-hover:${service.colors.border}`)} />
-        {/* Bottom Right */}
-        <div className={cn("absolute bottom-0 right-0 w-8 h-8 border-b border-r transition-colors duration-300 border-border/20", `group-hover:${service.colors.border}`)} />
-      </>
-
-      {/* Tech Status Line (Top) */}
-      <div className="absolute top-4 left-6 right-6 flex justify-between items-center opacity-40 group-hover:opacity-100 transition-opacity duration-500">
-        <span className={cn("text-[10px] font-mono tracking-widest", service.colors.primary)}>
+      {/* Top Bar: Code & Status */}
+      <div className="relative z-10 flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-white/5">
+        <span className={cn("text-[10px] font-mono tracking-widest opacity-80", service.colors.primary)}>
           {service.code}
         </span>
-        <div className="flex gap-1">
-          <div className={cn("w-1 h-1 rounded-full", service.colors.marker)} />
-          <div className={cn("w-1 h-1 rounded-full opacity-30", service.colors.marker)} />
-          <div className={cn("w-1 h-1 rounded-full opacity-30", service.colors.marker)} />
+        <div className="flex gap-1.5">
+          <div className={cn("w-1.5 h-1.5 rounded-full", service.colors.marker)} />
         </div>
       </div>
       
-      {/* Animation Layer */}
-      <div className="absolute inset-0 opacity-40 group-hover:opacity-80 transition-opacity duration-500">
-        <ServiceAnimation type={service.animationType} progress={progress} />
+      {/* Animation Area */}
+      <div className="relative h-32 w-full overflow-hidden border-b border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-black/20">
+        <div className="absolute inset-0 opacity-50 group-hover:opacity-100 transition-opacity duration-500">
+           <ServiceAnimation type={service.animationType} progress={progress} />
+        </div>
       </div>
 
-      {/* Content Container */}
-      <div className="relative z-10 h-full flex flex-col justify-between p-6 md:p-8 pointer-events-none">
-        {/* Empty top space for animation visibility */}
-        <div className="h-12" />
-
-        {/* Text Content */}
-        <div className="space-y-6 mt-auto">
-          <div className="space-y-3">
-            <div className="flex items-center gap-3">
-              <div className={cn(
-                "p-2 rounded-lg bg-surface/50 backdrop-blur-md border border-white/5",
-                service.colors.primary
-              )}>
-                <Icon className="w-6 h-6" />
-              </div>
-              <h3 className={cn(
-                "text-2xl font-display font-bold transition-colors",
-                "text-text-primary group-hover:text-white"
-              )}>
-                {service.title}
-              </h3>
-            </div>
-            
-            <p className="text-text-secondary text-sm md:text-base leading-relaxed line-clamp-3 group-hover:text-text-primary/80 transition-colors">
-              {service.description}
-            </p>
-          </div>
-
-          {/* Footer: Tech & Price */}
-          <div className="flex items-end justify-between pt-4 border-t border-white/5">
-             <div className="flex flex-wrap gap-2">
-                {service.technologies.slice(0, 3).map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-surface/30 text-text-muted border border-white/5"
-                  >
-                    {tech}
-                  </span>
-                ))}
-             </div>
-             
-             <div className={cn(
-               "text-sm font-mono font-bold opacity-60 group-hover:opacity-100 transition-opacity",
-               service.colors.primary
-             )}>
-               {'>'} {service.price}
-             </div>
-          </div>
-        </div>
-
-        {/* Hover Action */}
-        <Link 
-          href={service.href} 
-          className="absolute inset-0 z-20 pointer-events-auto"
-          aria-label={`Scopri di più su ${service.title}`}
-        >
-          {/* Corner Action Button */}
+      {/* Content Area */}
+      <div className="relative z-10 flex-1 flex flex-col p-6">
+        <div className="flex items-center gap-3 mb-4">
           <div className={cn(
-            "absolute bottom-0 right-0 p-3 bg-surface/80 backdrop-blur-sm border-t border-l border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300",
-            `hover:${service.colors.primary}`
+            "p-2 rounded-lg border transition-colors",
+            "bg-white dark:bg-surface border-slate-200 dark:border-white/5",
+            "group-hover:border-slate-300 dark:group-hover:border-white/20",
+            service.colors.primary
           )}>
-            <ArrowUpRight className={cn("w-5 h-5", service.colors.primary)} />
+            <Icon className="w-5 h-5" />
           </div>
-        </Link>
+          <h3 className="text-xl font-display font-bold text-slate-900 dark:text-text-primary group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
+            {service.title}
+          </h3>
+        </div>
+        
+        <p className="text-slate-600 dark:text-text-secondary text-sm leading-relaxed mb-6 group-hover:text-slate-700 dark:group-hover:text-text-primary/80 transition-colors">
+          {service.description}
+        </p>
+
+        {/* Tech Stack Footer */}
+        <div className="mt-auto pt-4 border-t border-slate-100 dark:border-white/5 flex flex-wrap gap-2">
+           {service.technologies.slice(0, 3).map((tech) => (
+             <span
+               key={tech}
+               className="text-[10px] font-mono px-2 py-1 rounded bg-slate-100 dark:bg-surface/50 text-slate-500 dark:text-text-muted border border-slate-200 dark:border-white/5 group-hover:bg-white dark:group-hover:bg-surface/80 transition-colors"
+             >
+               {tech}
+             </span>
+           ))}
+        </div>
+      </div>
+
+      {/* Full Card Link */}
+      <Link 
+        href={service.href} 
+        className="absolute inset-0 z-20 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-2xl"
+        aria-label={`Scopri di più su ${service.title}`}
+      >
+        <span className="sr-only">Vedi dettagli</span>
+      </Link>
+      
+      {/* Corner Icon on Hover */}
+      <div className={cn(
+        "absolute bottom-4 right-4 pointer-events-none opacity-0 transform translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300",
+        service.colors.primary
+      )}>
+        <ArrowUpRight className="w-5 h-5" />
       </div>
     </motion.div>
   )
@@ -258,19 +225,17 @@ export function ServicesPreview() {
     <Section ref={ref} id="servizi" className="py-24 md:py-32 relative">
       <Container>
         {/* Section Header */}
-        <FadeIn className="mb-16 md:mb-24 flex flex-col md:flex-row items-end justify-between gap-8">
+        <FadeIn className="mb-16 md:mb-20 flex flex-col md:flex-row items-end justify-between gap-8">
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 mb-4 text-primary font-mono text-xs tracking-widest uppercase">
               <Terminal className="w-4 h-4" />
               <span>System Modules</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
               Cosa Facciamo
             </h2>
-            <p className="text-lg md:text-xl text-text-secondary leading-relaxed">
-              In un mondo digitale in continua accelerazione, non basta più esserci: bisogna evolvere.
-              Uniamo il design &apos;Warm Tech&apos; con la potenza dell&apos;Intelligenza Artificiale per costruire ecosistemi digitali che non sono solo strumenti, ma veri partner per il tuo business.
-              Dallo sviluppo web sartoriale agli agenti autonomi, trasformiamo la complessità tecnologica in un vantaggio competitivo semplice, intuitivo e umano.
+            <p className="text-lg text-text-secondary leading-relaxed max-w-xl">
+              Uniamo il design &apos;Warm Tech&apos; con la potenza dell&apos;AI per costruire ecosistemi digitali che evolvono insieme al tuo business.
             </p>
           </div>
           
@@ -288,11 +253,11 @@ export function ServicesPreview() {
           </Button>
         </FadeIn>
 
-        {/* Tech HUD Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[minmax(320px,auto)]">
+        {/* Scalable Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {services.map((service, index) => (
-            <FadeIn key={service.id} delay={index * 0.1} className={cn(service.colSpan, service.rowSpan, "h-full")}>
-              <BentoCard service={service} />
+            <FadeIn key={service.id} delay={index * 0.1}>
+              <ServiceCard service={service} />
             </FadeIn>
           ))}
         </div>

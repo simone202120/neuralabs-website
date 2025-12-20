@@ -53,7 +53,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-center pt-32 pb-12 overflow-hidden">
       <ParticleHero />
       
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-background/80 via-background/40 to-transparent" />
@@ -61,7 +61,7 @@ export function HeroSection() {
       <Container className="z-10 relative">
         <div className="max-w-4xl">
           <FadeIn delay={0.2}>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface/50 backdrop-blur-md border border-white/10 text-sm font-medium text-primary mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface/50 backdrop-blur-md border border-white/10 text-sm font-medium text-primary mb-4 md:mb-6">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
@@ -70,7 +70,7 @@ export function HeroSection() {
             </div>
           </FadeIn>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight leading-tight min-h-[300px] md:min-h-[350px]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold tracking-tight leading-tight min-h-[180px] sm:min-h-[240px] md:min-h-[300px]">
             <FadeIn delay={0.4}>
               <span className="block text-text-primary">Transform your</span>
               <span className="block text-text-primary mb-2">business into</span>
@@ -80,24 +80,16 @@ export function HeroSection() {
             </span>
           </h1>
 
-          <FadeIn delay={0.6} className="mt-12 flex flex-col sm:flex-row gap-5">
-            <Button asChild size="lg" className="text-lg px-8 h-14 rounded-full">
+          <FadeIn delay={0.6} className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-5">
+            <Button asChild size="lg" className="text-lg px-8 h-12 md:h-14 rounded-full">
               <Link href="/progetti">Start Evolution</Link>
             </Button>
-            <Button asChild variant="ghost" size="lg" className="text-lg px-8 h-14 rounded-full border border-white/10 hover:bg-white/5">
+            <Button asChild variant="ghost" size="lg" className="text-lg px-8 h-12 md:h-14 rounded-full border border-white/10 hover:bg-white/5">
               <Link href="/contatti">Chat with AI →</Link>
             </Button>
           </FadeIn>
         </div>
       </Container>
-      
-      {/* Scroll Indicator - Left aligned */}
-      <FadeIn delay={1.5} className="absolute bottom-10 left-8 md:left-12 hidden md:block">
-        <div className="flex items-center gap-4 text-text-muted/60 text-xs font-mono tracking-widest">
-          <div className="h-[1px] w-12 bg-primary/50" />
-          SCROLL TO EXPLORE
-        </div>
-      </FadeIn>
     </section>
   )
 }
