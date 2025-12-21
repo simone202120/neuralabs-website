@@ -206,6 +206,7 @@ export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
               r="2"
               className="fill-green-500 dark:fill-green-400"
               filter="url(#docGlow)"
+              initial={{ cx: 115 + i * 30, cy: 145 }}
               animate={{
                 cx: [115 + i * 30, 115 + i * 30],
                 cy: [145, 135],

@@ -82,7 +82,7 @@ export default function RootLayout({
   return (
     <html lang="it" suppressHydrationWarning>
       <body
-        className={`${plusJakartaSans.variable} ${outfit.variable} ${jetBrainsMono.variable} cursor-none`}
+        className={`${plusJakartaSans.variable} ${outfit.variable} ${jetBrainsMono.variable} md:cursor-none`}
       >
           <ClientProviders>
             <div className="flex flex-col min-h-screen">

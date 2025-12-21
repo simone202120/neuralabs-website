@@ -116,6 +116,10 @@ export function NeuralNetworkAnimation({ progress }: NeuralNetworkAnimationProps
                 style={{
                   opacity: pulseOpacity,
                 }}
+                initial={{
+                  x2: from.x,
+                  y2: from.y
+                }}
                 animate={{
                   x2: [from.x, to.x],
                   y2: [from.y, to.y],
@@ -177,6 +181,7 @@ export function NeuralNetworkAnimation({ progress }: NeuralNetworkAnimationProps
                 className="fill-none stroke-primary"
                 strokeWidth="2"
                 style={{ opacity: pulseOpacity }}
+                initial={{ r: 4, opacity: 0.8 }}
                 animate={{
                   r: [4, 12, 4],
                   opacity: [0.8, 0, 0.8],
@@ -202,6 +207,7 @@ export function NeuralNetworkAnimation({ progress }: NeuralNetworkAnimationProps
               r="3"
               className="fill-primary"
               filter="url(#glow)"
+              initial={{ cx: 80, cy: 150 + i * 50 }}
               animate={{
                 cx: [80, 480],
                 cy: [150 + i * 50, 150 + i * 50],
