@@ -209,6 +209,7 @@ export function GearsAnimation({ progress }: GearsAnimationProps) {
               r="3"
               className="fill-yellow-500 dark:fill-yellow-400"
               filter="url(#gearGlow)"
+              initial={{ cx: 140, cy: 150 }}
               animate={{
                 cx: [140, 250, 260, 330],
                 cy: [150, 110, 190, 150],

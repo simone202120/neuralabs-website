@@ -53,7 +53,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center pt-32 pb-12 overflow-hidden">
+    <section className="relative min-h-[85vh] md:min-h-screen flex flex-col justify-center pt-12 md:pt-32 pb-12 overflow-hidden">
       <ParticleHero />
       
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-background/80 via-background/40 to-transparent" />

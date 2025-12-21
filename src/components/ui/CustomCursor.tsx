@@ -104,7 +104,7 @@ export function CustomCursor() {
         translateX: cursorXSpring,
         translateY: cursorYSpring,
       }}
-      className="fixed top-0 left-0 z-[9999] pointer-events-none -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
+      className="hidden md:flex fixed top-0 left-0 z-[9999] pointer-events-none -translate-x-1/2 -translate-y-1/2 items-center justify-center"
     >
       {/* Outer Ring */}
       <motion.div
