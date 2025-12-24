@@ -5,7 +5,7 @@ import { Methodology_Sticky } from '@/components/sections/Methodology_Sticky'
 import { Methodology_Bento } from '@/components/sections/Methodology_Bento'
 import { Methodology_Cards } from '@/components/sections/Methodology_Cards'
 import { Methodology_Concrete } from '@/components/sections/Methodology_Concrete'
-import { IdeaTalk } from '@/components/sections/IdeaTalk'
+import { BookingOptions } from '@/components/sections/BookingOptions'
 
 export default function Home() {
   return (
@@ -28,7 +28,7 @@ export default function Home() {
       {/* <Methodology_Cards /> */}
       <Methodology_Concrete />
 
-      <IdeaTalk />
+      <BookingOptions />
     </main>
   )
 }
