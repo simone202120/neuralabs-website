@@ -54,70 +54,73 @@ const ServiceBlueprintCard = ({ service, index }: { service: ServiceData; index:
     <motion.div
       layout
       className={cn(
-        "group relative overflow-hidden rounded-lg border transition-all duration-500",
+        "group relative overflow-hidden rounded-3xl border transition-all duration-500",
         // Light Mode: Technical Paper Style with subtle gradient
-        "bg-gradient-to-br from-white to-slate-50 border-slate-200 text-slate-800 shadow-sm hover:shadow-md",
+        "bg-white border-slate-200 text-slate-800 shadow-sm hover:shadow-lg",
         // Dark Mode: Cyberpunk/HUD Style with stronger contrast
-        "dark:from-surface dark:to-surface-light/50 dark:border-white/5 dark:text-gray-300",
+        "dark:bg-surface dark:border-white/5 dark:text-gray-300",
         // Expanded State: Glowing Border & subtle color wash
         isExpanded 
-          ? "ring-1 ring-primary dark:ring-primary shadow-[0_0_30px_-10px_rgba(255,107,53,0.15)] dark:shadow-[0_0_30px_-10px_rgba(255,107,53,0.3)] bg-primary/[0.02] dark:bg-primary/[0.05]" 
-          : "hover:border-primary/50 dark:hover:border-primary/50"
+          ? cn("ring-1 shadow-2xl", service.ringColor, service.borderColor) 
+          : "hover:border-slate-300 dark:hover:border-white/20"
       )}
     >
       {/* Active Scanline Effect (Dark Mode only, subtle) */}
       <div className={cn(
-        "absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.03] to-transparent pointer-events-none transition-transform duration-1000 ease-in-out",
-        isExpanded ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+        "absolute inset-0 bg-gradient-to-b from-transparent via-current to-transparent pointer-events-none transition-transform duration-1000 ease-in-out opacity-5",
+        isExpanded ? "translate-y-0" : "-translate-y-full",
+        service.iconColor
       )} />
 
       {/* HUD Corner Accents (Decorative) */}
-      <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:w-4 group-hover:h-4" />
-      <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-primary opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:w-4 group-hover:h-4" />
-      <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-primary opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:w-4 group-hover:h-4" />
-      <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:w-4 group-hover:h-4" />
+      <div className={cn("absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:w-4 group-hover:h-4", service.borderColor)} />
+      <div className={cn("absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:w-4 group-hover:h-4", service.borderColor)} />
+      <div className={cn("absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:w-4 group-hover:h-4", service.borderColor)} />
+      <div className={cn("absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:w-4 group-hover:h-4", service.borderColor)} />
 
       {/* --- HEADER --- */}
       <div 
         onClick={() => setIsExpanded(!isExpanded)}
-        className="cursor-pointer p-6 flex flex-col md:flex-row gap-6 md:items-start relative z-10"
+        className="cursor-pointer p-6 md:p-8 flex flex-col md:flex-row gap-6 md:items-start relative z-10"
       >
         {/* Icon & ID */}
         <div className="flex-shrink-0 flex items-start justify-between md:flex-col md:gap-4 w-full md:w-auto">
           <div className={cn(
-            "p-3 rounded-xl transition-all duration-300 group-hover:scale-110 shadow-lg",
-            isExpanded ? "bg-primary text-white shadow-primary/30" : "bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-gray-400 group-hover:text-primary group-hover:bg-primary/10"
+            "p-3 rounded-2xl transition-all duration-300 group-hover:scale-110 shadow-lg border border-transparent",
+            isExpanded 
+              ? cn("text-white shadow-lg", `bg-gradient-to-br ${service.color}`) 
+              : cn("bg-slate-50 dark:bg-white/5 text-slate-500 dark:text-gray-400 group-hover:bg-white dark:group-hover:bg-white/10", `group-hover:${service.iconColor}`)
           )}>
             <service.icon className="w-8 h-8" strokeWidth={1.5} />
           </div>
           <span className={cn(
             "font-mono text-xs tracking-widest uppercase transition-colors",
-            isExpanded ? "text-primary font-bold" : "text-slate-400 dark:text-white/20"
+            isExpanded ? cn("font-bold", service.iconColor) : "text-slate-400 dark:text-white/20"
           )}>
             {service.id}
           </span>
           {/* Mobile Expand Chevron */}
-          <ChevronDown className={cn("md:hidden w-5 h-5 text-slate-400 transition-transform duration-300", isExpanded && "rotate-180 text-primary")} />
+          <ChevronDown className={cn("md:hidden w-5 h-5 text-slate-400 transition-transform duration-300", isExpanded && "rotate-180", isExpanded && service.iconColor)} />
         </div>
 
         {/* Title & Short Desc */}
-        <div className="flex-grow space-y-2">
+        <div className="flex-grow space-y-3">
           <div className="flex items-center justify-between">
             <h3 className={cn(
-              "text-2xl font-bold font-display uppercase tracking-wide transition-colors duration-300",
-              isExpanded ? "text-primary" : "text-slate-900 dark:text-white"
+              "text-2xl md:text-3xl font-bold font-display transition-colors duration-300",
+              isExpanded ? "text-slate-900 dark:text-white" : "text-slate-800 dark:text-gray-200"
             )}>
               {service.title}
             </h3>
             {/* Desktop Expand Chevron */}
-            <ChevronDown className={cn("hidden md:block w-5 h-5 text-slate-400 transition-transform duration-300", isExpanded && "rotate-180 text-primary")} />
+            <ChevronDown className={cn("hidden md:block w-5 h-5 text-slate-400 transition-transform duration-300", isExpanded && "rotate-180", isExpanded && service.iconColor)} />
           </div>
           
-          <p className="text-primary font-mono text-sm tracking-wider uppercase opacity-80">
+          <p className={cn("font-mono text-sm tracking-wider uppercase font-bold opacity-80", service.iconColor)}>
             {service.tagline}
           </p>
           
-          <p className="text-slate-600 dark:text-gray-400 leading-relaxed max-w-3xl">
+          <p className="text-slate-600 dark:text-gray-400 leading-relaxed max-w-3xl text-lg">
             {service.shortDescription}
           </p>
         </div>
@@ -133,17 +136,17 @@ const ServiceBlueprintCard = ({ service, index }: { service: ServiceData; index:
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="relative z-10"
           >
-            <div className="px-6 pb-8 pt-2 border-t border-dashed border-slate-200 dark:border-white/10 mx-6 mt-2">
-              <div className="grid lg:grid-cols-3 gap-8 mt-6">
+            <div className="px-6 pb-8 md:px-8 md:pb-10 pt-2 border-t border-dashed border-slate-200 dark:border-white/10 mx-6 md:mx-8 mt-2">
+              <div className="grid lg:grid-cols-3 gap-10 mt-8">
                 
                 {/* Column 1: Deep Dive */}
                 <div className="lg:col-span-2 space-y-8">
                   <div>
                     <h4 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-4">
-                      <Cpu className="w-4 h-4 text-primary" />
+                      <Cpu className={cn("w-4 h-4", service.iconColor)} />
                       Specifiche Operative
                     </h4>
-                    <p className="text-slate-600 dark:text-gray-400 leading-relaxed text-sm md:text-base">
+                    <p className="text-slate-600 dark:text-gray-400 leading-relaxed text-base">
                       {service.fullDescription}
                     </p>
                   </div>
@@ -153,10 +156,10 @@ const ServiceBlueprintCard = ({ service, index }: { service: ServiceData; index:
                     {service.features.map((feature, i) => (
                       <div 
                         key={i} 
-                        className="p-4 rounded-lg border border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.02] hover:bg-slate-50 dark:hover:bg-white/[0.05] transition-colors"
+                        className="p-4 rounded-xl border border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.02] hover:bg-slate-50 dark:hover:bg-white/[0.05] transition-colors group/feature"
                       >
                         <h5 className="font-bold text-slate-800 dark:text-gray-200 text-sm mb-1.5 flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary/70" />
+                          <span className={cn("w-1.5 h-1.5 rounded-full", service.bgLightColor.replace('/10', '/100'))} />
                           {feature.title}
                         </h5>
                         <p className="text-xs text-slate-500 dark:text-gray-500 leading-relaxed">{feature.description}</p>
@@ -166,7 +169,7 @@ const ServiceBlueprintCard = ({ service, index }: { service: ServiceData; index:
                 </div>
 
                 {/* Column 2: Tech & Specs (Sidebar) */}
-                <div className="space-y-8 lg:border-l border-dashed border-slate-200 dark:border-white/10 lg:pl-8">
+                <div className="space-y-8 lg:border-l border-dashed border-slate-200 dark:border-white/10 lg:pl-10">
                   
                   {/* Tech Stack */}
                   <div>
@@ -177,7 +180,7 @@ const ServiceBlueprintCard = ({ service, index }: { service: ServiceData; index:
                       {service.techStack.map((tech) => (
                         <span 
                           key={tech} 
-                          className="px-2.5 py-1 text-xs font-mono font-medium rounded bg-white dark:bg-white/5 text-slate-600 dark:text-gray-300 border border-slate-200 dark:border-white/10 shadow-sm"
+                          className="px-2.5 py-1 text-xs font-mono font-medium rounded-lg bg-white dark:bg-white/5 text-slate-600 dark:text-gray-300 border border-slate-200 dark:border-white/10 shadow-sm"
                         >
                           {tech}
                         </span>
@@ -193,7 +196,7 @@ const ServiceBlueprintCard = ({ service, index }: { service: ServiceData; index:
                     <ul className="space-y-2">
                       {service.useCases.map((useCase) => (
                         <li key={useCase} className="flex items-start gap-2 text-sm text-slate-600 dark:text-gray-400 group/item">
-                          <CheckCircle2 className="w-4 h-4 text-primary/70 group-hover/item:text-primary mt-0.5 flex-shrink-0 transition-colors" />
+                          <CheckCircle2 className={cn("w-4 h-4 mt-0.5 flex-shrink-0 transition-colors", service.iconColor)} />
                           <span className="group-hover/item:text-slate-900 dark:group-hover/item:text-gray-200 transition-colors">{useCase}</span>
                         </li>
                       ))}
@@ -202,19 +205,19 @@ const ServiceBlueprintCard = ({ service, index }: { service: ServiceData; index:
 
                   {/* Pricing/Timeline Hint */}
                   {service.details && (
-                    <div className="p-5 rounded-xl bg-gradient-to-br from-primary/[0.08] to-primary/[0.02] border border-primary/10 space-y-4">
+                    <div className={cn("p-5 rounded-2xl border space-y-4", service.bgLightColor, service.borderColor.replace('border-', 'border-opacity-20 border-'))}>
                       <div className="flex items-center justify-between text-sm">
                         <span className="flex items-center gap-2 text-slate-600 dark:text-gray-400 font-medium">
-                          <Clock className="w-4 h-4 text-primary" /> Timeline
+                          <Clock className={cn("w-4 h-4", service.iconColor)} /> Timeline
                         </span>
                         <span className="font-mono text-slate-900 dark:text-white font-bold">{service.details.timeline}</span>
                       </div>
-                      <div className="w-full h-px bg-primary/10" />
+                      <div className={cn("w-full h-px", service.borderColor.replace('border-', 'bg-'), "opacity-20")} />
                       <div className="flex items-center justify-between text-sm">
                         <span className="flex items-center gap-2 text-slate-600 dark:text-gray-400 font-medium">
-                          <Coins className="w-4 h-4 text-primary" /> Start
+                          <Coins className={cn("w-4 h-4", service.iconColor)} /> Start
                         </span>
-                        <span className="font-mono text-primary font-bold text-lg">{service.details.startingFrom}</span>
+                        <span className={cn("font-mono font-bold text-lg", service.iconColor)}>{service.details.startingFrom}</span>
                       </div>
                     </div>
                   )}

@@ -1,4 +1,4 @@
-import { Globe, Bot, BrainCircuit, Zap, Code, Database, Search, Shield, Cpu, Layout, Workflow } from 'lucide-react'
+import { Globe, Bot, BrainCircuit, Rocket, Layout, Terminal, Workflow, Cpu } from 'lucide-react'
 
 export interface ServiceFeature {
   title: string
@@ -19,83 +19,110 @@ export interface ServiceData {
     timeline: string
     startingFrom: string
   }
+  color: string
+  iconColor: string
+  borderColor: string
+  ringColor: string
+  bgLightColor: string
 }
 
 export const servicesData: ServiceData[] = [
   {
     id: "WEB-01",
-    title: "Siti Web & WebApp",
+    title: "Siti Web e Web App",
     icon: Globe,
-    tagline: "High-Performance Digital Architectures",
-    shortDescription: "Non semplici siti web, ma piattaforme digitali scalabili costruite per convertire e performare.",
-    fullDescription: "Nel web moderno, la velocità e l'esperienza utente non sono optional. Costruiamo applicazioni web che combinano un design estetico d'impatto con un'architettura tecnica solida. Utilizziamo il rendering lato server (SSR) per garantire tempi di caricamento istantanei e una SEO ottimale. Ogni pixel è ottimizzato, ogni interazione è fluida.",
+    tagline: "Digital Presence & Performance",
+    shortDescription: "Piattaforme digitali ad alte prestazioni che convertono visitatori in clienti.",
+    fullDescription: "Realizziamo esperienze web moderne e performanti. Non semplici siti vetrina, ma strumenti di business ottimizzati per la conversione e il posizionamento sui motori di ricerca. Dalla landing page ad alto impatto alla web application complessa, curiamo ogni dettaglio dell'interfaccia e dell'architettura.",
     features: [
-      { title: "Next.js & React", description: "Sviluppo component-based per massimizzare riutilizzabilità e performance." },
-      { title: "SEO Nativa", description: "Struttura semantica e metadata dinamici per dominare i motori di ricerca." },
-      { title: "Headless CMS", description: "Gestione contenuti flessibile senza compromettere il frontend." }
+      { title: "Siti Web", description: "Design responsivo, velocità di caricamento istantanea e SEO tecnica avanzata." },
+      { title: "Web App", description: "Applicazioni complesse accessibili da browser con UX pari alle app native." }
     ],
-    techStack: ["Next.js 14", "TypeScript", "Tailwind", "Supabase", "Framer Motion"],
-    useCases: ["Corporate Websites", "E-commerce Custom", "SaaS Dashboards", "Landing Pages"],
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion"],
+    useCases: ["Corporate Websites", "SaaS Platforms", "E-commerce", "Portali Clienti"],
+    details: {
+      timeline: "3-8 Settimane",
+      startingFrom: "€2.500"
+    },
+    color: 'from-emerald-500 to-teal-500',
+    iconColor: 'text-emerald-500',
+    borderColor: 'border-emerald-500',
+    ringColor: 'ring-emerald-500',
+    bgLightColor: 'bg-emerald-500/10'
+  },
+  {
+    id: "SOFT-02",
+    title: "Custom Software e AI Software",
+    icon: Terminal,
+    tagline: "Tailored Enterprise Solutions",
+    shortDescription: "Software su misura potenziato dall'Intelligenza Artificiale per esigenze specifiche.",
+    fullDescription: "Quando le soluzioni standard non bastano, costruiamo software cucito sui tuoi processi. Integriamo l'intelligenza artificiale direttamente nel cuore delle tue applicazioni aziendali per analizzare dati, generare contenuti e prevedere trend.",
+    features: [
+      { title: "Dashboard AI", description: "Pannelli di controllo intelligenti che visualizzano dati e suggeriscono azioni." },
+      { title: "API Development", description: "Architetture back-end scalabili, sicure e documentate per i tuoi servizi." },
+      { title: "Integrazioni LLM", description: "Potenziamento software esistenti con la capacità di comprensione di GPT/Claude." },
+      { title: "Cloud", description: "Infrastrutture serverless robuste e scalabili su AWS/Vercel/Supabase." }
+    ],
+    techStack: ["Node.js", "Python", "Supabase", "PostgreSQL", "Docker"],
+    useCases: ["CRM Personalizzati", "ERP Aziendali", "Piattaforme di Analisi", "Backend Systems"],
+    details: {
+      timeline: "6-12 Settimane",
+      startingFrom: "€5.000"
+    },
+    color: 'from-blue-500 to-cyan-500',
+    iconColor: 'text-blue-500',
+    borderColor: 'border-blue-500',
+    ringColor: 'ring-blue-500',
+    bgLightColor: 'bg-blue-500/10'
+  },
+  {
+    id: "AUTO-03",
+    title: "Automazioni, Agenti AI, Sistemi RAG",
+    icon: Bot,
+    tagline: "Autonomous Workflows",
+    shortDescription: "Ecosistemi intelligenti che lavorano al posto tuo, riducendo errori e costi.",
+    fullDescription: "Rivoluziona l'operatività aziendale delegando i task ripetitivi e complessi a una forza lavoro digitale. I nostri sistemi non si limitano a seguire regole, ma comprendono il contesto grazie ai modelli di linguaggio avanzati (LLM) e ai database vettoriali.",
+    features: [
+      { title: "Sistemi RAG", description: "Chatbot che rispondo basandosi esclusivamente sui tuoi documenti aziendali." },
+      { title: "Automazioni Processi", description: "Workflow che connettono app diverse eliminando il data-entry manuale." },
+      { title: "Custom Workflow", description: "Pipeline di lavoro su misura per ottimizzare la produttività del team." },
+      { title: "ChatBot e ChatBot Vocali", description: "Assistenti virtuali capaci di conversare naturalmente via testo o voce." }
+    ],
+    techStack: ["n8n", "LangChain", "OpenAI", "Pinecone", "Vapi.ai"],
+    useCases: ["Customer Support H24", "Onboarding Automatico", "Knowledge Base Interattiva", "Lead Qualification"],
     details: {
       timeline: "4-8 Settimane",
-      startingFrom: "€2.500"
-    }
+      startingFrom: "€3.500"
+    },
+    color: 'from-violet-500 to-fuchsia-500',
+    iconColor: 'text-violet-500',
+    borderColor: 'border-violet-500',
+    ringColor: 'ring-violet-500',
+    bgLightColor: 'bg-violet-500/10'
   },
   {
-    id: "AI-02",
-    title: "AI Agents",
-    icon: Bot,
-    tagline: "Autonomous Cognitive Systems",
-    shortDescription: "Agenti intelligenti che lavorano 24/7. Automatizza supporto, vendite e analisi dati.",
-    fullDescription: "Andiamo oltre i semplici chatbot. I nostri AI Agents sono progettati per comprendere il contesto, prendere decisioni autonome e compiere azioni complesse. Possono integrarsi con il tuo CRM, gestire calendari, qualificare lead e persino negoziare. È come avere un dipendente instancabile che impara e migliora costantemente.",
+    id: "MVP-04",
+    title: "Sviluppo MVP",
+    icon: Rocket,
+    tagline: "Rapid Idea Validation",
+    shortDescription: "Dal concetto al mercato nel minor tempo possibile per validare la tua idea.",
+    fullDescription: "Trasformiamo la tua visione in un prodotto funzionante in tempi record. Ci concentriamo sulle funzionalità core essenziali per lanciare, raccogliere feedback dagli utenti e iterare velocemente, senza sprecare budget in feature non necessarie.",
     features: [
-      { title: "Natural Language Processing", description: "Comprensione profonda delle intenzioni dell'utente, non solo keyword." },
-      { title: "Function Calling", description: "L'AI può eseguire codice e interagire con API esterne autonomamente." },
-      { title: "Personality Design", description: "Tone of voice personalizzato per rispecchiare il brand." }
+      { title: "Prototipazione Rapida", description: "Mockup interattivi e proof-of-concept in giorni, non mesi." },
+      { title: "Core Features Development", description: "Sviluppo focalizzato sul valore unico della tua proposta." },
+      { title: "Scalable Architecture", description: "Basi solide pronte per crescere dopo la validazione." },
+      { title: "Launch Support", description: "Assistenza tecnica durante la fase critica del lancio." }
     ],
-    techStack: ["OpenAI GPT-4", "Anthropic Claude", "LangChain", "Vercel AI SDK", "Python"],
-    useCases: ["Customer Support H24", "Lead Qualification", "Personal Shopping Assistant", "Data Analysis Agent"],
+    techStack: ["Next.js", "Supabase", "Vercel", "Tailwind UI"],
+    useCases: ["Startup Launch", "New Product Features", "Market Testing", "Beta Testing"],
     details: {
-      timeline: "3-6 Settimane",
-      startingFrom: "€5.000"
-    }
-  },
-  {
-    id: "RAG-03",
-    title: "Sistemi RAG",
-    icon: BrainCircuit,
-    tagline: "Knowledge Retrieval Engines",
-    shortDescription: "Trasforma i tuoi PDF, documenti e database in una conoscenza aziendale interrogabile.",
-    fullDescription: "Le LLM generiche non conoscono la tua azienda. I sistemi RAG (Retrieval-Augmented Generation) colmano questo divario. Creiamo pipeline che indicizzano tutta la tua documentazione aziendale (PDF, Word, Notion, SQL) rendendola accessibile istantaneamente tramite chat. Risposte precise, basate sui TUOI dati, con citazione delle fonti.",
-    features: [
-      { title: "Vector Embeddings", description: "Indicizzazione semantica per trovare concetti, non solo parole." },
-      { title: "Source Citation", description: "Ogni risposta include il link al documento originale per verifica." },
-      { title: "Data Privacy", description: "I tuoi dati rimangono nel tuo ambiente sicuro." }
-    ],
-    techStack: ["Pinecone / pgvector", "LlamaIndex", "Supabase", "Docker", "FastAPI"],
-    useCases: ["Knowledge Base Interna", "Legal Document Analysis", "Manutenzione Tecnica Assistita", "HR Policy Chatbot"],
-    details: {
-      timeline: "4-6 Settimane",
-      startingFrom: "€4.000"
-    }
-  },
-  {
-    id: "AUTO-04",
-    title: "Automazioni",
-    icon: Zap,
-    tagline: "Workflow Optimization Protocols",
-    shortDescription: "Colleghiamo le tue app. Eliminiamo il copia-incolla. Scaliamo i tuoi processi.",
-    fullDescription: "L'errore umano e i compiti ripetitivi sono i freni della crescita. Progettiamo ecosistemi di automazione che fanno parlare tra loro software diversi. Dalla generazione automatica di fatture alla sincronizzazione tra e-commerce e logistica. Analizziamo i colli di bottiglia e costruiamo 'tubature digitali' invisibili ed efficienti.",
-    features: [
-      { title: "Cross-Platform Sync", description: "Sincronizzazione real-time tra CRM, Email, Fogli di calcolo e ERP." },
-      { title: "Error Handling", description: "Sistemi robusti che gestiscono fallimenti e notificano gli amministratori." },
-      { title: "Scalability", description: "Workflow progettati per gestire da 10 a 10.000 operazioni al giorno." }
-    ],
-    techStack: ["n8n", "Make.com", "Zapier", "Webhooks", "Node.js Custom Scripts"],
-    useCases: ["Onboarding Clienti", "Social Media Publishing", "Gestione Ordini & Fatturazione", "Reportistica Automatica"],
-    details: {
-      timeline: "2-4 Settimane",
-      startingFrom: "€1.000"
-    }
+      timeline: "3-5 Settimane",
+      startingFrom: "€3.000"
+    },
+    color: 'from-amber-500 to-orange-500',
+    iconColor: 'text-amber-500',
+    borderColor: 'border-amber-500',
+    ringColor: 'ring-amber-500',
+    bgLightColor: 'bg-amber-500/10'
   }
 ]

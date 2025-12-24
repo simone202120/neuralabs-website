@@ -18,37 +18,37 @@ import { cn } from '@/lib/utils'
 // --- Data Configuration ---
 const services = [
   {
-    id: 'ai-automation',
+    id: 'web-experience',
     number: '01',
-    title: 'AI Agents & Automations',
-    tagline: 'Efficienza Autonoma.',
-    description: "Trasformiamo i processi manuali in flussi di lavoro intelligenti che scalano senza errori.",
-    icon: Bot,
-    technologies: ['n8n', 'OpenAI', 'Python', 'LangChain'],
+    title: 'Siti Web e Web App',
+    tagline: 'Digital Presence.',
+    description: "Creiamo esperienze web che catturano l'attenzione e guidano alla conversione con performance estreme.",
+    icon: Globe,
+    technologies: ['Next.js', 'React', 'Three.js', 'SEO'],
     capabilities: [
-      { title: "Customer Service AI", desc: "Risoluzione ticket complessi 24/7." },
-      { title: "Analisi Documentale", desc: "Data-entry automatico da PDF e immagini." },
-      { title: "Lead Generation", desc: "Qualifica automatica dei prospect." },
-      { title: "Workflow Custom", desc: "Integrazione API tra sistemi legacy." }
+      { title: "Siti Web", desc: "Design responsivo e velocità istantanea." },
+      { title: "Web App", desc: "Applicazioni complesse accessibili da browser." },
+      { title: "E-Commerce", desc: "Esperienze d'acquisto fluide e sicure." },
+      { title: "CMS Headless", desc: "Gestione contenuti flessibile." }
     ],
-    animationType: 'neural' as const,
-    href: '/servizi#ai-agents',
-    color: 'from-violet-500 to-fuchsia-500',
-    iconColor: 'text-violet-500'
+    animationType: 'browser' as const,
+    href: '/servizi#web',
+    color: 'from-emerald-500 to-teal-500',
+    iconColor: 'text-emerald-500'
   },
   {
     id: 'custom-software',
     number: '02',
-    title: 'Custom Software & AI',
+    title: 'Custom Software e AI Software',
     tagline: 'Enterprise Solutions.',
-    description: "Sviluppiamo il cuore tecnologico del tuo business con architetture moderne e sicure.",
-    icon: Cpu,
-    technologies: ['React', 'Node.js', 'Supabase', 'Docker'],
+    description: "Sviluppiamo il cuore tecnologico del tuo business con architetture moderne e intelligenza artificiale integrata.",
+    icon: Terminal,
+    technologies: ['Python', 'Node.js', 'Supabase', 'Docker'],
     capabilities: [
-      { title: "SaaS Multi-tenant", desc: "Piattaforme scalabili per migliaia di utenti." },
-      { title: "ERP & CRM Custom", desc: "Gestionali cuciti sui tuoi processi reali." },
       { title: "Dashboard AI", desc: "Visualizzazione dati con insight predittivi." },
-      { title: "API Development", desc: "Back-end robusti e documentati." }
+      { title: "API Development", desc: "Back-end robusti e documentati." },
+      { title: "Integrazioni LLM", desc: "Potenziamento software con GPT/Claude." },
+      { title: "Cloud", desc: "Infrastrutture scalabili e sicure." }
     ],
     animationType: 'gears' as const,
     href: '/servizi#software',
@@ -56,42 +56,42 @@ const services = [
     iconColor: 'text-blue-500'
   },
   {
-    id: 'mvp-dev',
+    id: 'ai-automation',
     number: '03',
-    title: 'MVP Development',
-    tagline: 'Speed to Market.',
-    description: "Riduciamo il time-to-market portando la tua idea in produzione in tempi record.",
-    icon: Rocket,
-    technologies: ['Next.js', 'Vercel', 'Rapid Proto'],
+    title: 'Automazioni, Agenti AI, Sistemi RAG',
+    tagline: 'Autonomous Systems.',
+    description: "Trasformiamo i processi manuali in flussi di lavoro intelligenti che scalano senza errori.",
+    icon: Bot,
+    technologies: ['n8n', 'LangChain', 'OpenAI', 'Pinecone'],
     capabilities: [
-      { title: "Prototipazione", desc: "Da idea a codice in 4 settimane." },
-      { title: "Product Validation", desc: "Test delle feature core con utenti reali." },
-      { title: "Scalable V1", desc: "Codice pulito pronto per la crescita." },
-      { title: "Investor Ready", desc: "Design e performance che convincono." }
+      { title: "Sistemi RAG", desc: "Chatbot su documenti aziendali." },
+      { title: "Automazioni Processi", desc: "Workflow senza data-entry manuale." },
+      { title: "Custom Workflow", desc: "Pipeline su misura per il tuo team." },
+      { title: "ChatBot Vocali", desc: "Assistenti che parlano e ascoltano." }
+    ],
+    animationType: 'neural' as const,
+    href: '/servizi#ai',
+    color: 'from-violet-500 to-fuchsia-500',
+    iconColor: 'text-violet-500'
+  },
+  {
+    id: 'mvp-dev',
+    number: '04',
+    title: 'Sviluppo MVP',
+    tagline: 'Rapid Validation.',
+    description: "Riduciamo il time-to-market portando la tua idea in produzione in tempi record per validarla.",
+    icon: Rocket,
+    technologies: ['Next.js', 'Vercel', 'Rapid Proto', 'Analytics'],
+    capabilities: [
+      { title: "Prototipazione", desc: "Da idea a codice in settimane." },
+      { title: "Core Features", desc: "Focus sul valore essenziale." },
+      { title: "Scalable V1", desc: "Basi solide per crescere." },
+      { title: "Launch Support", desc: "Assistenza tecnica al lancio." }
     ],
     animationType: 'documents' as const,
     href: '/servizi#mvp',
     color: 'from-amber-500 to-orange-500',
     iconColor: 'text-amber-500'
-  },
-  {
-    id: 'web-experience',
-    number: '04',
-    title: 'Web & Digital Experience',
-    tagline: 'High-Impact Design.',
-    description: "Creiamo esperienze web che catturano l'attenzione e guidano alla conversione.",
-    icon: Globe,
-    technologies: ['WebGL', 'Three.js', 'Framer Motion'],
-    capabilities: [
-      { title: "E-Commerce 3D", desc: "Esperienze d'acquisto immersive." },
-      { title: "Storytelling Web", desc: "Narrazione interattiva del brand." },
-      { title: "Performance SEO", desc: "Velocità estrema e ranking elevato." },
-      { title: "UI/UX Warm Tech", desc: "Design moderno ma umano e intuitivo." }
-    ],
-    animationType: 'browser' as const,
-    href: '/servizi#websites',
-    color: 'from-emerald-500 to-teal-500',
-    iconColor: 'text-emerald-500'
   },
 ]
 
@@ -148,7 +148,7 @@ export function ServicesPreview() {
           </h2>
         </FadeIn>
 
-        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-start mb-16">
           
           {/* LEFT COLUMN: Navigation (Ultra Compact) - 3/12 columns */}
           <div className="lg:col-span-3 space-y-3">
@@ -324,6 +324,15 @@ export function ServicesPreview() {
             </AnimatePresence>
           </div>
 
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="flex justify-center mt-12">
+            <Button asChild size="lg" variant="secondary" className="rounded-full px-8">
+                <Link href="/servizi" className="flex items-center gap-2">
+                    Tutti i servizi <ArrowRight className="w-4 h-4" />
+                </Link>
+            </Button>
         </div>
       </Container>
     </Section>

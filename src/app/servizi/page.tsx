@@ -1,13 +1,13 @@
 'use client'
 
-import { ServicesBlueprint } from '@/components/sections/ServicesBlueprint'
-import { IdeaTalk } from '@/components/sections/IdeaTalk'
+import { ServicesDeepDive } from '@/components/sections/ServicesDeepDive'
+import { TerminalCTA } from '@/components/sections/TerminalCTA'
 
 export default function ServiziPage() {
   return (
-    <main className="pt-20">
-      <ServicesBlueprint />
-      <IdeaTalk />
+    <main>
+      <ServicesDeepDive />
+      <TerminalCTA />
     </main>
   )
 }
