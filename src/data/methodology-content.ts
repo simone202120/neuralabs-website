@@ -1,100 +1,84 @@
-import { AudioWaveform, CircuitBoard, Infinity as InfinityIcon, FileCode2, Database, Scale, Cpu, ShieldCheck, Zap, Laptop, GitBranch, Search, PenTool, Layers } from 'lucide-react'
+import { Database, Layout, Terminal, Rocket, Search, PenTool, Code2, Server, ShieldCheck, Zap, Activity, GitBranch } from 'lucide-react'
 
 export const methodologyData = [
   {
-    id: "01-sintonia",
-    title: "Sintonia",
-    subtitle: "Discovery & Vision",
-    icon: AudioWaveform,
-    tagline: "L'ascolto prima del codice",
-    shortDescription: "Non iniziamo mai con una riga di codice senza aver capito il 'perché'. Ci allineiamo alla tua frequenza per trasformare idee astratte in requisiti concreti.",
-    fullDescription: "La fase di Sintonia è il momento in cui il caos delle idee prende forma. Attraverso workshop intensivi e analisi dei competitor, definiamo il perimetro del progetto. Non si tratta solo di capire cosa vuoi, ma di cosa hanno bisogno i tuoi utenti. Creiamo una mappa mentale condivisa che guiderà ogni scelta tecnica successiva.",
-    color: "from-cyan-500 to-blue-500",
-    bgLightColor: "bg-cyan-500/10",
-    iconColor: "text-cyan-500",
+    id: "01-analisi",
+    title: "Analisi & Blueprint",
+    subtitle: "Discovery & Tech Specs",
+    icon: Database,
+    tagline: "Niente ambiguità",
+    shortDescription: "Traduciamo la tua visione in specifiche tecniche. Niente ambiguità: usiamo wireframe, diagrammi di flusso e user stories chiare.",
+    fullDescription: "Ogni grande progetto inizia con una mappa precisa. Non ci limitiamo a raccogliere requisiti: analizziamo i flussi dati, definiamo l'architettura del database e scegliamo lo stack tecnologico più adatto. Il risultato è un 'Blueprint' tecnico che elimina le sorprese in fase di sviluppo.",
+    color: "from-blue-500 to-cyan-500",
+    bgLightColor: "bg-blue-500/10",
+    iconColor: "text-blue-500",
     features: [
-      {
-        title: "Workshop Strategici",
-        description: "Sessioni collaborative per estrarre il valore core del business."
-      },
-      {
-        title: "Analisi Competitor",
-        description: "Studio del mercato per identificare opportunità e gap."
-      },
-      {
-        title: "User Personas",
-        description: "Definizione profonda del target e dei suoi bisogni."
-      },
-      {
-        title: "KPI Definition",
-        description: "Stabilire metriche di successo misurabili prima di partire."
-      }
+      { title: "SRS Documentation", description: "Specifiche dei Requisiti Software dettagliate." },
+      { title: "ER Diagram", description: "Modellazione del database e delle relazioni." },
+      { title: "Tech Stack Selection", description: "Scelta ragionata delle tecnologie (Next.js, Supabase)." },
+      { title: "User Stories", description: "Definizione chiara dei percorsi utente." }
     ],
-    techStack: ["Miro", "Figma", "Notion", "Google Analytics"],
-    deliverables: ["Project Brief", "User Stories", "Moodboard", "Functional Specs"]
+    techStack: ["Miro", "Lucidchart", "Notion", "Figma"],
+    deliverables: ["Technical Blueprint", "Database Schema", "Project Roadmap", "API Specs"]
   },
   {
-    id: "02-architettura",
-    title: "Architettura",
-    subtitle: "Specs, Stack & Engineering",
-    icon: CircuitBoard,
-    tagline: "Solidità ingegneristica",
-    shortDescription: "Definiamo le fondamenta. Selezioniamo lo stack tecnologico perfetto, disegniamo le architetture dati e scriviamo le specifiche tecniche dettagliate.",
-    fullDescription: "Qui è dove l'ingegneria prende il sopravvento. Non improvvisiamo: progettiamo. Scegliamo le tecnologie non per moda, ma per efficienza e scalabilità. Disegniamo lo schema del database, i flussi API e l'architettura dei componenti. È il momento in cui il progetto diventa un 'blueprint' pronto per la costruzione, eliminando le incertezze dello sviluppo.",
-    color: "from-violet-500 to-purple-500",
-    bgLightColor: "bg-violet-500/10",
-    iconColor: "text-violet-500",
+    id: "02-ux-ui",
+    title: "UX/UI Engineering",
+    subtitle: "Design System & Prototyping",
+    icon: Layout,
+    tagline: "Design Sistemico",
+    shortDescription: "Non solo design, ma sistemi scalabili. Creiamo interfacce che uniscono estetica mozzafiato e usabilità rigorosa.",
+    fullDescription: "L'estetica deve servire la funzione. Progettiamo Design System atomici che garantiscono coerenza visiva e facilità di manutenzione. Ogni componente è pensato per essere accessibile, reattivo e perfettamente integrato con la logica di business sottostante.",
+    color: "from-purple-500 to-pink-500",
+    bgLightColor: "bg-purple-500/10",
+    iconColor: "text-purple-500",
     features: [
-      {
-        title: "System Design",
-        description: "Progettazione dell'infrastruttura cloud e dei microservizi."
-      },
-      {
-        title: "Database Modeling",
-        description: "Schema ER ottimizzato per performance e integrità dati."
-      },
-      {
-        title: "Tech Selection",
-        description: "Scelta dello stack (Next.js, Supabase, AI) basata sui requisiti."
-      },
-      {
-        title: "Security & Compliance",
-        description: "Analisi preliminare GDPR e security best practices."
-      }
+      { title: "Component Library", description: "Libreria di componenti UI riutilizzabili." },
+      { title: "Interactive Prototypes", description: "Prototipi navigabili ad alta fedeltà." },
+      { title: "Accessibility (a11y)", description: "Compliance con gli standard WCAG." },
+      { title: "Responsive Design", description: "Ottimizzazione per ogni device." }
     ],
-    techStack: ["Next.js", "Supabase", "Vercel", "TypeScript", "Tailwind"],
-    deliverables: ["System Architecture Diagram", "ERD Schema", "API Documentation", "Tech Stack Report"]
+    techStack: ["Figma", "Tailwind CSS", "Framer Motion", "Radix UI"],
+    deliverables: ["Figma Design File", "Design System", "Interactive Prototype", "UI Assets"]
   },
   {
-    id: "03-evoluzione",
-    title: "Evoluzione",
-    subtitle: "Growth & Scale",
-    icon: InfinityIcon,
-    tagline: "Crescita continua",
-    shortDescription: "Il lancio è solo l'inizio. Monitoriamo, ottimizziamo e facciamo evolvere il prodotto basandoci sui dati reali degli utenti.",
-    fullDescription: "Un prodotto digitale non è mai 'finito'. Una volta online, inizia la fase di Evoluzione. Utilizziamo sistemi di monitoraggio avanzati per capire come gli utenti interagiscono con l'applicazione. Implementiamo cicli di feedback rapidi per introdurre nuove feature, migliorare le performance e scalare l'infrastruttura man mano che il traffico cresce.",
-    color: "from-primary to-orange-500",
-    bgLightColor: "bg-primary/10",
-    iconColor: "text-primary",
+    id: "03-sviluppo",
+    title: "Sviluppo Agile",
+    subtitle: "Clean Code & Sprint",
+    icon: Terminal,
+    tagline: "Codice che scala",
+    shortDescription: "Sprint bisettimanali e codice pulito. Architetture scalabili su Next.js e Supabase, tipizzate e testate.",
+    fullDescription: "Adottiamo la metodologia Agile con sprint di 2 settimane. Scriviamo codice TypeScript rigorosamente tipizzato, modulare e testato. L'obiettivo è rilasciare funzionalità funzionanti frequentemente, mantenendo il debito tecnico vicino allo zero.",
+    color: "from-amber-500 to-orange-500",
+    bgLightColor: "bg-amber-500/10",
+    iconColor: "text-amber-500",
     features: [
-      {
-        title: "Performance Monitoring",
-        description: "Tracciamento in tempo reale dei Core Web Vitals e latenze."
-      },
-      {
-        title: "User Analytics",
-        description: "Analisi comportamentale per ottimizzare la UX/UI."
-      },
-      {
-        title: "CI/CD & Testing",
-        description: "Pipeline automatizzate per rilasci frequenti e sicuri."
-      },
-      {
-        title: "Scalabilità",
-        description: "Upgrade infrastrutturale dinamico in base al carico."
-      }
+      { title: "CI/CD Pipelines", description: "Automazione di test e deploy." },
+      { title: "Clean Architecture", description: "Codice strutturato per la manutenibilità." },
+      { title: "Type Safety", description: "TypeScript strict mode ovunque." },
+      { title: "Automated Testing", description: "Unit e Integration test (Jest/Vitest)." }
     ],
-    techStack: ["Vercel Analytics", "Sentry", "PostHog", "GitHub Actions"],
-    deliverables: ["Performance Reports", "User Journey Maps", "A/B Test Results", "Roadmap Updates"]
+    techStack: ["Next.js", "TypeScript", "Supabase", "React Query"],
+    deliverables: ["Source Code", "Test Reports", "Documentation", "Staging Environment"]
+  },
+  {
+    id: "04-deploy",
+    title: "Deploy & Scale",
+    subtitle: "Production & Monitoring",
+    icon: Rocket,
+    tagline: "Lancio e Crescita",
+    shortDescription: "Il lancio è solo l'inizio. Monitoriamo le performance in tempo reale e iteriamo basandoci sui dati.",
+    fullDescription: "Portiamo il tuo prodotto in produzione su infrastrutture Edge globali. Configuriamo sistemi di monitoraggio avanzati per tracciare errori, performance e comportamento degli utenti in tempo reale, garantendo uptime e velocità massimi.",
+    color: "from-emerald-500 to-green-500",
+    bgLightColor: "bg-emerald-500/10",
+    iconColor: "text-emerald-500",
+    features: [
+      { title: "Global CDN", description: "Distribuzione contenuti edge-based." },
+      { title: "Real-time Analytics", description: "Monitoraggio traffico e conversioni." },
+      { title: "Error Tracking", description: "Identificazione proattiva dei bug." },
+      { title: "Auto-scaling", description: "Infrastruttura che cresce col traffico." }
+    ],
+    techStack: ["Vercel", "Sentry", "PostHog", "Cloudflare"],
+    deliverables: ["Production URL", "Analytics Dashboard", "Maintenance Plan", "SLA Reports"]
   }
 ]
