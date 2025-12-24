@@ -128,7 +128,7 @@ export function ServicesPreview() {
   const activeService = services.find(s => s.id === activeId) || services[0]
 
   return (
-    <Section ref={sectionRef} id="servizi" className="py-24 md:py-32 bg-slate-50/50 dark:bg-background/50 relative overflow-hidden">
+    <Section ref={sectionRef} id="servizi" className="pt-16 pb-24 md:pt-24 md:pb-32 bg-slate-50/50 dark:bg-background/50 relative overflow-hidden">
       
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none opacity-50" />

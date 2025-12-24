@@ -53,7 +53,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="relative min-h-[85vh] md:min-h-screen flex flex-col justify-center pt-12 md:pt-32 pb-12 overflow-hidden">
+    <section className="relative min-h-[80vh] md:min-h-screen flex flex-col justify-center pt-20 md:pt-32 pb-8 md:pb-12 overflow-hidden">
       <ParticleHero />
       
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-background/80 via-background/40 to-transparent" />
@@ -70,17 +70,17 @@ export function HeroSection() {
             </div>
           </FadeIn>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold tracking-tight leading-tight min-h-[180px] sm:min-h-[240px] md:min-h-[300px]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold tracking-tight leading-tight min-h-[160px] sm:min-h-[220px] md:min-h-[300px]">
             <FadeIn delay={0.4}>
               <span className="block text-text-primary">Transform your</span>
               <span className="block text-text-primary mb-2">business into</span>
             </FadeIn>
-            <span className="block text-primary font-mono mt-4">
+            <span className="block text-primary font-mono mt-2 md:mt-4">
               <Typewriter text={words[wordIndex]} key={wordIndex} />
             </span>
           </h1>
 
-          <FadeIn delay={0.6} className="mt-6 md:mt-8 flex flex-col sm:flex-row gap-5">
+          <FadeIn delay={0.6} className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-5">
             <Button asChild size="lg" className="text-lg px-8 h-12 md:h-14 rounded-full">
               <Link href="/progetti">Start Evolution</Link>
             </Button>
