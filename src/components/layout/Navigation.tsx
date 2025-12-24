@@ -18,6 +18,7 @@ import { Logo } from '@/components/ui/Logo'
 
 // Navigation links configuration - Updated
 const navLinks = [
+  { href: '/', label: 'Home' },
   { href: '/servizi', label: 'Servizi' },
   { href: '/metodo', label: 'Il Metodo' },
   { href: '/chi-siamo', label: 'Chi Siamo' },
