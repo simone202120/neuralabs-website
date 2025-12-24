@@ -3,61 +3,26 @@
 import { useRef } from 'react'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
+import { Button } from '@/components/ui/Button'
+import Link from 'next/link'
+import { motion, useScroll, useSpring } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import { Terminal, Database, Layout, Rocket, GitBranch, Shield, Cpu, Zap } from 'lucide-react'
-
-// --- DATI DEL PROCESSO ---
-
-const steps = [
-  {
-    id: '01',
-    title: 'Analisi & Blueprint',
-    description: "Traduciamo la tua visione in specifiche tecniche. Niente ambiguità: usiamo wireframe, diagrammi di flusso e user stories chiare.",
-    icon: Database,
-    techDetail: 'SRS Document • ER Diagram • Tech Stack Selection',
-    color: 'from-blue-500 to-cyan-500',
-    side: 'left'
-  },
-  {
-    id: '02',
-    title: 'UX/UI Engineering',
-    description: "Non solo design, ma sistemi scalabili. Creiamo interfacce che uniscono estetica mozzafiato e usabilità rigorosa.",
-    icon: Layout,
-    techDetail: 'Figma Design System • Component Library • Accessibility AA',
-    color: 'from-purple-500 to-pink-500',
-    side: 'right'
-  },
-  {
-    id: '03',
-    title: 'Sviluppo Agile',
-    description: "Sprint bisettimanali e codice pulito. Architetture scalabili su Next.js e Supabase, tipizzate e testate.",
-    icon: Terminal,
-    techDetail: 'CI/CD Pipeline • Jest Testing • Clean Architecture',
-    color: 'from-amber-500 to-orange-500',
-    side: 'left'
-  },
-  {
-    id: '04',
-    title: 'Deploy & Scale',
-    description: "Il lancio è solo l'inizio. Monitoriamo le performance in tempo reale e iteriamo basandoci sui dati.",
-    icon: Rocket,
-    techDetail: 'Vercel Edge • Analytics • Error Tracking',
-    color: 'from-emerald-500 to-green-500',
-    side: 'right'
-  }
-]
+import { Terminal, ArrowRight } from 'lucide-react'
+import { methodologyData } from '@/data/methodology-content'
 
 // --- COMPONENTI VISUALI HUD ---
 
-function HudCard({ step }: { step: typeof steps[0] }) {
+function HudCard({ step, index }: { step: typeof methodologyData[0], index: number }) {
+  // Construct a tech string from the deliverables for the preview
+  const techDetail = step.deliverables.slice(0, 3).join(' • ')
+
   return (
-    <div className="relative overflow-hidden rounded-xl bg-surface/30 backdrop-blur-sm border border-white/10 p-4 font-mono text-xs shadow-lg">
+    <div className="relative overflow-hidden rounded-xl bg-surface/30 backdrop-blur-sm border border-border/50 p-4 font-mono text-xs shadow-lg group-hover:border-primary/20 transition-colors">
       <div className={cn("absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r", step.color)} />
       
       {/* Header HUD */}
-      <div className="flex justify-between items-center mb-3 opacity-50 border-b border-white/5 pb-2">
-        <span>SYS.MONITOR.{step.id}</span>
+      <div className="flex justify-between items-center mb-3 opacity-50 border-b border-border/50 pb-2">
+        <span className="uppercase">SYS.MONITOR.0{index + 1}</span>
         <div className="flex gap-1">
           <div className="w-2 h-2 rounded-full bg-current animate-pulse" />
         </div>
@@ -65,7 +30,7 @@ function HudCard({ step }: { step: typeof steps[0] }) {
 
       {/* Content */}
       <div className="space-y-2">
-        {step.techDetail.split('•').map((detail, i) => (
+        {techDetail.split('•').map((detail, i) => (
           <div key={i} className="flex items-center gap-2">
              <div className={cn("w-1 h-1 rounded-full bg-gradient-to-r", step.color)} />
              <span className="text-text-secondary">{detail.trim()}</span>
@@ -104,7 +69,7 @@ export function MethodologyPipeline() {
   })
 
   return (
-    <Section id="process" className="py-24 relative overflow-hidden">
+    <Section id="process" className="py-24 relative overflow-hidden bg-background">
       {/* Sfondo tecnico sottile */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]" 
            style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '40px 40px' }} 
@@ -120,12 +85,12 @@ export function MethodologyPipeline() {
             viewport={{ once: true }}
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-light border border-border/50 text-xs font-mono text-text-muted mb-6">
-              <Cpu className="w-3 h-3" />
-              <span>NEURA_ENGINEERING_PROTOCOL</span>
+              <Terminal className="w-3 h-3" />
+              <span>ENGINEERING_PROTOCOL_V2</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-              Non solo parole.<br/>
-              Un processo <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-500">ingegnerizzato.</span>
+              Dal Caos alla <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-500">Struttura.</span>
             </h2>
             <p className="text-lg text-text-secondary max-w-xl mx-auto">
               Abbiamo trasformato la creatività in un workflow replicabile. 
@@ -135,18 +100,18 @@ export function MethodologyPipeline() {
         </div>
 
         {/* Pipeline Container */}
-        <div className="relative max-w-5xl mx-auto">
+        <div className="relative max-w-5xl mx-auto mb-20">
           
           {/* Central Line (Desktop) */}
           <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-0.5 bg-border/50 -translate-x-1/2 md:translate-x-0">
              <motion.div 
                style={{ scaleY, transformOrigin: "top" }}
-               className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-primary via-purple-500 to-emerald-500"
+               className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-cyan-500 via-violet-500 to-primary"
              />
           </div>
 
           <div className="space-y-24 md:space-y-32">
-            {steps.map((step, index) => (
+            {methodologyData.map((step, index) => (
               <motion.div 
                 key={step.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -164,11 +129,9 @@ export function MethodologyPipeline() {
                    <div className={cn("w-3 h-3 rounded-full bg-gradient-to-r animate-pulse", step.color)} />
                 </div>
 
-                {/* Text Content (Left or Right based on index) */}
+                {/* Text Content */}
                 <div className="flex-1 w-full md:text-right md:pr-8 group">
-                   {index % 2 !== 0 && <div className="hidden md:block text-right">
-                      {/* Placeholder to keep alignment if needed, or render text here for right side on desktop */}
-                   </div>}
+                   {index % 2 !== 0 && <div className="hidden md:block text-right" />}
                    
                    <div className={cn(
                      "flex flex-col gap-4",
@@ -182,24 +145,24 @@ export function MethodologyPipeline() {
                       </div>
                       <div>
                         <h3 className="text-2xl font-display font-bold mb-2">{step.title}</h3>
-                        <p className="text-text-secondary leading-relaxed">{step.description}</p>
+                        <p className="text-text-secondary leading-relaxed">{step.shortDescription}</p>
                       </div>
                    </div>
                 </div>
 
-                {/* HUD Detail (Opposite Side) */}
+                {/* HUD Detail */}
                 <div className="flex-1 w-full md:pl-8 hidden md:block">
                   <div className={cn(
                      "w-full max-w-xs",
                      index % 2 === 0 ? "ml-0" : "ml-auto"
                   )}>
-                    <HudCard step={step} />
+                    <HudCard step={step} index={index} />
                   </div>
                 </div>
 
-                {/* Mobile HUD (Show below text on mobile) */}
+                {/* Mobile HUD */}
                 <div className="w-full md:hidden mt-4">
-                  <HudCard step={step} />
+                  <HudCard step={step} index={index} />
                 </div>
 
               </motion.div>
@@ -208,11 +171,20 @@ export function MethodologyPipeline() {
 
           {/* End Node */}
           <div className="absolute left-[20px] md:left-1/2 bottom-0 transform -translate-x-1/2 translate-y-full pt-8 flex flex-col items-center">
-             <div className="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.5)]" />
-             <div className="h-12 w-[1px] bg-gradient-to-b from-emerald-500 to-transparent" />
+             <div className="w-3 h-3 rounded-full bg-primary shadow-[0_0_20px_rgba(249,115,22,0.5)]" />
           </div>
 
         </div>
+
+        {/* Action Button */}
+        <div className="flex justify-center mt-20">
+          <Button asChild size="lg" className="rounded-full px-8 h-12 text-base">
+            <Link href="/metodo">
+              Esplora il Processo Completo <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
+          </Button>
+        </div>
+
       </Container>
     </Section>
   )
