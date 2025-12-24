@@ -82,6 +82,7 @@ export default function RootLayout({
   return (
     <html lang="it" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`${plusJakartaSans.variable} ${outfit.variable} ${jetBrainsMono.variable} md:cursor-none`}
       >
           <ClientProviders>

@@ -75,7 +75,7 @@ export function MethodologyPipeline() {
            style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '40px 40px' }} 
       />
 
-      <Container ref={containerRef}>
+      <Container ref={containerRef} className="relative">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 md:mb-32">
