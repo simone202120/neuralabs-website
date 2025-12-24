@@ -1,13 +1,13 @@
 'use client'
 
 import { ServicesDeepDive } from '@/components/sections/ServicesDeepDive'
-import { TerminalCTA } from '@/components/sections/TerminalCTA'
+import { AuroraCTA } from '@/components/sections/AuroraCTA'
 
 export default function ServiziPage() {
   return (
     <main>
       <ServicesDeepDive />
-      <TerminalCTA />
+      <AuroraCTA />
     </main>
   )
 }
