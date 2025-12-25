@@ -46,7 +46,7 @@ const vertexShader = `
     size *= (1.0 + totalActivity * 1.2); 
     
     // Much smaller perspective multiplier (was 10.0)
-    gl_PointSize = size * (3.0 / -mvPosition.z);
+    gl_PointSize = size * (4.5 / -mvPosition.z);
     gl_Position = projectionMatrix * mvPosition;
     
     vAlpha = uBaseOpacity + totalActivity * 0.5;
@@ -79,7 +79,9 @@ export function ParticleBrain({ isDark = true }: { isDark?: boolean }) {
   const pointsRef = useRef<THREE.Points>(null!)
   const { viewport } = useThree()
   
-  const count = 2000 // Optimized count for better performance
+  // Dynamic count based on screen width (simple heuristic)
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const count = isMobile ? 1500 : 4000 // Increased density for desktop, optimized for mobile
   
   const [positions, initialPositions, randomSizes, randomPhases] = useMemo(() => {
     const positions = new Float32Array(count * 3)
@@ -121,15 +123,21 @@ export function ParticleBrain({ isDark = true }: { isDark?: boolean }) {
   }), [])
 
   useEffect(() => {
+    if (pointsRef.current) {
+      // Dynamic blending: Additive for dark (glows), Normal for light (dark dots on light bg)
+      pointsRef.current.material.blending = isDark ? THREE.AdditiveBlending : THREE.NormalBlending
+      pointsRef.current.material.needsUpdate = true
+    }
+
     if (isDark) {
       uniforms.uColor.value.set('#FFFDF9')
       uniforms.uColorHot.value.set('#FFFFE0')
-      uniforms.uBaseOpacity.value = 0.3
+      uniforms.uBaseOpacity.value = 0.4 // Slightly increased opacity
     } else {
-      // Light Mode: Softer Grey, much lower opacity
+      // Light Mode: Dark Charcoal for contrast, visible with NormalBlending
       uniforms.uColor.value.set('#1A1A1A') 
-      uniforms.uColorHot.value.set('#FF6B35')
-      uniforms.uBaseOpacity.value = 1.0 // Maximum opacity
+      uniforms.uColorHot.value.set('#FF6B35') // Primary Orange
+      uniforms.uBaseOpacity.value = 0.6 // Balanced opacity for light mode
     }
   }, [isDark, uniforms])
 
@@ -204,7 +212,7 @@ export function ParticleBrain({ isDark = true }: { isDark?: boolean }) {
         uniforms={uniforms}
         transparent
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        // blending handled in useEffect
       />
     </points>
   )

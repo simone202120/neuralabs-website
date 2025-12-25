@@ -13,7 +13,7 @@ const milestones = [
     year: '2023',
     title: 'La Genesi',
     subtitle: 'Hello World',
-    description: "Tutto è iniziato con una domanda: 'Perché lo sviluppo web è ancora così lento quando l'AI corre così veloce?'. NeuraLabs nasce come esperimento per fondere creatività umana e potenza computazionale.",
+    description: "Tutto è iniziato con una domanda: 'Perché lo sviluppo web è ancora così lento quando l'AI corre così veloce?'. SigmaLabs nasce come esperimento per fondere creatività umana e potenza computazionale.",
     icon: Code2,
     color: 'cyan'
   },
@@ -29,7 +29,7 @@ const milestones = [
     year: '2025',
     title: 'Il Lancio',
     subtitle: 'Go Live',
-    description: "NeuraLabs apre le porte. Non siamo più solo un laboratorio, ma un partner per aziende visionarie. I primi progetti 'AI-First' vedono la luce.",
+    description: "SigmaLabs apre le porte. Non siamo più solo un laboratorio, ma un partner per aziende visionarie. I primi progetti 'AI-First' vedono la luce.",
     icon: Rocket,
     color: 'orange'
   }

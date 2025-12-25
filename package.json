@@ -1,5 +1,5 @@
 {
-  "name": "neuralabs-website",
+  "name": "sigmalabs-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,9 +10,13 @@
     "type-check": "tsc --noEmit",
     "clean": "rimraf .next",
     "clean:all": "rimraf .next node_modules/.cache",
+    "kill": "powershell -ExecutionPolicy Bypass -File ./scripts/kill-dev-processes.ps1",
+    "check": "powershell -ExecutionPolicy Bypass -File ./scripts/check-processes.ps1",
     "kill:ports": "FOR /F \"tokens=5\" %P IN ('netstat -ano ^| findstr :3000 :3001 :3002') DO taskkill /F /PID %P 2>nul || echo No processes on ports 3000-3002",
-    "fresh": "npm run kill:ports && npm run clean && npm run dev",
-    "fresh:install": "npm run kill:ports && npm run clean:all && npm install && npm run dev"
+    "dev:clean": "npm run kill && npm run clean && npm run dev",
+    "dev:safe": "npm run kill && npm run dev",
+    "fresh": "npm run kill && npm run clean && npm run dev",
+    "fresh:install": "npm run kill && npm run clean:all && npm install && npm run dev"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

@@ -86,7 +86,7 @@ export function Footer() {
             <div className="space-y-4">
               <StatusModule />
               <div className="text-xs text-text-muted">
-                &copy; {new Date().getFullYear()} NeuraLabs. All systems operational.
+                &copy; {new Date().getFullYear()} SigmaLabs. All systems operational.
               </div>
             </div>
           </div>

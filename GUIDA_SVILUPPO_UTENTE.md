@@ -1,6 +1,6 @@
-# 📖 GUIDA SVILUPPO - NeuraLabs Website
+# 📖 GUIDA SVILUPPO - SigmaLabs Website
 
-Questa guida ti accompagna passo passo nello sviluppo del sito NeuraLabs.
+Questa guida ti accompagna passo passo nello sviluppo del sito SigmaLabs.
 
 ---
 
@@ -44,7 +44,7 @@ Dopo aver creato gli account, copia le chiavi API:
 
 2. **Dai il contesto:**
    ```
-   Sto lavorando sul progetto NeuraLabs Website. 
+   Sto lavorando sul progetto SigmaLabs Website. 
    Leggi CLAUDE.md per il contesto.
    ```
 
@@ -78,7 +78,7 @@ Tu: Perfetto! Aggiorna PROGRESS.md segnando il task come completato
 ## 📂 Struttura del Progetto
 
 ```
-neuralabs-website/
+sigmalabs-website/
 │
 ├── 📄 README.md           ← Overview progetto
 ├── 📄 PROJECT_BRIEF.md    ← Brief completo
@@ -254,7 +254,7 @@ npm run type-check  # Vedi errori dettagliati
 
 ### Dai Contesto
 ```
-✅ "Stiamo lavorando su NeuraLabs. Leggi CLAUDE.md. 
+✅ "Stiamo lavorando su SigmaLabs. Leggi CLAUDE.md. 
     Implementa il task 2.2 seguendo le convenzioni in docs/CONVENTIONS.md"
 ```
 
@@ -284,4 +284,4 @@ Se hai problemi:
 
 Buon sviluppo! 🚀
 
-*NeuraLabs - Il laboratorio dove nascono le idee intelligenti*
+*SigmaLabs - Il laboratorio dove nascono le idee intelligenti*

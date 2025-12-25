@@ -87,7 +87,7 @@ CREATE POLICY "Enable insert for all users" ON estimates
 ### STEP 3: Aggiungere le Variabili d'Ambiente su Vercel
 
 1. Vai su [vercel.com](https://vercel.com)
-2. Seleziona il progetto **neuralabs-website**
+2. Seleziona il progetto **sigmalabs-website**
 3. Vai in **Settings** → **Environment Variables**
 4. Aggiungi le seguenti variabili:
 
@@ -194,7 +194,7 @@ Vercel farà automaticamente il re-deploy con le nuove modifiche.
 ### Email non vengono inviate
 - Verifica che `RESEND_API_KEY` sia configurata
 - Controlla che il dominio sia verificato su Resend
-- Modifica `from: 'NeuraLabs <noreply@yourdomain.com>'` con il tuo dominio verificato
+- Modifica `from: 'SigmaLabs <noreply@yourdomain.com>'` con il tuo dominio verificato
 
 ### Build fallisce dopo il ripristino
 - Assicurati di aver decommentato **tutte** le import necessarie

@@ -109,6 +109,8 @@ export function MethodologyDeepDive() {
     restDelta: 0.001
   })
 
+  const clipPath = useTransform(scaleY, [0, 1], ["inset(0 0 100% 0)", "inset(0 0 0% 0)"])
+
   // Global background color transition
   const backgroundColor = useTransform(
     scrollYProgress,
@@ -167,8 +169,8 @@ export function MethodologyDeepDive() {
           {/* Central Line (Desktop) */}
           <div className="absolute left-[20px] lg:left-1/2 top-0 bottom-0 w-0.5 bg-border/30 -translate-x-1/2 lg:translate-x-0">
              <motion.div 
-               style={{ scaleY, transformOrigin: "top" }}
-               className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-cyan-500 via-violet-500 to-primary"
+               style={{ clipPath }}
+               className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-cyan-500 via-purple-500 via-orange-500 to-emerald-500"
              />
           </div>
 

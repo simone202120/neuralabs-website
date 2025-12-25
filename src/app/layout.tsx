@@ -31,18 +31,18 @@ const jetBrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'NeuraLabs',
-    template: '%s | NeuraLabs',
+    default: 'SigmaLabs',
+    template: '%s | SigmaLabs',
   },
   description: 'Il laboratorio dove nascono le idee intelligenti. Sviluppo web, AI Agents, sistemi RAG e automazioni.',
   openGraph: {
-    title: 'NeuraLabs',
+    title: 'SigmaLabs',
     description: 'Il laboratorio dove nascono le idee intelligenti.',
-    url: 'https://www.neuralabs.it', // Replace with actual domain
-    siteName: 'NeuraLabs',
+    url: 'https://www.sigmalabs.it', // Replace with actual domain
+    siteName: 'SigmaLabs',
     images: [
       {
-        url: 'https://www.neuralabs.it/og/og-default.png', // Replace with actual domain
+        url: 'https://www.sigmalabs.it/og/og-default.png', // Replace with actual domain
         width: 1200,
         height: 630,
       },
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NeuraLabs',
+    title: 'SigmaLabs',
     description: 'Il laboratorio dove nascono le idee intelligenti.',
-    images: ['https://www.neuralabs.it/og/og-default.png'], // Replace with actual domain
+    images: ['https://www.sigmalabs.it/og/og-default.png'], // Replace with actual domain
   },
   robots: {
     index: true,
