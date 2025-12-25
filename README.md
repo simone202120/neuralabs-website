@@ -1,10 +1,10 @@
-# 🧠 NeuraLabs Website
+# 🧠 SigmaLabs Website
 
 > Il laboratorio dove nascono le idee intelligenti.
 
-Questo è il repository ufficiale per il sito web di NeuraLabs, una startup innovativa specializzata in sviluppo web, AI Agents, sistemi RAG e automazioni. Questo progetto non è solo la nostra vetrina, ma anche un esempio pratico delle nostre competenze, integrando tecnologie all'avanguardia come Next.js 14, Three.js per la grafica 3D e l'API di Claude per l'assistenza AI.
+Questo è il repository ufficiale per il sito web di SigmaLabs, una startup innovativa specializzata in sviluppo web, AI Agents, sistemi RAG e automazioni. Questo progetto non è solo la nostra vetrina, ma anche un esempio pratico delle nostre competenze, integrando tecnologie all'avanguardia come Next.js 14, Three.js per la grafica 3D e l'API di Claude per l'assistenza AI.
 
-Sito web corporate per **NeuraLabs**, startup specializzata in sviluppo web, AI Agents, sistemi RAG e automazioni.
+Sito web corporate per **SigmaLabs**, startup specializzata in sviluppo web, AI Agents, sistemi RAG e automazioni.
 
 ## ✨ Caratteristiche
 
@@ -45,8 +45,8 @@ Sito web corporate per **NeuraLabs**, startup specializzata in sviluppo web, AI 
 
 ```bash
 # Clone repository
-git clone https://github.com/tuousername/neuralabs-website.git
-cd neuralabs-website
+git clone https://github.com/tuousername/sigmalabs-website.git
+cd sigmalabs-website
 
 # Installa dipendenze
 npm install
@@ -83,13 +83,13 @@ RESEND_API_KEY=your_resend_api_key
 
 # App
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
-ADMIN_EMAIL=ciao@neuralabs.it
+ADMIN_EMAIL=ciao@sigmalabs.it
 ```
 
 ## 📁 Struttura Progetto
 
 ```
-neuralabs-website/
+sigmalabs-website/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
 │   ├── components/
@@ -132,12 +132,12 @@ npm run sanity       # Start Sanity Studio
 
 ## 🤝 Contributing
 
-Progetto interno NeuraLabs. Per contribuire, contatta il team.
+Progetto interno SigmaLabs. Per contribuire, contatta il team.
 
 ## 📄 License
 
-Proprietario - NeuraLabs © 2025
+Proprietario - SigmaLabs © 2025
 
 ---
 
-Built with ❤️ and 🤖 by NeuraLabs
+Built with ❤️ and 🤖 by SigmaLabs

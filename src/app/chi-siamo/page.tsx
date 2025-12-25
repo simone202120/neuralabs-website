@@ -24,8 +24,8 @@ async function getTeamMembers() {
 }
 
 export const metadata = {
-  title: 'Chi Siamo | NeuraLabs',
-  description: 'Il team dietro NeuraLabs. Sviluppatori, designer e pionieri dell\'AI uniti per costruire il futuro del web.',
+  title: 'Chi Siamo | SigmaLabs',
+  description: 'Il team dietro SigmaLabs. Sviluppatori, designer e pionieri dell\'AI uniti per costruire il futuro del web.',
 }
 
 export default async function ChiSiamoPage() {
@@ -59,7 +59,7 @@ export default async function ChiSiamoPage() {
               
               <div className="text-xl md:text-2xl text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto">
                 <GlitchText variant="subtle" trigger="hover" className="text-text-primary font-medium">
-                  NeuraLabs
+                  SigmaLabs
                 </GlitchText> non è solo un&apos;agenzia. È un laboratorio dove l&apos;ingegno umano incontra la potenza computazionale per ridefinire ciò che è possibile sul web.
               </div>
 

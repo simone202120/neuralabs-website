@@ -5,7 +5,7 @@ import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
 import Link from 'next/link'
-import { motion, useScroll, useSpring } from 'framer-motion'
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { Terminal, ArrowRight } from 'lucide-react'
 import { methodologyData } from '@/data/methodology-content'
@@ -44,6 +44,7 @@ function HudCard({ step, index }: { step: typeof methodologyData[0], index: numb
           className={cn("h-full bg-gradient-to-r", step.color)}
           initial={{ width: "0%" }}
           whileInView={{ width: "100%" }}
+          viewport={{ once: true }}
           transition={{ duration: 1.5, ease: "circOut" }}
         />
       </div>
@@ -67,6 +68,8 @@ export function MethodologyPipeline() {
     damping: 30,
     restDelta: 0.001
   })
+
+  const clipPath = useTransform(scaleY, [0, 1], ["inset(0 0 100% 0)", "inset(0 0 0% 0)"])
 
   return (
     <Section id="process" className="py-24 relative overflow-hidden bg-background">
@@ -105,8 +108,8 @@ export function MethodologyPipeline() {
           {/* Central Line (Desktop) */}
           <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-0.5 bg-border/50 -translate-x-1/2 md:translate-x-0">
              <motion.div 
-               style={{ scaleY, transformOrigin: "top" }}
-               className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-cyan-500 via-violet-500 to-primary"
+               style={{ clipPath }}
+               className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-cyan-500 via-purple-500 via-orange-500 to-emerald-500"
              />
           </div>
 

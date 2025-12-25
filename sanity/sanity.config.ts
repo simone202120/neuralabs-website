@@ -5,7 +5,7 @@ import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
-  title: 'neuralabs-website',
+  title: 'sigmalabs-website',
 
   projectId: 'your-project-id',
   dataset: 'production',

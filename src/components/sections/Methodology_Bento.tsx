@@ -12,7 +12,7 @@ export function Methodology_Bento() {
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">
-            Il Metodo NeuraLabs
+            Il Metodo SigmaLabs
           </h2>
           <p className="text-xl text-text-secondary">
             Un approccio pragmatico per trasformare la tua visione in realtà digitale.

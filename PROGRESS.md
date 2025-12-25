@@ -1,4 +1,4 @@
-# 📊 PROGRESS - NeuraLabs Website
+# 📊 PROGRESS - SigmaLabs Website
 
 ## Stato Generale
 
@@ -331,7 +331,7 @@
 
 ---
 
-### Task 6.7: Services Section Redesign (NeuraGrid)
+### Task 6.7: Services Section Redesign (SigmaGrid)
 - [x] Bento Grid layout implementation
 - [x] Hover-driven animations
 - [x] Tech stack integration in cards
@@ -394,7 +394,7 @@
 | - | - | - | Progetto inizializzato |
 | 2025-12-17 | 6 | Fix | Corretto crash in ServicesPreview (undefined node list access) |
 | 2025-12-17 | 6 | Fix | Corretto errore hooks in componenti animazione (BrowserMockup, Documents, NeuralNetwork) |
-| 2025-12-17 | 6 | Refactor | Ridisegnata sezione Servizi con layout Bento Grid "NeuraGrid" |
+| 2025-12-17 | 6 | Refactor | Ridisegnata sezione Servizi con layout Bento Grid "SigmaGrid" |
 | 2025-12-17 | 6 | Refactor | Rimossa sezione Progetti e redesign completo sezione Approccio ("Synaptic Pathway") |
 | 2025-12-17 | 6 | Feat | Nuova sezione "IdeaTalk" con chat olografica animata |
 | 2025-12-17 | 6 | Refactor | Redesign Footer in stile "Dashboard" tecnico |

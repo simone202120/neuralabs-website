@@ -1,5 +1,5 @@
 // ============================================
-// NEURALABS WEBSITE - Mock Data
+// SIGMALABS WEBSITE - Mock Data
 // ============================================
 // Use this data during development before Sanity is set up
 
@@ -106,7 +106,7 @@ export const projects = [
     technologies: ['LangChain', 'Claude API', 'Next.js', 'Supabase'],
     hoursSpent: 120,
     clientName: 'TechStartup Srl',
-    testimonial: 'NeuraLabs ha trasformato il nostro supporto clienti. Risposte immediate 24/7.',
+    testimonial: 'SigmaLabs ha trasformato il nostro supporto clienti. Risposte immediate 24/7.',
     liveUrl: 'https://techflow.example.com',
     featured: true,
     publishedAt: '2024-11-15',
@@ -253,7 +253,7 @@ export const blogPosts = [
 export const testimonials = [
   {
     id: '1',
-    quote: 'NeuraLabs ha trasformato la nostra idea in un prodotto reale in tempi record. Professionali, creativi e sempre disponibili.',
+    quote: 'SigmaLabs ha trasformato la nostra idea in un prodotto reale in tempi record. Professionali, creativi e sempre disponibili.',
     authorName: 'Mario Rossi',
     authorRole: 'CEO',
     company: 'TechStartup Srl',
@@ -269,7 +269,7 @@ export const testimonials = [
   },
   {
     id: '3',
-    quote: 'Le automazioni create da NeuraLabs ci hanno fatto risparmiare 40 ore a settimana. ROI immediato.',
+    quote: 'Le automazioni create da SigmaLabs ci hanno fatto risparmiare 40 ore a settimana. ROI immediato.',
     authorName: 'Marco Verdi',
     authorRole: 'CTO',
     company: 'Agency Pro',
@@ -368,9 +368,9 @@ export const navigation = {
     ],
   },
   social: [
-    { label: 'LinkedIn', href: 'https://linkedin.com/company/neuralabs', icon: 'linkedin' },
-    { label: 'Twitter', href: 'https://twitter.com/neuralabs', icon: 'twitter' },
-    { label: 'GitHub', href: 'https://github.com/neuralabs', icon: 'github' },
+    { label: 'LinkedIn', href: 'https://linkedin.com/company/sigmalabs', icon: 'linkedin' },
+    { label: 'Twitter', href: 'https://twitter.com/sigmalabs', icon: 'twitter' },
+    { label: 'GitHub', href: 'https://github.com/sigmalabs', icon: 'github' },
   ],
 };
 
@@ -378,11 +378,11 @@ export const navigation = {
 // SITE CONFIG
 // --------------------------------------------
 export const siteConfig = {
-  name: 'NeuraLabs',
+  name: 'SigmaLabs',
   tagline: 'Il laboratorio dove nascono le idee intelligenti',
   description: 'Sviluppiamo siti web, AI Agents, sistemi RAG e automazioni per PMI e startup che vogliono innovare.',
-  url: 'https://neuralabs.it',
-  email: 'ciao@neuralabs.it',
+  url: 'https://sigmalabs.it',
+  email: 'ciao@sigmalabs.it',
   location: 'Padova, Italia',
   ogImage: '/og/og-default.png',
 };

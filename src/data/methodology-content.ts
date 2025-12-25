@@ -22,24 +22,24 @@ export const methodologyData = [
     deliverables: ["Technical Blueprint", "Database Schema", "Project Roadmap", "API Specs"]
   },
   {
-    id: "02-ux-ui",
-    title: "UX/UI Engineering",
-    subtitle: "Design System & Prototyping",
+    id: "02-architecture",
+    title: "Architecture & Strategy",
+    subtitle: "Tech Stack & Data Modeling",
     icon: Layout,
-    tagline: "Design Sistemico",
-    shortDescription: "Non solo design, ma sistemi scalabili. Creiamo interfacce che uniscono estetica mozzafiato e usabilità rigorosa.",
-    fullDescription: "L'estetica deve servire la funzione. Progettiamo Design System atomici che garantiscono coerenza visiva e facilità di manutenzione. Ogni componente è pensato per essere accessibile, reattivo e perfettamente integrato con la logica di business sottostante.",
+    tagline: "Fondamenta Solide",
+    shortDescription: "Definiamo l'architettura tecnica e la struttura dati. Costruiamo le fondamenta solide su cui scalerà la tua applicazione.",
+    fullDescription: "Prima di scrivere una riga di codice frontend, progettiamo il cuore del sistema. Selezioniamo lo stack tecnologico ideale, modelliamo il database per la massima efficienza e definiamo protocolli di sicurezza robusti. È qui che preveniamo i colli di bottiglia futuri.",
     color: "from-purple-500 to-pink-500",
     bgLightColor: "bg-purple-500/10",
     iconColor: "text-purple-500",
     features: [
-      { title: "Component Library", description: "Libreria di componenti UI riutilizzabili." },
-      { title: "Interactive Prototypes", description: "Prototipi navigabili ad alta fedeltà." },
-      { title: "Accessibility (a11y)", description: "Compliance con gli standard WCAG." },
-      { title: "Responsive Design", description: "Ottimizzazione per ogni device." }
+      { title: "System Design", description: "Progettazione dell'infrastruttura cloud e servizi." },
+      { title: "Database Modeling", description: "Schema ERD ottimizzato per performance e scalabilità." },
+      { title: "Security Planning", description: "Implementazione policy RLS e autenticazione sicura." },
+      { title: "Scalability Strategy", description: "Piano di crescita per gestire alti carichi." }
     ],
-    techStack: ["Figma", "Tailwind CSS", "Framer Motion", "Radix UI"],
-    deliverables: ["Figma Design File", "Design System", "Interactive Prototype", "UI Assets"]
+    techStack: ["Supabase", "PostgreSQL", "Next.js", "Redis"],
+    deliverables: ["System Architecture Diagram", "Entity-Relationship Diagram", "Tech Stack Documentation", "Security Protocols"]
   },
   {
     id: "03-sviluppo",

@@ -60,7 +60,7 @@ export function Logo({ className, iconOnly = false }: LogoProps) {
       </svg>
       
       {!iconOnly && (
-        <span>NeuraLabs</span>
+        <span>SigmaLabs</span>
       )}
     </div>
   )

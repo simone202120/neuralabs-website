@@ -1,10 +1,10 @@
-# 📋 PROJECT BRIEF - NeuraLabs Website
+# 📋 PROJECT BRIEF - SigmaLabs Website
 
 ## Overview
 
 | Campo | Valore |
 |-------|--------|
-| **Progetto** | Sito web corporate NeuraLabs |
+| **Progetto** | Sito web corporate SigmaLabs |
 | **Tipo** | Website + Web Application |
 | **Stato** | 🟡 In Sviluppo |
 | **Versione** | 1.0.0 |
@@ -15,7 +15,7 @@
 ## 🎯 Problema e Soluzione
 
 ### Il Problema
-NeuraLabs è una nuova startup specializzata in sviluppo web e AI che ha bisogno di:
+SigmaLabs è una nuova startup specializzata in sviluppo web e AI che ha bisogno di:
 - Una presenza online professionale e distintiva
 - Un modo per attrarre e convertire clienti potenziali
 - Dimostrare competenze tecniche attraverso il sito stesso
@@ -55,15 +55,15 @@ Un sito web innovativo che:
 ## 🧠 Brand Identity
 
 ### Nome
-**NeuraLabs**
-- "Neura" → reti neurali, intelligenza
+**SigmaLabs**
+- "Sigma" → somma, integrazione, standard deviazione (statistica/AI)
 - "Labs" → laboratorio, sperimentazione, innovazione
 
 ### Tagline
 > "Il laboratorio dove nascono le idee intelligenti"
 
 ### Posizionamento
-NeuraLabs non è la solita web agency. È un laboratorio creativo dove l'AI è partner, non solo prodotto. Per chi vuole innovare davvero.
+SigmaLabs non è la solita web agency. È un laboratorio creativo dove l'AI è partner, non solo prodotto. Per chi vuole innovare davvero.
 
 ### Tono di Voce
 - **Creativo e audace** - Non abbiamo paura di osare
