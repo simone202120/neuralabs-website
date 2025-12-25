@@ -125,8 +125,9 @@ export function ParticleBrain({ isDark = true }: { isDark?: boolean }) {
   useEffect(() => {
     if (pointsRef.current) {
       // Dynamic blending: Additive for dark (glows), Normal for light (dark dots on light bg)
-      pointsRef.current.material.blending = isDark ? THREE.AdditiveBlending : THREE.NormalBlending
-      pointsRef.current.material.needsUpdate = true
+      const material = pointsRef.current.material as THREE.ShaderMaterial
+      material.blending = isDark ? THREE.AdditiveBlending : THREE.NormalBlending
+      material.needsUpdate = true
     }
 
     if (isDark) {
