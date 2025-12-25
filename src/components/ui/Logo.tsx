@@ -7,58 +7,47 @@ interface LogoProps {
 
 export function Logo({ className, iconOnly = false }: LogoProps) {
   return (
-    <div className={cn("flex items-center gap-2 font-display font-bold text-xl tracking-tight select-none", className)}>
+    <div className={cn("flex items-center gap-2 font-display font-bold text-xl tracking-tight select-none logo-container", className)}>
       <svg
-        viewBox="0 0 24 24"
+        viewBox="0 0 32 32"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="w-8 h-8 text-primary"
+        aria-label="SigmaLabs Logo"
       >
+        {/* Hexagon Frame (Crucible Container) */}
         <path
-          d="M12 2L2 7L12 12L22 7L12 2Z"
+          d="M16 2 L27 8.5 L27 23.5 L16 30 L5 23.5 L5 8.5 Z"
+          fill="none"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="opacity-80"
+          className="hexagon"
         />
-        <path
-          d="M2 17L12 22L22 17"
+
+        {/* Single Orbital Ring */}
+        <circle
+          cx="16"
+          cy="16"
+          r="9"
+          fill="none"
           stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="opacity-80"
+          strokeWidth="1"
+          opacity="0.5"
+          className="orbit-ring"
         />
-        <path
-          d="M2 7V17"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="opacity-50"
+
+        {/* Central Core (larger, more visible) */}
+        <circle
+          cx="16"
+          cy="16"
+          r="5"
+          fill="currentColor"
+          className="core"
         />
-        <path
-          d="M22 7V17"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="opacity-50"
-        />
-        <path
-          d="M12 12V22"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        {/* Radar Ping Effect */}
-        <circle cx="12" cy="12" r="2" fill="currentColor" className="animate-ping opacity-20" />
-        {/* Heartbeat Core */}
-        <circle cx="12" cy="12" r="2" fill="currentColor" className="animate-heartbeat" />
       </svg>
-      
+
       {!iconOnly && (
         <span>SigmaLabs</span>
       )}

@@ -94,7 +94,7 @@ export function Navigation() {
 
           <motion.div animate={{ scale: isScrolled ? 0.9 : 1 }} className="origin-left">
 
-            <Logo />
+            <Logo className={isScrolled ? 'compact' : ''} />
 
           </motion.div>
 
