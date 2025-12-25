@@ -134,3 +134,66 @@
   animation: heartbeat 2s infinite ease-in-out;
   transform-origin: center;
 }
+
+/* ========================================
+   LOGO CRUCIBLE ANIMATIONS (SIMPLIFIED)
+   ======================================== */
+
+/* Orbital Ring Rotation */
+@keyframes orbit-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Core Pulse Animation */
+@keyframes core-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* Apply Animations to Logo Elements */
+.logo-container .orbit-ring {
+  animation: orbit-rotate 20s linear infinite;
+  transform-origin: center;
+}
+
+.logo-container .core {
+  animation: core-pulse 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Hover States - Accelerate animations */
+.logo-container:hover .orbit-ring {
+  animation-duration: 8s;
+}
+
+.logo-container:hover .core {
+  animation-duration: 1.5s;
+  filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.8));
+}
+
+.logo-container:hover .hexagon {
+  stroke-width: 3px;
+  filter: drop-shadow(0 0 6px rgba(255, 107, 53, 0.5));
+}
+
+/* Performance Optimizations */
+.logo-container svg {
+  will-change: transform;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .logo-container .orbit-ring {
+    animation: none !important;
+  }
+
+  .logo-container .core {
+    animation: core-pulse-subtle 4s ease-in-out infinite;
+  }
+
+  @keyframes core-pulse-subtle {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+}
