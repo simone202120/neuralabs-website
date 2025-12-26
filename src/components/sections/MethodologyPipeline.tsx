@@ -81,23 +81,26 @@ export function MethodologyPipeline() {
       <Container ref={containerRef} className="relative">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 md:mb-32">
+        <div className="mb-20 md:mb-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-light border border-border/50 text-xs font-mono text-text-muted mb-6">
-              <Terminal className="w-3 h-3" />
-              <span>ENGINEERING_PROTOCOL_V2</span>
+            <div className="flex items-center gap-2 mb-4 text-primary font-mono text-xs tracking-widest uppercase">
+              <Terminal className="w-4 h-4" />
+              <span>SIGMA_FRAMEWORK</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-              Dal Caos alla <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-500">Struttura.</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-slate-900 dark:text-white">
+              Come Trasformiamo Idee <br className="hidden md:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">
+                in Sistemi Funzionanti
+              </span>
             </h2>
-            <p className="text-lg text-text-secondary max-w-xl mx-auto">
-              Abbiamo trasformato la creatività in un workflow replicabile. 
-              Ogni fase è un modulo testato che garantisce output prevedibili.
+            <p className="text-lg text-slate-600 dark:text-gray-300 leading-relaxed max-w-3xl">
+              Il nostro metodo agile in 4 fasi porta progetti da concept a produzione
+              in tempi certi. Sprint settimanali, review continue e deployment automatizzati:
+              zero sorprese, solo milestone raggiunti e software che funziona dal day one.
             </p>
           </motion.div>
         </div>
