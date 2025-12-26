@@ -22,7 +22,7 @@ const services = [
     number: '01',
     title: 'Siti Web e Web App',
     tagline: 'Digital Presence.',
-    description: "Creiamo esperienze web che catturano l'attenzione e guidano alla conversione con performance estreme.",
+    description: "Esperienze web coinvolgenti che funzionano su ogni dispositivo: interfacce intuitive, animazioni fluide e performance Google-certified per il tuo brand.",
     icon: Globe,
     technologies: ['Next.js', 'React', 'Three.js', 'SEO'],
     capabilities: [
@@ -41,7 +41,7 @@ const services = [
     number: '02',
     title: 'Custom Software e AI Software',
     tagline: 'Enterprise Solutions.',
-    description: "Sviluppiamo il cuore tecnologico del tuo business con architetture moderne e intelligenza artificiale integrata.",
+    description: "Software personalizzato in Python e Node.js con AI integrata: dashboard intelligenti, API REST scalabili e integrazioni GPT/Claude per potenziare i tuoi prodotti.",
     icon: Terminal,
     technologies: ['Python', 'Node.js', 'Supabase', 'Docker'],
     capabilities: [
@@ -60,7 +60,7 @@ const services = [
     number: '03',
     title: 'Automazioni, Agenti AI, Sistemi RAG',
     tagline: 'Autonomous Systems.',
-    description: "Trasformiamo i processi manuali in flussi di lavoro intelligenti che scalano senza errori.",
+    description: "Sistemi RAG su documenti aziendali: chatbot intelligenti che rispondono H24, agenti AI che processano email e automazioni n8n che eliminano task manuali.",
     icon: Bot,
     technologies: ['n8n', 'LangChain', 'OpenAI', 'Pinecone'],
     capabilities: [
@@ -79,7 +79,7 @@ const services = [
     number: '04',
     title: 'Sviluppo MVP',
     tagline: 'Rapid Validation.',
-    description: "Riduciamo il time-to-market portando la tua idea in produzione in tempi record per validarla.",
+    description: "Meno funzionalità, più valore: sviluppiamo MVP focalizzati sulla tua unique value proposition con Next.js, deploy istantaneo e iterazioni rapide basate su dati reali.",
     icon: Rocket,
     technologies: ['Next.js', 'Vercel', 'Rapid Proto', 'Analytics'],
     capabilities: [
@@ -138,14 +138,21 @@ export function ServicesPreview() {
         <FadeIn className="mb-12 md:mb-20">
           <div className="flex items-center gap-2 mb-4 text-primary font-mono text-xs tracking-widest uppercase">
             <Activity className="w-4 h-4" />
-            <span>Systems Architecture</span>
+            <span>Built for You</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-slate-900 dark:text-white">
-            Soluzioni che <br className="hidden md:block" />
+            Web, Software e AI <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">
-              fanno la differenza.
+              per Innovare e Automatizzare
             </span>
           </h2>
+          <p className="text-lg text-slate-600 dark:text-gray-300 leading-relaxed max-w-3xl">
+            Partner tecnologico per aziende che vogliono crescere velocemente. Realizziamo
+            piattaforme web scalabili, sviluppiamo software su misura integrato con AI,
+            implementiamo automazioni intelligenti e sistemi RAG per customer support H24.
+            Dalla prototipazione rapida al lancio in produzione, affianchiamo il tuo team con
+            competenze full-stack e metodologie agili orientate al time-to-market.
+          </p>
         </FadeIn>
 
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-start mb-16">
