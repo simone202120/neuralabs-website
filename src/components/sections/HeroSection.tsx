@@ -13,7 +13,7 @@ const ParticleHero = dynamic(
   { ssr: false, loading: () => null }
 )
 
-const words = ["an Intelligence Engine", "an Autonomous System", "a Digital Leader"]
+const words = ["Trasformare le Idee", "Accelerare la Crescita", "Automatizzare i Processi"]
 
 function Typewriter({ text, speed = 50, delay = 1000 }: { text: string, speed?: number, delay?: number }) {
   const [displayText, setDisplayText] = useState('')
@@ -72,20 +72,26 @@ export function HeroSection() {
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold tracking-tight leading-tight min-h-[160px] sm:min-h-[220px] md:min-h-[300px]">
             <FadeIn delay={0.4}>
-              <span className="block text-text-primary">Transform your</span>
-              <span className="block text-text-primary mb-2">business into</span>
+              <span className="block text-text-primary">Sviluppo Web, Custom Software</span>
+              <span className="block text-text-primary mb-2">e Soluzioni AI per</span>
             </FadeIn>
-            <span className="block text-primary font-mono mt-2 md:mt-4">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-primary font-mono mt-2 md:mt-4">
               <Typewriter text={words[wordIndex]} key={wordIndex} />
             </span>
           </h1>
 
+          <FadeIn delay={0.5}>
+            <p className="text-lg sm:text-xl md:text-2xl text-text-secondary/90 mt-6 md:mt-8 max-w-3xl leading-relaxed">
+              Sviluppiamo piattaforme web scalabili e sistemi AI che automatizzano processi, riducono costi e migliorano le performance.
+            </p>
+          </FadeIn>
+
           <FadeIn delay={0.6} className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-5">
             <Button asChild size="lg" className="text-lg px-8 h-12 md:h-14 rounded-full">
-              <Link href="/progetti">Start Evolution</Link>
+              <Link href="/progetti">Inizia Ora</Link>
             </Button>
             <Button asChild variant="ghost" size="lg" className="text-lg px-8 h-12 md:h-14 rounded-full border border-white/10 hover:bg-white/5">
-              <Link href="/contatti">Chat with AI →</Link>
+              <Link href="/contatti">Contatta il Team →</Link>
             </Button>
           </FadeIn>
         </div>
