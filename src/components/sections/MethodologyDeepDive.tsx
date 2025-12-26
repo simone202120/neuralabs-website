@@ -136,29 +136,26 @@ export function MethodologyDeepDive() {
       <Container className="relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-4xl mx-auto mb-24 md:mb-40">
+        <div className="mb-24 md:mb-32 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-light border border-border/50 text-xs font-mono text-text-muted mb-8">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-              </span>
-              <span>FULL_PROCESS_DOCUMENTATION_V1.0</span>
+            <div className="flex items-center gap-2 mb-4 text-primary font-mono text-xs tracking-widest uppercase">
+              <Terminal className="w-4 h-4" />
+              <span>HOW WE BUILD</span>
             </div>
-            
-            <h1 className="text-5xl md:text-7xl font-display font-bold mb-8 text-foreground tracking-tight">
-              Ingegneria della <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-purple-500 to-orange-500">
-                Trasformazione Digitale.
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-slate-900 dark:text-white">
+              Dall'Idea al Prodotto Funzionante <br className="hidden md:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">
+                Processo in 4 Fasi Collaudate
               </span>
             </h1>
-            
-            <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
-              Esplora ogni singolo step del nostro protocollo. Dalla scoperta iniziale al deploy in produzione, nulla è lasciato al caso.
+
+            <p className="text-lg text-slate-600 dark:text-gray-300 leading-relaxed max-w-3xl">
+              Framework agile che trasforma requisiti in software funzionante attraverso 4 fasi sequenziali: definiamo architettura dati e roadmap, sviluppiamo con sprint review settimanali, testiamo ogni scenario edge-case, lanciamo con monitoring real-time attivo. Metodologia trasparente, risultati misurabili.
             </p>
           </motion.div>
         </div>
