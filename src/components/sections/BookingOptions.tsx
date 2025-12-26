@@ -11,16 +11,16 @@ import { cn } from '@/lib/utils'
 
 const features = {
   discovery: [
-    "Brainstorming informale",
-    "Analisi macro fattibilità",
-    "Nessun impegno richiesto",
-    "Ideale per prime fasi"
+    "Prima analisi fattibilità tecnica",
+    "Discussione requisiti essenziali",
+    "Stima macro tempi e budget",
+    "Nessun impegno o costo"
   ],
   strategy: [
-    "Analisi requisiti tecnica",
-    "Roadmap preliminare",
-    "Stima tempi e costi",
-    "Per progetti definiti"
+    "Esci con roadmap chiara",
+    "Sai esattamente cosa costruirai",
+    "Hai budget e tempi certi",
+    "Pronto per prendere decisioni"
   ]
 }
 
@@ -41,22 +41,26 @@ export function BookingOptions() {
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-violet-500/5 rounded-full blur-[120px] translate-y-1/3 translate-x-1/3 pointer-events-none -z-10" />
 
       <Container ref={containerRef}>
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+        <div className="mb-16 md:mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
-              Scegli la tua <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-violet-500">
-                corsia preferenziale.
+            <div className="flex items-center gap-2 mb-4 text-primary font-mono text-xs tracking-widest uppercase">
+              <Rocket className="w-4 h-4" />
+              <span>START HERE</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-slate-900 dark:text-white">
+              In 15 Minuti Capisci <br className="hidden md:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">
+                Se Siamo il Partner Giusto
               </span>
             </h2>
-            <p className="text-lg text-text-secondary md:text-xl max-w-2xl mx-auto leading-relaxed">
-              Non servono form infiniti o specifiche perfette. 
-              Scegli il modo più adatto a te per iniziare a costruire il futuro.
+            <p className="text-lg text-slate-600 dark:text-gray-300 leading-relaxed max-w-3xl">
+              Due modi per iniziare: una call informale gratuita per esplorare l'idea,
+              oppure un kickoff strategico per partire subito con roadmap e stime concrete.
             </p>
           </motion.div>
         </div>
@@ -86,8 +90,8 @@ export function BookingOptions() {
 
               <h3 className="text-3xl font-display font-bold mb-2">Coffee & Vision</h3>
               <p className="text-text-secondary mb-8 leading-relaxed">
-                Per chi ha un'idea ma vuole capire se siamo il partner giusto. 
-                Niente jargon tecnico, solo una chiacchierata sulle tue ambizioni.
+                Hai un'idea ma non sai da dove partire? Parliamone senza impegno:
+                valutiamo insieme fattibilità, tempistiche e primo step concreto da fare.
               </p>
 
               {/* List */}
@@ -144,8 +148,8 @@ export function BookingOptions() {
 
               <h3 className="text-3xl font-display font-bold mb-2">Project Kickoff</h3>
               <p className="text-text-secondary mb-8 leading-relaxed">
-                Per chi vuole partire subito. Analizziamo i requisiti e ti diamo una 
-                roadmap tecnica concreta per trasformare l'idea in realtà.
+                Requisiti chiari e voglia di partire subito? In 45 minuti mappiamo obiettivi,
+                definiamo roadmap tecnica e ti consegniamo stima precisa con tempi e costi reali.
               </p>
 
               {/* List */}

@@ -29,13 +29,13 @@ export interface ServiceData {
 export const servicesData: ServiceData[] = [
   {
     id: "WEB-01",
-    title: "Siti Web e Web App",
+    title: "Sviluppo Siti Web e Applicazioni Web",
     icon: Globe,
-    tagline: "Digital Presence & Performance",
-    shortDescription: "Piattaforme digitali ad alte prestazioni che convertono visitatori in clienti.",
-    fullDescription: "Realizziamo esperienze web moderne e performanti. Non semplici siti vetrina, ma strumenti di business ottimizzati per la conversione e il posizionamento sui motori di ricerca. Dalla landing page ad alto impatto alla web application complessa, curiamo ogni dettaglio dell'interfaccia e dell'architettura.",
+    tagline: "Performanti, Scalabili, Ottimizzate",
+    shortDescription: "Piattaforme web moderne sviluppate con tecnologie all'avanguardia e best practices dell'industria software.",
+    fullDescription: "Dalla prima consultazione al lancio in produzione, curiamo ogni aspetto del tuo progetto web: design UI/UX su misura, sviluppo frontend in Next.js con TypeScript strict mode, integrazione CMS headless (Sanity/Contentful), ottimizzazione SEO on-page, performance tuning e analytics setup. Che sia un sito corporate, una piattaforma SaaS o un portale e-commerce, usi tecnologie enterprise-grade con semplicità di gestione. Risultato: siti veloci, sicuri e che si posizionano.",
     features: [
-      { title: "Siti Web", description: "Design responsivo, velocità di caricamento istantanea e SEO tecnica avanzata." },
+      { title: "Siti Web", description: "Design responsivo, velocità di caricamento istantanea e SEO tecnica." },
       { title: "Web App", description: "Applicazioni complesse accessibili da browser con UX pari alle app native." }
     ],
     techStack: ["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion"],
@@ -56,7 +56,7 @@ export const servicesData: ServiceData[] = [
     icon: Terminal,
     tagline: "Tailored Enterprise Solutions",
     shortDescription: "Software su misura potenziato dall'Intelligenza Artificiale per esigenze specifiche.",
-    fullDescription: "Quando le soluzioni standard non bastano, costruiamo software cucito sui tuoi processi. Integriamo l'intelligenza artificiale direttamente nel cuore delle tue applicazioni aziendali per analizzare dati, generare contenuti e prevedere trend.",
+    fullDescription: "Software custom progettato con te, non per te. Analizziamo insieme le esigenze reali, definiamo priorità e costruiamo soluzioni con tecnologie affidabili e moderne. Backend scalabili, interfacce user-friendly e integrazioni AI quando portano benefici misurabili. Ogni progetto include architettura documentata, codice pulito e formazione del team. Non vendiamo complessità: consegniamo strumenti che il tuo team può usare, mantenere e far evolvere nel tempo.",
     features: [
       { title: "Dashboard AI", description: "Pannelli di controllo intelligenti che visualizzano dati e suggeriscono azioni." },
       { title: "API Development", description: "Architetture back-end scalabili, sicure e documentate per i tuoi servizi." },
@@ -81,7 +81,7 @@ export const servicesData: ServiceData[] = [
     icon: Bot,
     tagline: "Autonomous Workflows",
     shortDescription: "Ecosistemi intelligenti che lavorano al posto tuo, riducendo errori e costi.",
-    fullDescription: "Rivoluziona l'operatività aziendale delegando i task ripetitivi e complessi a una forza lavoro digitale. I nostri sistemi non si limitano a seguire regole, ma comprendono il contesto grazie ai modelli di linguaggio avanzati (LLM) e ai database vettoriali.",
+    fullDescription: "Identifichiamo insieme i processi che ti costano tempo e risorse, poi costruiamo automazioni intelligenti che lavorano H24. Chatbot che rispondono basandosi sui tuoi documenti reali, workflow che sincronizzano dati tra applicazioni, agenti AI che smistano richieste. Tecnologie moderne (n8n, LangChain, sistemi RAG) ma implementazione pragmatica: partiamo da un processo, misuriamo il risparmio, scaliamo. Intelligenza artificiale usata con criterio per risultati concreti e misurabili.",
     features: [
       { title: "Sistemi RAG", description: "Chatbot che rispondo basandosi esclusivamente sui tuoi documenti aziendali." },
       { title: "Automazioni Processi", description: "Workflow che connettono app diverse eliminando il data-entry manuale." },
@@ -106,7 +106,7 @@ export const servicesData: ServiceData[] = [
     icon: Rocket,
     tagline: "Rapid Idea Validation",
     shortDescription: "Dal concetto al mercato nel minor tempo possibile per validare la tua idea.",
-    fullDescription: "Trasformiamo la tua visione in un prodotto funzionante in tempi record. Ci concentriamo sulle funzionalità core essenziali per lanciare, raccogliere feedback dagli utenti e iterare velocemente, senza sprecare budget in feature non necessarie.",
+    fullDescription: "Sviluppo MVP con approccio \"less is more\": individuiamo la tua unique value proposition, costruiamo solo quello e lo mettiamo in mano agli utenti. Niente funzioni \"nice to have\", solo essenziale fatto bene. Stack semplice e moderno, architettura che non ti blocca dopo, supporto al lancio incluso. In settimane, non mesi, hai un prodotto funzionante per testare traction e product-market fit. Poi iteriamo insieme basandoci su dati reali, non intuizioni.",
     features: [
       { title: "Prototipazione Rapida", description: "Mockup interattivi e proof-of-concept in giorni, non mesi." },
       { title: "Core Features Development", description: "Sviluppo focalizzato sul valore unico della tua proposta." },

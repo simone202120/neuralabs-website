@@ -47,39 +47,37 @@ export function ServicesDeepDive() {
       <Container className="relative z-10">
         {/* Page Header */}
         <div className="mb-24 md:mb-32 max-w-4xl">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-mono text-slate-500 dark:text-gray-400 mb-6"
+            className="flex items-center gap-2 mb-4 text-primary font-mono text-xs tracking-widest uppercase"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
-            SYSTEM CAPABILITIES DATABASE
+            <Cpu className="w-4 h-4" />
+            <span>WHAT WE BUILD</span>
           </motion.div>
-          
-          <motion.h1 
+
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-display font-bold text-slate-900 dark:text-white tracking-tight mb-8"
+            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-slate-900 dark:text-white"
           >
-            Engineering <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-500 to-slate-900 dark:from-slate-400 dark:to-white">
-              The Future.
+            Sviluppo Web, Backend Scalabili <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">
+              e Intelligenza Artificiale
             </span>
           </motion.h1>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-slate-600 dark:text-gray-400 leading-relaxed max-w-2xl"
+            className="text-lg text-slate-600 dark:text-gray-300 leading-relaxed max-w-3xl"
           >
-            Analizziamo le tue necessità e costruiamo infrastrutture digitali su misura. 
-            Ogni linea di codice ha uno scopo: la crescita del tuo business.
+            Che tu abbia bisogno di un sito web ad alte performance, un software gestionale personalizzato
+            o agenti AI che automatizzano processi aziendali, sviluppiamo soluzioni su misura con stack
+            tecnologico moderno (Next.js, Python, LangChain) e metodologie agili che garantiscono tempi certi.
           </motion.p>
         </div>
 
