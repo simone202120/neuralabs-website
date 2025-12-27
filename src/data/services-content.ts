@@ -16,8 +16,8 @@ export interface ServiceData {
   techStack: string[]
   useCases: string[]
   details?: {
-    timeline: string
-    startingFrom: string
+    output: string
+    focus: string
   }
   color: string
   iconColor: string
@@ -41,8 +41,8 @@ export const servicesData: ServiceData[] = [
     techStack: ["Next.js", "React", "TypeScript", "Tailwind", "Framer Motion"],
     useCases: ["Corporate Websites", "SaaS Platforms", "E-commerce", "Portali Clienti"],
     details: {
-      timeline: "3-8 Settimane",
-      startingFrom: "€2.500"
+      output: "Piattaforma Web Scalabile",
+      focus: "Performance & UX"
     },
     color: 'from-emerald-500 to-teal-500',
     iconColor: 'text-emerald-500',
@@ -66,8 +66,8 @@ export const servicesData: ServiceData[] = [
     techStack: ["Node.js", "Python", "Supabase", "PostgreSQL", "Docker"],
     useCases: ["CRM Personalizzati", "ERP Aziendali", "Piattaforme di Analisi", "Backend Systems"],
     details: {
-      timeline: "6-12 Settimane",
-      startingFrom: "€5.000"
+      output: "Software Proprietario & IP",
+      focus: "Efficienza & Controllo"
     },
     color: 'from-blue-500 to-cyan-500',
     iconColor: 'text-blue-500',
@@ -91,8 +91,8 @@ export const servicesData: ServiceData[] = [
     techStack: ["n8n", "LangChain", "OpenAI", "Pinecone", "Vapi.ai"],
     useCases: ["Customer Support H24", "Onboarding Automatico", "Knowledge Base Interattiva", "Lead Qualification"],
     details: {
-      timeline: "4-8 Settimane",
-      startingFrom: "€3.500"
+      output: "Ecosistema Autonomo H24",
+      focus: "Automazione & ROI"
     },
     color: 'from-violet-500 to-fuchsia-500',
     iconColor: 'text-violet-500',
@@ -116,8 +116,8 @@ export const servicesData: ServiceData[] = [
     techStack: ["Next.js", "Supabase", "Vercel", "Tailwind UI"],
     useCases: ["Startup Launch", "New Product Features", "Market Testing", "Beta Testing"],
     details: {
-      timeline: "3-5 Settimane",
-      startingFrom: "€3.000"
+      output: "Prodotto Validato & Lancio",
+      focus: "Velocità & Mercato"
     },
     color: 'from-amber-500 to-orange-500',
     iconColor: 'text-amber-500',

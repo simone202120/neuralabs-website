@@ -138,15 +138,15 @@ function ServiceBlock({ service, index }: { service: any, index: number }) {
                 <div className="mt-8 space-y-4">
                     <div className="flex items-center gap-3 text-sm font-mono text-slate-500 dark:text-gray-500">
                          <div className="w-8 h-8 rounded bg-slate-100 dark:bg-white/5 flex items-center justify-center border border-slate-200 dark:border-white/10">
-                            <span className="text-[10px]">EUR</span>
+                            <span className="text-[10px]">FCS</span>
                          </div>
-                         <span>{service.details.startingFrom}</span>
+                         <span>{service.details.focus}</span>
                     </div>
                     <div className="flex items-center gap-3 text-sm font-mono text-slate-500 dark:text-gray-500">
                          <div className="w-8 h-8 rounded bg-slate-100 dark:bg-white/5 flex items-center justify-center border border-slate-200 dark:border-white/10">
-                            <span className="text-[10px]">DAY</span>
+                            <span className="text-[10px]">OUT</span>
                          </div>
-                         <span>{service.details.timeline}</span>
+                         <span>{service.details.output}</span>
                     </div>
                 </div>
             </div>
