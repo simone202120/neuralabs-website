@@ -12,6 +12,8 @@ import { motion, AnimatePresence, useMotionValue, animate } from 'framer-motion'
 import { BrowserMockupAnimation } from '@/components/animations/BrowserMockupAnimation'
 import { NeuralNetworkAnimation } from '@/components/animations/NeuralNetworkAnimation'
 import { DocumentsAnimation } from '@/components/animations/DocumentsAnimation'
+import { RocketAnimation } from '@/components/animations/RocketAnimation'
+import { PipelineAnimation } from '@/components/animations/PipelineAnimation'
 import { GearsAnimation } from '@/components/animations/GearsAnimation'
 import { cn } from '@/lib/utils'
 
@@ -50,7 +52,7 @@ const services = [
       { title: "Integrazioni LLM", desc: "Potenziamento software con GPT/Claude." },
       { title: "Cloud", desc: "Infrastrutture scalabili e sicure." }
     ],
-    animationType: 'gears' as const,
+    animationType: 'gears' as const, // Back to Gears
     href: '/servizi#software',
     color: 'from-blue-500 to-cyan-500',
     iconColor: 'text-blue-500'
@@ -69,7 +71,7 @@ const services = [
       { title: "Custom Workflow", desc: "Pipeline su misura per il tuo team." },
       { title: "ChatBot Vocali", desc: "Assistenti che parlano e ascoltano." }
     ],
-    animationType: 'neural' as const,
+    animationType: 'neural' as const, // Switched Neural to AI section
     href: '/servizi#ai',
     color: 'from-violet-500 to-fuchsia-500',
     iconColor: 'text-violet-500'
@@ -88,7 +90,7 @@ const services = [
       { title: "Scalable V1", desc: "Basi solide per crescere." },
       { title: "Launch Support", desc: "Assistenza tecnica al lancio." }
     ],
-    animationType: 'documents' as const,
+    animationType: 'rocket' as const, // Rocket stays for MVP
     href: '/servizi#mvp',
     color: 'from-amber-500 to-orange-500',
     iconColor: 'text-amber-500'
@@ -96,7 +98,7 @@ const services = [
 ]
 
 // --- Animation Components ---
-function AnimationWrapper({ type }: { type: 'browser' | 'neural' | 'documents' | 'gears' }) {
+function AnimationWrapper({ type }: { type: 'browser' | 'neural' | 'documents' | 'gears' | 'rocket' | 'pipeline' }) {
   const progress = useMotionValue(0)
   
   useEffect(() => {
@@ -114,6 +116,8 @@ function AnimationWrapper({ type }: { type: 'browser' | 'neural' | 'documents' |
     case 'neural': return <NeuralNetworkAnimation progress={progress} />
     case 'documents': return <DocumentsAnimation progress={progress} />
     case 'gears': return <GearsAnimation progress={progress} />
+    case 'rocket': return <RocketAnimation progress={progress} />
+    case 'pipeline': return <PipelineAnimation progress={progress} />
     default: return null
   }
 }
@@ -311,17 +315,17 @@ export function ServicesPreview() {
                            <div className="w-1.5 h-1.5 rounded-full bg-slate-200 dark:bg-white/10" />
                         </div>
                         <div className="w-full h-full flex items-center justify-center pt-4">
-                           <div className="w-full h-full opacity-80 group-hover:opacity-100 transition-opacity">
+                           <div className={cn("w-full h-full opacity-80 group-hover:opacity-100 transition-opacity", activeService.iconColor)}>
                               <AnimationWrapper type={activeService.animationType} />
                            </div>
                         </div>
                       </div>
                       
                       {/* Secondary Decor Elements */}
-                      <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-white dark:bg-surface border border-slate-100 dark:border-white/10 shadow-lg flex items-center justify-center text-primary">
+                      <div className={cn("absolute -top-4 -right-4 w-12 h-12 rounded-full bg-white dark:bg-surface border border-slate-100 dark:border-white/10 shadow-lg flex items-center justify-center", activeService.iconColor)}>
                          <ShieldCheck className="w-6 h-6" />
                       </div>
-                      <div className="absolute -bottom-4 -left-4 w-12 h-12 rounded-full bg-white dark:bg-surface border border-slate-100 dark:border-white/10 shadow-lg flex items-center justify-center text-primary">
+                      <div className={cn("absolute -bottom-4 -left-4 w-12 h-12 rounded-full bg-white dark:bg-surface border border-slate-100 dark:border-white/10 shadow-lg flex items-center justify-center", activeService.iconColor)}>
                          <Zap className="w-6 h-6" />
                       </div>
                    </div>

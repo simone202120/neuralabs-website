@@ -23,9 +23,9 @@ export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
         <defs>
           {/* Gradient for search beam */}
           <linearGradient id="searchBeam" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" className="stop-green-500" stopOpacity="0" />
-            <stop offset="50%" className="stop-green-500" stopOpacity="0.6" />
-            <stop offset="100%" className="stop-green-500" stopOpacity="0" />
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0" />
+            <stop offset="50%" stopColor="currentColor" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
           </linearGradient>
 
           {/* Filter for glow effect */}
@@ -52,7 +52,7 @@ export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
               width="180"
               height="140"
               rx="4"
-              className="fill-green-500/10 dark:fill-green-400/10 stroke-green-500 dark:stroke-green-400"
+              className="fill-current fill-opacity-10 stroke-current"
               strokeWidth="1.5"
             />
             {/* Document lines */}
@@ -64,7 +64,7 @@ export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
                 width="150"
                 height="4"
                 rx="2"
-                className="fill-green-500/20 dark:fill-green-400/20"
+                className="fill-current fill-opacity-20"
               />
             ))}
           </motion.g>
@@ -81,7 +81,7 @@ export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
               width="180"
               height="140"
               rx="4"
-              className="fill-green-500/15 dark:fill-green-400/15 stroke-green-500 dark:stroke-green-400"
+              className="fill-current fill-opacity-15 stroke-current"
               strokeWidth="1.5"
             />
             {/* Document lines */}
@@ -93,7 +93,7 @@ export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
                 width="150"
                 height="4"
                 rx="2"
-                className="fill-green-500/25 dark:fill-green-400/25"
+                className="fill-current fill-opacity-25"
               />
             ))}
           </motion.g>
@@ -110,7 +110,7 @@ export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
               width="180"
               height="140"
               rx="4"
-              className="fill-green-500/20 dark:fill-green-400/20 stroke-green-500 dark:stroke-green-400"
+              className="fill-current fill-opacity-20 stroke-current"
               strokeWidth="2"
             />
             {/* Document header */}
@@ -120,7 +120,7 @@ export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
               width="150"
               height="8"
               rx="2"
-              className="fill-green-500/40 dark:fill-green-400/40"
+              className="fill-current fill-opacity-40"
             />
             {/* Document lines */}
             {[115, 130, 145, 160, 175, 190].map((y, i) => (
@@ -131,7 +131,7 @@ export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
                 width={150 - i * 10}
                 height="4"
                 rx="2"
-                className="fill-green-500/30 dark:fill-green-400/30"
+                className="fill-current fill-opacity-30"
               />
             ))}
           </motion.g>
@@ -162,7 +162,7 @@ export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
             cx="200"
             cy="0"
             r="15"
-            className="fill-none stroke-green-500 dark:stroke-green-400"
+            className="fill-none stroke-current"
             strokeWidth="2"
           />
           <line
@@ -170,7 +170,7 @@ export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
             y1="12"
             x2="222"
             y2="22"
-            className="stroke-green-500 dark:stroke-green-400"
+            className="stroke-current"
             strokeWidth="2"
             strokeLinecap="round"
           />
@@ -185,7 +185,7 @@ export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
             width="80"
             height="4"
             rx="2"
-            className="fill-green-500 dark:fill-green-400"
+            className="fill-current"
             filter="url(#docGlow)"
             animate={{
               opacity: [0.5, 1, 0.5],
@@ -204,7 +204,7 @@ export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
               cx="0"
               cy="0"
               r="2"
-              className="fill-green-500 dark:fill-green-400"
+              className="fill-current"
               filter="url(#docGlow)"
               initial={{ cx: 115 + i * 30, cy: 145 }}
               animate={{
@@ -233,7 +233,7 @@ export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
             <g key={i}>
               <motion.line
                 {...line}
-                className="stroke-green-500/40 dark:stroke-green-400/40"
+                className="stroke-current stroke-opacity-40"
                 strokeWidth="1"
                 strokeDasharray="4 2"
                 initial={{ pathLength: 0 }}
@@ -244,7 +244,7 @@ export function DocumentsAnimation({ progress }: DocumentsAnimationProps) {
                 cx={line.x2}
                 cy={line.y2}
                 r="4"
-                className="fill-green-500 dark:fill-green-400"
+                className="fill-current"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.8 + i * 0.1, type: 'spring' }}

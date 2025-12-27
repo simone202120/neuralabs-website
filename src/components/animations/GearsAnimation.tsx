@@ -57,9 +57,9 @@ export function GearsAnimation({ progress }: GearsAnimationProps) {
 
           {/* Gradient for data flow */}
           <linearGradient id="dataFlow" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" className="stop-yellow-500" stopOpacity="0" />
-            <stop offset="50%" className="stop-yellow-500" stopOpacity="0.8" />
-            <stop offset="100%" className="stop-yellow-500" stopOpacity="0" />
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0" />
+            <stop offset="50%" stopColor="currentColor" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
           </linearGradient>
         </defs>
 
@@ -75,7 +75,7 @@ export function GearsAnimation({ progress }: GearsAnimationProps) {
             {/* Gear body */}
             <path
               d={generateGearPath(140, 150, 12, 35, 50)}
-              className="fill-yellow-500/20 dark:fill-yellow-400/20 stroke-yellow-500 dark:stroke-yellow-400"
+              className="fill-current fill-opacity-20 stroke-current"
               strokeWidth="2"
               filter="url(#gearGlow)"
             />
@@ -85,7 +85,7 @@ export function GearsAnimation({ progress }: GearsAnimationProps) {
               cx="140"
               cy="150"
               r="20"
-              className="fill-background stroke-yellow-500 dark:stroke-yellow-400"
+              className="fill-background stroke-current"
               strokeWidth="2"
             />
 
@@ -101,7 +101,7 @@ export function GearsAnimation({ progress }: GearsAnimationProps) {
                   y1="150"
                   x2={x}
                   y2={y}
-                  className="stroke-yellow-500 dark:stroke-yellow-400"
+                  className="stroke-current"
                   strokeWidth="2"
                 />
               )
@@ -118,7 +118,7 @@ export function GearsAnimation({ progress }: GearsAnimationProps) {
           >
             <path
               d={generateGearPath(250, 110, 10, 28, 40)}
-              className="fill-yellow-500/20 dark:fill-yellow-400/20 stroke-yellow-500 dark:stroke-yellow-400"
+              className="fill-current fill-opacity-20 stroke-current"
               strokeWidth="2"
               filter="url(#gearGlow)"
             />
@@ -126,7 +126,7 @@ export function GearsAnimation({ progress }: GearsAnimationProps) {
               cx="250"
               cy="110"
               r="15"
-              className="fill-background stroke-yellow-500 dark:stroke-yellow-400"
+              className="fill-background stroke-current"
               strokeWidth="2"
             />
           </motion.g>
@@ -141,7 +141,7 @@ export function GearsAnimation({ progress }: GearsAnimationProps) {
           >
             <path
               d={generateGearPath(260, 190, 10, 28, 40)}
-              className="fill-yellow-500/20 dark:fill-yellow-400/20 stroke-yellow-500 dark:stroke-yellow-400"
+              className="fill-current fill-opacity-20 stroke-current"
               strokeWidth="2"
               filter="url(#gearGlow)"
             />
@@ -149,7 +149,7 @@ export function GearsAnimation({ progress }: GearsAnimationProps) {
               cx="260"
               cy="190"
               r="15"
-              className="fill-background stroke-yellow-500 dark:stroke-yellow-400"
+              className="fill-background stroke-current"
               strokeWidth="2"
             />
           </motion.g>
@@ -164,7 +164,7 @@ export function GearsAnimation({ progress }: GearsAnimationProps) {
           >
             <path
               d={generateGearPath(330, 150, 8, 20, 30)}
-              className="fill-yellow-500/20 dark:fill-yellow-400/20 stroke-yellow-500 dark:stroke-yellow-400"
+              className="fill-current fill-opacity-20 stroke-current"
               strokeWidth="2"
               filter="url(#gearGlow)"
             />
@@ -172,7 +172,7 @@ export function GearsAnimation({ progress }: GearsAnimationProps) {
               cx="330"
               cy="150"
               r="12"
-              className="fill-background stroke-yellow-500 dark:stroke-yellow-400"
+              className="fill-background stroke-current"
               strokeWidth="2"
             />
           </motion.g>
@@ -189,7 +189,7 @@ export function GearsAnimation({ progress }: GearsAnimationProps) {
             <motion.line
               key={i}
               {...line}
-              className="stroke-yellow-500/50 dark:stroke-yellow-400/50"
+              className="stroke-current stroke-opacity-50"
               strokeWidth="2"
               strokeDasharray="4 4"
               initial={{ pathLength: 0 }}
@@ -207,7 +207,7 @@ export function GearsAnimation({ progress }: GearsAnimationProps) {
               cx="0"
               cy="0"
               r="3"
-              className="fill-yellow-500 dark:fill-yellow-400"
+              className="fill-current"
               filter="url(#gearGlow)"
               initial={{ cx: 140, cy: 150 }}
               animate={{
@@ -229,7 +229,7 @@ export function GearsAnimation({ progress }: GearsAnimationProps) {
           <motion.text
             x="200"
             y="260"
-            className="fill-yellow-500 dark:fill-yellow-400 text-xs font-mono"
+            className="fill-current text-xs font-mono"
             textAnchor="middle"
           >
             <tspan>

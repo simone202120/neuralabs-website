@@ -24,7 +24,7 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
           width="320"
           height="240"
           rx="8"
-          className="fill-none stroke-blue-500 dark:stroke-blue-400"
+          className="fill-none stroke-current"
           strokeWidth="2"
         />
 
@@ -34,7 +34,7 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
           y="30"
           width="320"
           height="40"
-          className="fill-blue-500/10 dark:fill-blue-400/10"
+          className="fill-current fill-opacity-10"
         />
 
         {/* Browser Dots */}
@@ -44,7 +44,7 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
             cx={cx}
             cy="50"
             r="4"
-            className="fill-blue-500 dark:fill-blue-400"
+            className="fill-current"
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: i * 0.1 + 0.2 }}
@@ -58,7 +58,7 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
           width="220"
           height="16"
           rx="8"
-          className="fill-none stroke-blue-500/50 dark:stroke-blue-400/50"
+          className="fill-none stroke-current stroke-opacity-50"
           strokeWidth="1"
         />
 
@@ -70,7 +70,7 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
             width="280"
             height="20"
             rx="4"
-            className="fill-blue-500/20 dark:fill-blue-400/20"
+            className="fill-current fill-opacity-20"
           />
 
           {[120, 150, 180].map((y, i) => (
@@ -81,7 +81,7 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
                 width="80"
                 height="15"
                 rx="2"
-                className="fill-blue-500/15 dark:fill-blue-400/15"
+                className="fill-current fill-opacity-15"
               />
               <rect
                 x="150"
@@ -89,7 +89,7 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
                 width="190"
                 height="15"
                 rx="2"
-                className="fill-blue-500/10 dark:fill-blue-400/10"
+                className="fill-current fill-opacity-10"
               />
             </g>
           ))}
@@ -100,7 +100,7 @@ export function BrowserMockupAnimation({ progress }: BrowserMockupAnimationProps
             width="120"
             height="40"
             rx="4"
-            className="fill-blue-500/15 dark:fill-blue-400/15"
+            className="fill-current fill-opacity-15"
           />
         </motion.g>
       </motion.svg>

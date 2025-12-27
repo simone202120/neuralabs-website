@@ -23,7 +23,7 @@ export function NeuralNetworkAnimation({ progress }: NeuralNetworkAnimationProps
     const startX = 80
 
     layers.forEach((count, layerIndex) => {
-      const layerY = 150
+      const layerY = 200
       const startY = layerY - ((count - 1) * spacing) / 2
 
       for (let i = 0; i < count; i++) {
@@ -66,9 +66,9 @@ export function NeuralNetworkAnimation({ progress }: NeuralNetworkAnimationProps
         <defs>
           {/* Gradient for connections */}
           <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" className="stop-primary" stopOpacity="0.2" />
-            <stop offset="50%" className="stop-primary" stopOpacity="0.6" />
-            <stop offset="100%" className="stop-primary" stopOpacity="0.2" />
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0.2" />
+            <stop offset="50%" stopColor="currentColor" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="currentColor" stopOpacity="0.2" />
           </linearGradient>
 
           {/* Glow filter */}
@@ -91,7 +91,7 @@ export function NeuralNetworkAnimation({ progress }: NeuralNetworkAnimationProps
                 y1={from.y}
                 x2={to.x}
                 y2={to.y}
-                className="stroke-primary"
+                className="stroke-current"
                 strokeWidth="1"
                 strokeOpacity="0.3"
                 initial={{ pathLength: 0 }}
@@ -109,7 +109,7 @@ export function NeuralNetworkAnimation({ progress }: NeuralNetworkAnimationProps
                 y1={from.y}
                 x2={from.x}
                 y2={from.y}
-                className="stroke-primary"
+                className="stroke-current"
                 strokeWidth="2"
                 strokeLinecap="round"
                 filter="url(#glow)"
@@ -144,7 +144,7 @@ export function NeuralNetworkAnimation({ progress }: NeuralNetworkAnimationProps
                 cx={node.x}
                 cy={node.y}
                 r="8"
-                className="fill-primary"
+                className="fill-current"
                 opacity="0.2"
                 filter="url(#glow)"
                 initial={{ scale: 0 }}
@@ -162,7 +162,7 @@ export function NeuralNetworkAnimation({ progress }: NeuralNetworkAnimationProps
                 cx={node.x}
                 cy={node.y}
                 r="4"
-                className="fill-primary"
+                className="fill-current"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{
@@ -178,7 +178,7 @@ export function NeuralNetworkAnimation({ progress }: NeuralNetworkAnimationProps
                 cx={node.x}
                 cy={node.y}
                 r="4"
-                className="fill-none stroke-primary"
+                className="fill-none stroke-current"
                 strokeWidth="2"
                 style={{ opacity: pulseOpacity }}
                 initial={{ r: 4, opacity: 0.8 }}
@@ -205,7 +205,7 @@ export function NeuralNetworkAnimation({ progress }: NeuralNetworkAnimationProps
               cx="0"
               cy="0"
               r="3"
-              className="fill-primary"
+              className="fill-current"
               filter="url(#glow)"
               initial={{ cx: 80, cy: 150 + i * 50 }}
               animate={{
