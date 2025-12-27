@@ -5,17 +5,16 @@ import { Container } from '@/components/ui/Container'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { FadeIn } from '@/components/animations'
-import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 
 const ParticleHero = dynamic(
   () => import('@/components/three/ParticleHero').then((mod) => mod.ParticleHero),
   { ssr: false, loading: () => null }
 )
 
-const words = ["Trasformare le Idee", "Accelerare la Crescita", "Automatizzare i Processi"]
+const words = ["chi Innova.", "chi Cresce.", "chi Crea."]
 
-function Typewriter({ text, speed = 50, delay = 1000 }: { text: string, speed?: number, delay?: number }) {
+function Typewriter({ text, speed = 50 }: { text: string, speed?: number }) {
   const [displayText, setDisplayText] = useState('')
   const [index, setIndex] = useState(0)
 
@@ -37,13 +36,18 @@ function Typewriter({ text, speed = 50, delay = 1000 }: { text: string, speed?: 
   return (
     <span>
       {displayText}
-      <span className="animate-pulse ml-1 inline-block w-3 h-12 bg-primary align-middle" />
+      <span className="animate-pulse ml-1 inline-block w-3 h-12 bg-black dark:bg-white align-middle" />
     </span>
   )
 }
 
 export function HeroSection() {
   const [wordIndex, setWordIndex] = useState(0)
+
+  // Calculate the longest word to reserve space and prevent layout shift
+  const longestWord = useMemo(() => {
+    return words.reduce((a, b) => a.length > b.length ? a : b, "")
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -70,13 +74,21 @@ export function HeroSection() {
             </div>
           </FadeIn>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold tracking-tight leading-tight min-h-[160px] sm:min-h-[220px] md:min-h-[300px]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold tracking-tight leading-tight min-h-[120px] sm:min-h-[160px] md:min-h-[200px]">
             <FadeIn delay={0.4}>
-              <span className="block text-text-primary">Sviluppo Web, Custom Software</span>
-              <span className="block text-text-primary mb-2">e Soluzioni AI per</span>
+              <span className="block text-text-primary mb-2">Tecnologia per</span>
             </FadeIn>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-primary font-mono mt-2 md:mt-4">
-              <Typewriter text={words[wordIndex]} key={wordIndex} />
+            <span className="block font-mono mt-2 md:mt-4 relative">
+              {/* Invisible placeholder to reserve space and prevent layout shift */}
+              <span className="invisible" aria-hidden="true">
+                {longestWord}
+                <span className="inline-block w-3 h-12 align-middle ml-1" />
+              </span>
+              
+              {/* Actual Typewriter positioned absolutely over the placeholder */}
+              <span className="absolute top-0 left-0 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-primary">
+                <Typewriter text={words[wordIndex]} key={wordIndex} />
+              </span>
             </span>
           </h1>
 
