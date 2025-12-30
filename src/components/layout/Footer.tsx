@@ -105,7 +105,6 @@ export function Footer() {
               <h4 className="text-xs font-mono font-bold text-text-primary uppercase tracking-widest">Azienda</h4>
               <ul className="space-y-3">
                 <FooterLink href="/chi-siamo">Chi Siamo</FooterLink>
-                <FooterLink href="/contatti">Contatti</FooterLink>
                 <FooterLink href="/privacy">Privacy</FooterLink>
                 <FooterLink href="/cookie">Cookie</FooterLink>
               </ul>

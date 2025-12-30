@@ -1,8 +1,22 @@
+import { Metadata } from 'next'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
 import { FadeIn } from '@/components/animations/FadeIn'
 import { Button } from '@/components/ui/Button'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'I Nostri Progetti | Portfolio & Case Study',
+  description: 'Esplora i progetti sviluppati da SigmaLabs: web app moderne con Next.js, AI agents, sistemi RAG e automazioni per aziende italiane.',
+  alternates: {
+    canonical: 'https://www.sigmalabs.it/progetti',
+  },
+  openGraph: {
+    title: 'Portfolio SigmaLabs | Progetti Web & AI',
+    description: 'Case study e progetti realizzati: web app, AI agents, automazioni intelligenti.',
+    url: 'https://www.sigmalabs.it/progetti',
+  },
+}
 
 export default function ProjectsPage() {
   return (
@@ -18,9 +32,6 @@ export default function ProjectsPage() {
               Tornate a trovarci presto per vedere come trasformiamo le idee in realtà digitale.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild>
-                <Link href="/contatti">Parla con noi</Link>
-              </Button>
               <Button asChild variant="secondary">
                 <Link href="/">Torna alla Home</Link>
               </Button>

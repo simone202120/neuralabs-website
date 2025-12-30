@@ -4,6 +4,7 @@ import './globals.css'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
 import { ClientProviders } from '@/components/providers/ClientProviders'
+import { LocalBusinessSchema, WebsiteSchema } from '@/components/seo/StructuredData'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -30,32 +31,54 @@ const jetBrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.sigmalabs.it'),
+
   title: {
-    default: 'SigmaLabs',
-    template: '%s | SigmaLabs',
+    default: 'SigmaLabs - Sviluppo Web, AI Agents, Sistemi RAG e Automazioni | Italia',
+    template: '%s | SigmaLabs - Sviluppo Web & AI',
   },
-  description: 'Il laboratorio dove nascono le idee intelligenti. Sviluppo web, AI Agents, sistemi RAG e automazioni.',
+
+  description: 'SigmaLabs: agenzia italiana specializzata in sviluppo web moderno con Next.js, TypeScript, AI Agents, sistemi RAG, automazioni intelligenti e integrazione LLM. Trasformiamo idee in soluzioni digitali concrete.',
+
+  keywords: [
+    'sviluppo web Italia',
+    'AI agents',
+    'sistemi RAG',
+    'automazioni aziendali',
+    'Next.js developer',
+    'TypeScript',
+    'LangChain',
+    'integrazione AI',
+    'sviluppo software custom',
+    'web agency Italia',
+    'intelligenza artificiale',
+    'chatbot AI',
+    'automazione processi',
+  ],
+
+  authors: [{ name: 'SigmaLabs Team' }],
+  creator: 'SigmaLabs',
+  publisher: 'SigmaLabs',
+
+  alternates: {
+    canonical: 'https://www.sigmalabs.it',
+  },
+
   openGraph: {
-    title: 'SigmaLabs',
-    description: 'Il laboratorio dove nascono le idee intelligenti.',
-    url: 'https://www.sigmalabs.it', // Replace with actual domain
+    title: 'SigmaLabs - Sviluppo Web, AI Agents e Automazioni',
+    description: 'Agenzia italiana specializzata in sviluppo web moderno e soluzioni AI. Next.js, sistemi RAG, automazioni intelligenti.',
+    url: 'https://www.sigmalabs.it',
     siteName: 'SigmaLabs',
-    images: [
-      {
-        url: 'https://www.sigmalabs.it/og/og-default.png', // Replace with actual domain
-        width: 1200,
-        height: 630,
-      },
-    ],
     locale: 'it_IT',
     type: 'website',
   },
+
   twitter: {
     card: 'summary_large_image',
-    title: 'SigmaLabs',
-    description: 'Il laboratorio dove nascono le idee intelligenti.',
-    images: ['https://www.sigmalabs.it/og/og-default.png'], // Replace with actual domain
+    title: 'SigmaLabs - Sviluppo Web & AI Agents',
+    description: 'Sviluppo web moderno, AI Agents, sistemi RAG e automazioni per aziende italiane',
   },
+
   robots: {
     index: true,
     follow: true,
@@ -67,6 +90,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+
   manifest: '/manifest.json',
   icons: {
     icon: '/favicon.ico',
@@ -81,6 +105,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="it" suppressHydrationWarning>
+      <head>
+        <LocalBusinessSchema />
+        <WebsiteSchema />
+      </head>
       <body
         suppressHydrationWarning
         className={`${plusJakartaSans.variable} ${outfit.variable} ${jetBrainsMono.variable} md:cursor-none`}

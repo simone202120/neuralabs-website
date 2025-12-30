@@ -136,16 +136,6 @@ export function Navigation() {
 
             <ThemeToggle />
 
-            <motion.div animate={{ scale: isScrolled ? 0.9 : 1 }}>
-
-              <Button asChild size={isScrolled ? "sm" : "default"} className="hidden md:flex rounded-full px-5 transition-all">
-
-                <Link href="/contatti">Contattaci</Link>
-
-              </Button>
-
-            </motion.div>
-
             <MobileMenu navLinks={navLinks} />
 
           </div>

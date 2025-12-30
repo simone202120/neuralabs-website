@@ -68,9 +68,6 @@ export function MobileMenu({ navLinks }: MobileMenuProps) {
                     {link.label}
                   </Link>
                 ))}
-                <Button asChild size="lg" className="mt-8">
-                  <Link href="/contatti" onClick={toggleMenu}>Contattaci</Link>
-                </Button>
               </nav>
             </motion.div>
           )}

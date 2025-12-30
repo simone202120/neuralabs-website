@@ -18,6 +18,8 @@ export interface ServiceData {
   details?: {
     output: string
     focus: string
+    timeline?: string
+    startingFrom?: string
   }
   color: string
   iconColor: string
@@ -42,7 +44,9 @@ export const servicesData: ServiceData[] = [
     useCases: ["Corporate Websites", "SaaS Platforms", "E-commerce", "Portali Clienti"],
     details: {
       output: "Piattaforma Web Scalabile",
-      focus: "Performance & UX"
+      focus: "Performance & UX",
+      timeline: "4-8 settimane",
+      startingFrom: "€5.000"
     },
     color: 'from-emerald-500 to-teal-500',
     iconColor: 'text-emerald-500',
@@ -67,7 +71,9 @@ export const servicesData: ServiceData[] = [
     useCases: ["CRM Personalizzati", "ERP Aziendali", "Piattaforme di Analisi", "Backend Systems"],
     details: {
       output: "Software Proprietario & IP",
-      focus: "Efficienza & Controllo"
+      focus: "Efficienza & Controllo",
+      timeline: "8-16 settimane",
+      startingFrom: "€15.000"
     },
     color: 'from-blue-500 to-cyan-500',
     iconColor: 'text-blue-500',
@@ -92,7 +98,9 @@ export const servicesData: ServiceData[] = [
     useCases: ["Customer Support H24", "Onboarding Automatico", "Knowledge Base Interattiva", "Lead Qualification"],
     details: {
       output: "Ecosistema Autonomo H24",
-      focus: "Automazione & ROI"
+      focus: "Automazione & ROI",
+      timeline: "6-12 settimane",
+      startingFrom: "€8.000"
     },
     color: 'from-violet-500 to-fuchsia-500',
     iconColor: 'text-violet-500',
@@ -117,7 +125,9 @@ export const servicesData: ServiceData[] = [
     useCases: ["Startup Launch", "New Product Features", "Market Testing", "Beta Testing"],
     details: {
       output: "Prodotto Validato & Lancio",
-      focus: "Velocità & Mercato"
+      focus: "Velocità & Mercato",
+      timeline: "2-4 settimane",
+      startingFrom: "€3.000"
     },
     color: 'from-amber-500 to-orange-500',
     iconColor: 'text-amber-500',

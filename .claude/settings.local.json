@@ -4,7 +4,8 @@
       "Bash(npm audit:*)",
       "Bash(netstat:*)",
       "Bash(findstr:*)",
-      "Bash(npm run check:*)"
+      "Bash(npm run check:*)",
+      "Bash(rm:*)"
     ]
   }
 }
