@@ -7,14 +7,11 @@ import { Methodology_Cards } from '@/components/sections/Methodology_Cards'
 import { Methodology_Concrete } from '@/components/sections/Methodology_Concrete'
 import { MethodologyPipeline } from '@/components/sections/MethodologyPipeline'
 import { BookingOptions } from '@/components/sections/BookingOptions'
-import { SEOContent } from '@/components/sections/SEOContent'
 
 export default function Home() {
   return (
     <main>
       <HeroSection />
-
-      <SEOContent />
 
       <ServicesPreview />
 

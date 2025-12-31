@@ -150,13 +150,32 @@ export function ServicesPreview() {
               per Innovare e Automatizzare
             </span>
           </h2>
-          <p className="text-lg text-slate-600 dark:text-gray-300 leading-relaxed max-w-3xl">
-            Partner tecnologico per aziende che vogliono crescere velocemente. Realizziamo
-            piattaforme web scalabili, sviluppiamo software su misura integrato con AI,
-            implementiamo automazioni intelligenti e sistemi RAG per customer support H24.
-            Dalla prototipazione rapida al lancio in produzione, affianchiamo il tuo team con
-            competenze full-stack e metodologie agili orientate al time-to-market.
-          </p>
+          <div className="text-base md:text-lg text-slate-600 dark:text-gray-300 leading-relaxed max-w-3xl space-y-4">
+            <p>
+              <strong className="text-slate-900 dark:text-white">SigmaLabs</strong> è un laboratorio di sviluppo software
+              specializzato in <strong className="text-slate-900 dark:text-white">sviluppo web moderno</strong> con{' '}
+              <strong className="text-slate-900 dark:text-white">Next.js</strong>, <strong className="text-slate-900 dark:text-white">React</strong> e{' '}
+              <strong className="text-slate-900 dark:text-white">TypeScript</strong>. Realizziamo web application scalabili,
+              siti aziendali performanti e piattaforme digitali su misura per startup e imprese italiane che vogliono crescere online.
+            </p>
+
+            <p>
+              Integriamo <strong className="text-slate-900 dark:text-white">intelligenza artificiale</strong> nei tuoi processi
+              con <strong className="text-slate-900 dark:text-white">AI agents personalizzati</strong>, <strong className="text-slate-900 dark:text-white">sistemi RAG</strong> per
+              l'analisi documentale e <strong className="text-slate-900 dark:text-white">automazioni intelligenti</strong> basate
+              su LangChain e OpenAI. I nostri chatbot AI rispondono H24 utilizzando i tuoi dati aziendali,
+              mentre le automazioni con n8n eliminano task ripetitivi e riducono costi operativi.
+            </p>
+
+            <p>
+              Ogni progetto segue un <strong className="text-slate-900 dark:text-white">approccio ingegneristico rigoroso</strong>:
+              architettura software modulare, code review sistematiche, testing automatizzato con Jest e Playwright,
+              e deployment su infrastrutture cloud moderne come Vercel e AWS. Utilizziamo tecnologie
+              enterprise-grade: <strong className="text-slate-900 dark:text-white">Supabase</strong> per backend scalabili,
+              PostgreSQL per database relazionali affidabili, Docker per containerizzazione e CI/CD
+              per rilasci continui senza downtime.
+            </p>
+          </div>
         </FadeIn>
 
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-start mb-16">
