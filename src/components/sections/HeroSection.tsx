@@ -100,10 +100,10 @@ export function HeroSection() {
 
           <FadeIn delay={0.6} className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-5">
             <Button asChild size="lg" className="text-lg px-8 h-12 md:h-14 rounded-full">
-              <Link href="/progetti">Inizia Ora</Link>
+              <Link href="/servizi">Scopri i Servizi</Link>
             </Button>
             <Button asChild variant="ghost" size="lg" className="text-lg px-8 h-12 md:h-14 rounded-full border border-white/10 hover:bg-white/5">
-              <Link href="/contatti">Contatta il Team →</Link>
+              <Link href="/chi-siamo">Chi Siamo →</Link>
             </Button>
           </FadeIn>
         </div>

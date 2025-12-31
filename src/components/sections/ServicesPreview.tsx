@@ -153,25 +153,37 @@ export function ServicesPreview() {
           <div className="text-base md:text-lg text-slate-600 dark:text-gray-300 leading-relaxed max-w-3xl space-y-4">
             <p>
               <strong className="text-slate-900 dark:text-white">SigmaLabs</strong> è un laboratorio di sviluppo software
-              specializzato in <strong className="text-slate-900 dark:text-white">sviluppo web moderno</strong> con{' '}
-              <strong className="text-slate-900 dark:text-white">Next.js</strong>, <strong className="text-slate-900 dark:text-white">React</strong> e{' '}
+              specializzato in{' '}
+              <Link href="/servizi" className="text-slate-900 dark:text-white font-semibold hover:text-primary dark:hover:text-primary transition-colors underline decoration-primary/30 hover:decoration-primary">
+                sviluppo web moderno
+              </Link>{' '}
+              con <strong className="text-slate-900 dark:text-white">Next.js</strong>, <strong className="text-slate-900 dark:text-white">React</strong> e{' '}
               <strong className="text-slate-900 dark:text-white">TypeScript</strong>. Realizziamo web application scalabili,
               siti aziendali performanti e piattaforme digitali su misura per startup e imprese italiane che vogliono crescere online.
             </p>
 
             <p>
               Integriamo <strong className="text-slate-900 dark:text-white">intelligenza artificiale</strong> nei tuoi processi
-              con <strong className="text-slate-900 dark:text-white">AI agents personalizzati</strong>, <strong className="text-slate-900 dark:text-white">sistemi RAG</strong> per
+              con{' '}
+              <Link href="/servizi#ai" className="text-slate-900 dark:text-white font-semibold hover:text-primary dark:hover:text-primary transition-colors underline decoration-primary/30 hover:decoration-primary">
+                AI agents personalizzati
+              </Link>, <strong className="text-slate-900 dark:text-white">sistemi RAG</strong> per
               l'analisi documentale e <strong className="text-slate-900 dark:text-white">automazioni intelligenti</strong> basate
               su LangChain e OpenAI. I nostri chatbot AI rispondono H24 utilizzando i tuoi dati aziendali,
               mentre le automazioni con n8n eliminano task ripetitivi e riducono costi operativi.
             </p>
 
             <p>
-              Ogni progetto segue un <strong className="text-slate-900 dark:text-white">approccio ingegneristico rigoroso</strong>:
+              Ogni progetto segue un{' '}
+              <Link href="/metodo" className="text-slate-900 dark:text-white font-semibold hover:text-primary dark:hover:text-primary transition-colors underline decoration-primary/30 hover:decoration-primary">
+                approccio ingegneristico rigoroso
+              </Link>:
               architettura software modulare, code review sistematiche, testing automatizzato con Jest e Playwright,
-              e deployment su infrastrutture cloud moderne come Vercel e AWS. Utilizziamo tecnologie
-              enterprise-grade: <strong className="text-slate-900 dark:text-white">Supabase</strong> per backend scalabili,
+              e deployment su infrastrutture cloud moderne come Vercel e AWS.{' '}
+              <Link href="/chi-siamo" className="text-slate-900 dark:text-white font-semibold hover:text-primary dark:hover:text-primary transition-colors underline decoration-primary/30 hover:decoration-primary">
+                Il nostro team
+              </Link>{' '}
+              utilizza tecnologie enterprise-grade: <strong className="text-slate-900 dark:text-white">Supabase</strong> per backend scalabili,
               PostgreSQL per database relazionali affidabili, Docker per containerizzazione e CI/CD
               per rilasci continui senza downtime.
             </p>

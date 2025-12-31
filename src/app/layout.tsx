@@ -4,7 +4,7 @@ import './globals.css'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
 import { ClientProviders } from '@/components/providers/ClientProviders'
-import { LocalBusinessSchema, WebsiteSchema } from '@/components/seo/StructuredData'
+import { OrganizationSchema, LocalBusinessSchema, WebsiteSchema, FAQPageSchema } from '@/components/seo/StructuredData'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -106,8 +106,10 @@ export default function RootLayout({
   return (
     <html lang="it" suppressHydrationWarning>
       <head>
+        <OrganizationSchema />
         <LocalBusinessSchema />
         <WebsiteSchema />
+        <FAQPageSchema />
       </head>
       <body
         suppressHydrationWarning

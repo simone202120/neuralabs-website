@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { ServicesSchema } from '@/components/seo/StructuredData'
 
 export const metadata: Metadata = {
   title: 'Servizi | Sviluppo Web, AI Agents, Sistemi RAG, Automazioni',
@@ -28,5 +29,10 @@ export default function ServiziLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <>{children}</>
+  return (
+    <>
+      <ServicesSchema />
+      {children}
+    </>
+  )
 }

@@ -8,8 +8,25 @@ import { Users, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'Chi Siamo | SigmaLabs',
-  description: 'Il team dietro SigmaLabs. Sviluppatori, designer e pionieri dell\'AI uniti per costruire il futuro del web.',
+  title: 'Chi Siamo | Team di Sviluppatori & AI Specialists | SigmaLabs',
+  description: 'Scopri il team SigmaLabs: sviluppatori full-stack specializzati in Next.js, TypeScript e AI. Competenze in web development moderno, AI Agents, sistemi RAG e automazioni intelligenti. Professionalità, esperienza e passione per l\'innovazione tecnologica.',
+  keywords: [
+    'team sviluppatori',
+    'Next.js developers',
+    'TypeScript specialists',
+    'AI engineers Italia',
+    'web development team',
+    'full-stack developers',
+    'software engineers',
+  ],
+  alternates: {
+    canonical: 'https://www.sigmalabs.it/chi-siamo',
+  },
+  openGraph: {
+    title: 'Chi Siamo | Team SigmaLabs',
+    description: 'Team di sviluppatori specializzati in web development e AI. Next.js, TypeScript, AI Agents.',
+    url: 'https://www.sigmalabs.it/chi-siamo',
+  },
 }
 
 export default function ChiSiamoPage() {
@@ -41,15 +58,31 @@ export default function ChiSiamoPage() {
 
               <div className="space-y-6 text-xl md:text-2xl text-slate-600 dark:text-gray-300 leading-relaxed">
                 <p>
-                  Un architetto affronta problemi complessi con progetti semplici ed eleganti. SigmaLabs applica questo principio al software: scomporre complessità in componenti modulari, testabili, comprensibili. TypeScript elimina categorie intere di bug strutturali. Next.js gestisce rendering, routing e ottimizzazioni come sistemi integrati. Supabase fornisce autenticazione, database e API real-time come servizi infrastrutturali. Tecnologie moderne che semplificano l&apos;architettura, non la mascherano.
+                  Un architetto affronta problemi complessi con progetti semplici ed eleganti. SigmaLabs applica questo principio al software: scomporre complessità in componenti modulari, testabili, comprensibili.{' '}
+                  <Link href="/servizi" className="text-slate-900 dark:text-white font-semibold hover:text-primary transition-colors underline decoration-primary/30 hover:decoration-primary">
+                    TypeScript elimina categorie intere di bug strutturali. Next.js gestisce rendering, routing e ottimizzazioni come sistemi integrati
+                  </Link>. Supabase fornisce autenticazione, database e API real-time come servizi infrastrutturali. Tecnologie moderne che semplificano l&apos;architettura, non la mascherano.
                 </p>
 
                 <p>
-                  Il vero costo del software non è costruirlo, ma mantenerlo negli anni. Come edifici che richiedono manutenzione, il codice deve essere ispezionabile e riparabile. Per questo ogni progetto segue standard architetturali rigorosi: separation of concerns come divisione in ambienti funzionali, dependency injection come modularità strutturale, error handling sistematico come protezione sismica. Code review che valutano non solo se regge, ma se è comprensibile ed estendibile.
+                  Il vero costo del software non è costruirlo, ma mantenerlo negli anni. Come edifici che richiedono manutenzione, il codice deve essere ispezionabile e riparabile. Per questo{' '}
+                  <Link href="/metodo" className="text-slate-900 dark:text-white font-semibold hover:text-primary transition-colors underline decoration-primary/30 hover:decoration-primary">
+                    ogni progetto segue standard architetturali rigorosi
+                  </Link>: separation of concerns come divisione in ambienti funzionali, dependency injection come modularità strutturale, error handling sistematico come protezione sismica. Code review che valutano non solo se regge, ma se è comprensibile ed estendibile.
                 </p>
 
                 <p>
-                  Le integrazioni AI richiedono architettura particolarmente solida. LangChain orchestra LLM, ma senza gestione corretta di prompt, context window e fallback diventa fragile. SigmaLabs implementa ogni funzionalità AI con error handling robusto, logging dettagliato, monitoring continuo e documentazione che spiega ogni scelta progettuale. Il risultato? Sistemi AI che funzionano in produzione reale, non solo in demo. Architetture del futuro costruite con ingegneria del presente.
+                  Le{' '}
+                  <Link href="/servizi#ai" className="text-slate-900 dark:text-white font-semibold hover:text-primary transition-colors underline decoration-primary/30 hover:decoration-primary">
+                    integrazioni AI
+                  </Link>{' '}
+                  richiedono architettura particolarmente solida. LangChain orchestra LLM, ma senza gestione corretta di prompt, context window e fallback diventa fragile. SigmaLabs implementa ogni funzionalità AI con error handling robusto, logging dettagliato, monitoring continuo e{' '}
+                  <Link href="/metodo" className="text-slate-900 dark:text-white font-semibold hover:text-primary transition-colors underline decoration-primary/30 hover:decoration-primary">
+                    documentazione che spiega ogni scelta progettuale
+                  </Link>. Il risultato?{' '}
+                  <Link href="/servizi#ai" className="text-slate-900 dark:text-white font-semibold hover:text-primary transition-colors underline decoration-primary/30 hover:decoration-primary">
+                    Sistemi AI che funzionano in produzione reale
+                  </Link>, non solo in demo. Architetture del futuro costruite con ingegneria del presente.
                 </p>
               </div>
             </FadeIn>
