@@ -2,17 +2,18 @@ import { cn } from "@/lib/utils"
 
 interface LogoProps {
   className?: string
+  iconClassName?: string
   iconOnly?: boolean
 }
 
-export function Logo({ className, iconOnly = false }: LogoProps) {
+export function Logo({ className, iconClassName, iconOnly = false }: LogoProps) {
   return (
     <div className={cn("flex items-center gap-2 font-display font-bold text-xl tracking-tight select-none logo-container", className)}>
       <svg
         viewBox="0 0 32 32"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-8 h-8 text-primary"
+        className={cn("w-8 h-8 text-primary", iconClassName)}
         aria-label="SigmaLabs Logo"
       >
         {/* Hexagon Frame (Crucible Container) */}

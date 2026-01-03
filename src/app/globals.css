@@ -169,12 +169,10 @@
 
 .logo-container:hover .core {
   animation-duration: 1.5s;
-  filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.8));
 }
 
 .logo-container:hover .hexagon {
   stroke-width: 3px;
-  filter: drop-shadow(0 0 6px rgba(255, 107, 53, 0.5));
 }
 
 /* Performance Optimizations */

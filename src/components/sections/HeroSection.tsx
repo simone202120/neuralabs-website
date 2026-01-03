@@ -14,46 +14,71 @@ const ParticleHero = dynamic(
 
 const words = ["Applicazioni Web.", "Automazioni AI.", "Tue Soluzioni."]
 
-function Typewriter({ text, speed = 50 }: { text: string, speed?: number }) {
-  const [displayText, setDisplayText] = useState('')
-  const [index, setIndex] = useState(0)
+function Typewriter({ words, startDelay = 2500 }: { words: string[], startDelay?: number }) {
+  const [text, setText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [loopNum, setLoopNum] = useState(0)
+  const [typingSpeed, setTypingSpeed] = useState(150)
+  const [hasStarted, setHasStarted] = useState(false)
 
   useEffect(() => {
-    setDisplayText('')
-    setIndex(0)
-  }, [text])
+    const timer = setTimeout(() => {
+      setHasStarted(true)
+    }, startDelay)
+    return () => clearTimeout(timer)
+  }, [startDelay])
 
   useEffect(() => {
-    if (index < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayText(prev => prev + text.charAt(index))
-        setIndex(prev => prev + 1)
-      }, speed)
-      return () => clearTimeout(timeout)
+    if (!hasStarted) return
+
+    const handleTyping = () => {
+      const i = loopNum % words.length
+      const fullText = words[i]
+
+      setText(isDeleting 
+        ? fullText.substring(0, text.length - 1) 
+        : fullText.substring(0, text.length + 1)
+      )
+
+      // Typing Speed Logic
+      let speed = 80 // Base typing speed
+
+      if (isDeleting) {
+        speed = 40 // Deleting speed (faster)
+      }
+
+      // Logic for switching states
+      if (!isDeleting && text === fullText) {
+        // Finished typing word
+        speed = 1200 // Pause before deleting (reduced from ~4s/2s)
+        setIsDeleting(true)
+      } else if (isDeleting && text === '') {
+        // Finished deleting
+        setIsDeleting(false)
+        setLoopNum(loopNum + 1)
+        speed = 200 // Pause before starting next word (very short for fluidity)
+      }
+
+      setTypingSpeed(speed)
     }
-  }, [index, text, speed])
+
+    const timer = setTimeout(handleTyping, typingSpeed)
+    return () => clearTimeout(timer)
+  }, [text, isDeleting, loopNum, typingSpeed, words, hasStarted])
 
   return (
     <span>
-      {displayText}
+      {text}
       <span className="animate-pulse ml-1 inline-block w-3 h-8 md:h-12 bg-black dark:bg-white align-middle" />
     </span>
   )
 }
 
 export function HeroSection() {
-  const [wordIndex, setWordIndex] = useState(0)
-
-  // Calculate the longest word to reserve space and prevent layout shift
+  
+  // Calculate the longest word to reserve space
   const longestWord = useMemo(() => {
     return words.reduce((a, b) => a.length > b.length ? a : b, "")
-  }, [])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % words.length)
-    }, 4000) // Change word every 4 seconds
-    return () => clearInterval(interval)
   }, [])
 
   return (
@@ -87,7 +112,7 @@ export function HeroSection() {
 
               {/* Actual Typewriter positioned absolutely over the placeholder */}
               <span className="absolute top-0 left-0 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-primary">
-                <Typewriter text={words[wordIndex]} key={wordIndex} />
+                <Typewriter words={words} startDelay={2500} />
               </span>
             </span>
           </h1>

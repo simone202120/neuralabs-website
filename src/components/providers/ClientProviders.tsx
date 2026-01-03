@@ -3,6 +3,7 @@
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { CustomCursor } from '@/components/ui/CustomCursor'
 import { EasterEgg } from '@/components/ui/EasterEgg'
+import { Preloader } from '@/components/layout/Preloader'
 import { Suspense } from 'react'
 
 export function ClientProviders({
@@ -17,6 +18,7 @@ export function ClientProviders({
       enableSystem
       disableTransitionOnChange
     >
+      <Preloader />
       <Suspense fallback={null}>
         <CustomCursor />
         <EasterEgg />
