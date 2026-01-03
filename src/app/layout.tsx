@@ -1,5 +1,6 @@
 import { Plus_Jakarta_Sans, Outfit, JetBrains_Mono } from 'next/font/google'
 import type { Metadata } from 'next'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
@@ -119,6 +120,7 @@ export default function RootLayout({
             </div>
           </ClientProviders>
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ''} />
     </html>
   )
 }
