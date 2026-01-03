@@ -6,6 +6,7 @@ import { Methodology_Bento } from '@/components/sections/Methodology_Bento'
 import { Methodology_Cards } from '@/components/sections/Methodology_Cards'
 import { Methodology_Concrete } from '@/components/sections/Methodology_Concrete'
 import { MethodologyPipeline } from '@/components/sections/MethodologyPipeline'
+import { FAQSection } from '@/components/sections/FAQSection'
 import { BookingOptions } from '@/components/sections/BookingOptions'
 
 export default function Home() {
@@ -33,6 +34,8 @@ export default function Home() {
       <MethodologyPipeline />
 
       <BookingOptions />
+
+      <FAQSection />
     </main>
   )
 }
