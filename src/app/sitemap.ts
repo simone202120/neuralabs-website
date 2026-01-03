@@ -31,12 +31,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
-    {
-      url: `${baseUrl}/progetti`,
-      lastModified,
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
   ]
 
   // TODO: Quando integri Sanity CMS, aggiungi pagine dinamiche

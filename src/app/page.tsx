@@ -6,16 +6,17 @@ import { Methodology_Bento } from '@/components/sections/Methodology_Bento'
 import { Methodology_Cards } from '@/components/sections/Methodology_Cards'
 import { Methodology_Concrete } from '@/components/sections/Methodology_Concrete'
 import { MethodologyPipeline } from '@/components/sections/MethodologyPipeline'
+import { FAQSection } from '@/components/sections/FAQSection'
 import { BookingOptions } from '@/components/sections/BookingOptions'
-import { SEOContent } from '@/components/sections/SEOContent'
 
 export default function Home() {
   return (
     <main>
       <HeroSection />
+
       <ServicesPreview />
-      
-      {/* 
+
+      {/*
         Scegli la variante che preferisci de-commentandola:
         1. Methodology (Originale)
         2. Methodology_Sticky (Storytelling verticale)
@@ -24,7 +25,7 @@ export default function Home() {
         5. Methodology_Concrete (Visual UI Reali)
         6. MethodologyPipeline (Nuova Pipeline Interattiva) - ATTIVA
       */}
-      
+
       {/* <Methodology /> */}
       {/* <Methodology_Sticky /> */}
       {/* <Methodology_Bento /> */}
@@ -32,9 +33,9 @@ export default function Home() {
       {/* <Methodology_Concrete /> */}
       <MethodologyPipeline />
 
-      <SEOContent />
-
       <BookingOptions />
+
+      <FAQSection />
     </main>
   )
 }
